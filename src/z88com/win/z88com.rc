@@ -1,0 +1,205 @@
+/***********************************************************************
+* 
+*               *****   ***    ***
+*                  *   *   *  *   *
+*                 *     ***    ***
+*                *     *   *  *   *
+*               *****   ***    ***
+*
+* A FREE Finite Elements Analysis Program in ANSI C for the Windows OS.
+*
+* Composed and edited and copyright by 
+* Professor Dr.-Ing. Frank Rieg, University of Bayreuth, Germany
+*
+* eMail: 
+* frank.rieg@uni-bayreuth.de
+* dr.frank.rieg@t-online.de
+* 
+* V14.0  February 14, 2011
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2, or (at your option)
+* any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; see the file COPYING.  If not, write to
+* the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+***********************************************************************/ 
+/***********************************************************************
+* Z88COM.RC fuer Windows
+* 10.8.2011 Rieg
+***********************************************************************/
+#include <z88com.h>
+#include <windows.h>
+
+/***********************************************************************
+* Icon
+***********************************************************************/
+ICO_Z88COM ICON Z88COM.ICO
+
+/***********************************************************************
+* Toolbar
+***********************************************************************/
+BMP_Z88COM BITMAP Z88COM.BMP
+
+/***********************************************************************
+* Hintergrund
+***********************************************************************/
+BMP_Z88BGR BITMAP Z88BGR.BMP
+
+/***********************************************************************
+* Menue
+***********************************************************************/
+/*----------------------------------------------------------------------
+* Deutsch
+*---------------------------------------------------------------------*/
+GERMAN MENU
+  {
+  POPUP  "&Datei"
+    {
+    MENUITEM "&Editor festlegen",                          IDM_EDITFEST
+    MENUITEM "&PDF-Viewer festlegen",                      IDM_ACROBAT
+    MENUITEM "&Info",                                      IDM_WER
+    MENUITEM "&Schliessen",                                IDM_XIT
+    }
+
+  POPUP  "&Editieren"
+    {
+    MENUITEM "&Memory-Steuerfile\aZ88.DYN",                IDM_Z88DYNEDIT
+    MENUITEM "&OpenGL-File\aZ88O.OGL",                     IDM_EDITOGL
+    MENUITEM SEPARATOR
+    MENUITEM "&Netzgeneratorfile\aZ88NI.TXT",              IDM_Z88NITXT
+    MENUITEM "&Allg. Strukturdaten\aZ88I1.TXT",            IDM_Z88I1TXT
+    MENUITEM "Rand&bedingungen\aZ88I2.TXT",                IDM_Z88I2TXT
+    MENUITEM "Flae&chenlasten\aZ88I5.TXT",                 IDM_Z88I5TXT
+    MENUITEM "&Parameter Solver\aZ88MAN.TXT",              IDM_Z88MANTXT
+    MENUITEM "Material&gesetze\aZ88MAT.TXT",               IDM_Z88MATTXT
+    MENUITEM "Material&dateien\a*.TXT",                    IDM_Z88MATCSV  
+    MENUITEM "&Elementparameter\aZ88ELP.TXT",              IDM_Z88ELPTXT
+    MENUITEM "&Integrationsordnungen\aZ88INT.TXT",         IDM_Z88INTTXT
+    MENUITEM SEPARATOR
+    MENUITEM "&Eingabedaten aufbereitet\aZ88O0.TXT",       IDM_Z88O0TXT
+    MENUITEM "&Randbedingungen aufbe.\aZ88O1.TXT",         IDM_Z88O1TXT
+    MENUITEM "&Verformungen\aZ88O2.TXT",                   IDM_Z88O2TXT
+    MENUITEM "&Spannungen\aZ88O3.TXT",                     IDM_Z88O3TXT
+    MENUITEM "&Knotenkraefte\aZ88O4.TXT",                  IDM_Z88O4TXT
+    }
+  }
+
+/*----------------------------------------------------------------------
+* Englisch
+*---------------------------------------------------------------------*/
+ENGLISH MENU
+  {
+  POPUP  "&File"
+    {
+    MENUITEM "Define &Editor",                             IDM_EDITFEST
+    MENUITEM "Define &PDF Viewer",                         IDM_ACROBAT
+    MENUITEM "&About",                                     IDM_WER
+    MENUITEM "&Quit",                                      IDM_XIT
+    }
+
+  POPUP  "&Edit"
+    {
+    MENUITEM "&Memory Definition File\aZ88.DYN",           IDM_Z88DYNEDIT
+    MENUITEM "Open&GL Definition File\aZ88O.OGL",          IDM_EDITOGL
+    MENUITEM SEPARATOR
+    MENUITEM "&Mapped Mesher File\aZ88NI.TXT",             IDM_Z88NITXT
+    MENUITEM "General S&tructure File\aZ88I1.TXT",         IDM_Z88I1TXT
+    MENUITEM "&Constraints File\aZ88I2.TXT",               IDM_Z88I2TXT
+    MENUITEM "&Surface Load Vectors\aZ88I5.TXT",           IDM_Z88I5TXT
+    MENUITEM "&Parameters Solver\aZ88MAN.TXT",             IDM_Z88MANTXT
+    MENUITEM "Material &Data Entries\aZ88MAT.TXT",         IDM_Z88MATTXT
+    MENUITEM "Material &Data Files\a*.TXT",                IDM_Z88MATCSV
+    MENUITEM "&Element parameters\aZ88ELP.TXT",            IDM_Z88ELPTXT
+    MENUITEM "&Integration Orders\aZ88INT.TXT",            IDM_Z88INTTXT
+    MENUITEM SEPARATOR
+    MENUITEM "&Input Data processed\aZ88O0.TXT",           IDM_Z88O0TXT
+    MENUITEM "Constr&aints processed\aZ88O1.TXT",          IDM_Z88O1TXT
+    MENUITEM "&Deflections\aZ88O2.TXT",                    IDM_Z88O2TXT
+    MENUITEM "&Stresses\aZ88O3.TXT",                       IDM_Z88O3TXT
+    MENUITEM "Nodal Fo&rces\aZ88O4.TXT",                   IDM_Z88O4TXT
+    }
+  }
+
+/***********************************************************************
+* Dialog fuer Editor-Definition
+***********************************************************************/
+/*----------------------------------------------------------------------
+* Deutsch
+*---------------------------------------------------------------------*/
+Dlg_Edit88G DIALOG DISCARDABLE  20, 40, 309, 88
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "Editor definieren"
+FONT 8, "Helv"
+BEGIN
+        CONTROL "",                             100, "STATIC", SS_BLACKFRAME | SS_SUNKEN | WS_CHILD | WS_VISIBLE, 5, 5, 301, 52
+        CONTROL "OK",                           IDOK, "BUTTON", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 7, 62, 47, 21
+        CONTROL "Abbruch",                      IDCANCEL, "BUTTON", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 61, 63, 50, 20
+        CONTROL "Editorname:",                  103, "STATIC", SS_LEFT | WS_CHILD | WS_VISIBLE, 9, 12, 39, 10
+        CONTROL "Editoraufruf, ggf. mit Pfad:", 104, "STATIC", SS_LEFT | WS_CHILD | WS_VISIBLE, 8, 34, 83, 10
+        CONTROL "",                             IDDLG_V_TEXT2, "EDIT", ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 91, 31, 207, 16
+        CONTROL "",                             IDDLG_V_TEXT1, "EDIT", ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 91, 10, 207, 17
+END
+
+/*----------------------------------------------------------------------
+* Englisch
+*---------------------------------------------------------------------*/
+Dlg_Edit88E DIALOG DISCARDABLE  20, 40, 309, 88
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "Define Editor"
+FONT 8, "Helv"
+BEGIN
+        CONTROL "",                           100, "STATIC", SS_BLACKFRAME | SS_SUNKEN | WS_CHILD | WS_VISIBLE, 5, 5, 301, 52
+        CONTROL "OK",                         IDOK, "BUTTON", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 7, 62, 47, 21
+        CONTROL "Cancel",                     IDCANCEL, "BUTTON", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 61, 63, 50, 20
+        CONTROL "Editor Name:",               103, "STATIC", SS_LEFT | WS_CHILD | WS_VISIBLE, 11, 12, 47, 10
+        CONTROL "Editor Call, if nes. Path:", 104, "STATIC", SS_LEFT | WS_CHILD | WS_VISIBLE, 11, 34, 77, 10
+        CONTROL "",                           IDDLG_V_TEXT2, "EDIT", ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 91, 31, 207, 16
+        CONTROL "",                           IDDLG_V_TEXT1, "EDIT", ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 91, 10, 207, 17
+END
+
+/***********************************************************************
+* Dialog fuer Browser-Definition
+***********************************************************************/
+/*----------------------------------------------------------------------
+* Deutsch
+*---------------------------------------------------------------------*/
+Dlg_Brow88G DIALOG DISCARDABLE  20, 40, 327, 88
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "HTML- Browser definieren"
+FONT 8, "Helv"
+BEGIN
+        CONTROL "",                              100, "STATIC", SS_BLACKFRAME | SS_SUNKEN | WS_CHILD | WS_VISIBLE, 5, 4, 319, 52
+        CONTROL "OK",                            IDOK, "BUTTON", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 7, 62, 47, 21
+        CONTROL "Abbruch",                       IDCANCEL, "BUTTON", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 61, 63, 50, 20
+        CONTROL "Datei-Prefix fuer Acrobat:",    103, "STATIC", SS_LEFT | WS_CHILD | WS_VISIBLE, 9, 14, 81, 10
+        CONTROL "Acrobataufruf, ggf. mit Pfad:", 104, "STATIC", SS_LEFT | WS_CHILD | WS_VISIBLE, 9, 34, 94, 10
+        CONTROL "",                              IDDLG_V_TEXT4, "EDIT", ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 105, 31, 211, 17
+        CONTROL "",                              IDDLG_V_TEXT3, "EDIT", ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 105, 10, 211, 17
+END
+
+/*----------------------------------------------------------------------
+* Englisch
+*---------------------------------------------------------------------*/
+Dlg_Brow88E DIALOG DISCARDABLE  20, 40, 327, 88
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "Define HTML Browser"
+FONT 8, "Helv"
+BEGIN
+        CONTROL "",                            100, "STATIC", SS_BLACKFRAME | SS_SUNKEN | WS_CHILD | WS_VISIBLE, 5, 4, 319, 52
+        CONTROL "OK",                          IDOK, "BUTTON", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 7, 63, 47, 20
+        CONTROL "Cancel",                      IDCANCEL, "BUTTON", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 61, 63, 50, 20
+        CONTROL "File Prefix for Acrobat:",    103, "STATIC", SS_LEFT | WS_CHILD | WS_VISIBLE, 9, 14, 81, 10
+        CONTROL "Acrobat Call, if nes. Path:", 104, "STATIC", SS_LEFT | WS_CHILD | WS_VISIBLE, 9, 34, 94, 10
+        CONTROL "",                            IDDLG_V_TEXT4, "EDIT", ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 105, 31, 211, 17
+        CONTROL "",                            IDDLG_V_TEXT3, "EDIT", ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 105, 10, 211, 17
+END
+
+

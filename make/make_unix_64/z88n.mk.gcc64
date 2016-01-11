@@ -1,0 +1,87 @@
+#############################################################################
+# Makefile for Z88N
+# for the GCC compiler
+# 22.7.2011 Rieg
+#############################################################################
+DIRECA = $(HOME)/z88v14os
+DIRUNI = $(DIRECA)/src/z88n/unix
+DIRCOM = $(DIRECA)/src/z88n/common
+DIROUT = $(DIRECA)/bin/unix64
+
+CC = gcc
+CFLAGS = -I$(DIRCOM) -DFR_UNIX -DFR_XDOUB -DFR_XLONG -DFR_LINUX -O2 
+
+LDLIBSOX = -lm -lc 
+
+OBJECTSN = z88n.o ale88n.o dyn88n.o clr88.o join88.o subn88.o stop88n.o\
+ mc188n.o mc288n.o mc388n.o mc488n.o mc588n.o mc688n.o mc788n.o mc888n.o \
+ rni88.o who88n.o wlog88n.o wrim88n.o lan88n.o
+
+z88n: $(OBJECTSN)
+	$(CC) $(CFLAGS) -o $@ $(OBJECTSN) $(LDLIBSOX)
+	cp z88n $(DIROUT)
+
+z88n.o: $(DIRUNI)/z88n.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/z88n.c
+
+ale88n.o: $(DIRUNI)/ale88n.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/ale88n.c
+
+clr88.o: $(DIRUNI)/clr88.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/clr88.c
+
+stop88n.o: $(DIRUNI)/stop88n.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/stop88n.c
+
+who88n.o: $(DIRUNI)/who88n.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/who88n.c
+
+wrim88n.o: $(DIRUNI)/wrim88n.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/wrim88n.c
+
+dyn88n.o: $(DIRCOM)/dyn88n.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/dyn88n.c
+
+join88.o: $(DIRCOM)/join88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/join88.c
+
+subn88.o: $(DIRCOM)/subn88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/subn88.c
+
+mc188n.o: $(DIRCOM)/mc188n.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/mc188n.c
+
+mc288n.o: $(DIRCOM)/mc288n.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/mc288n.c
+
+mc388n.o: $(DIRCOM)/mc388n.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/mc388n.c
+
+mc488n.o: $(DIRCOM)/mc488n.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/mc488n.c
+
+mc588n.o: $(DIRCOM)/mc588n.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/mc588n.c
+
+mc688n.o: $(DIRCOM)/mc688n.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/mc688n.c
+
+mc788n.o: $(DIRCOM)/mc788n.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/mc788n.c
+
+mc888n.o: $(DIRCOM)/mc888n.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/mc888n.c
+
+rni88.o: $(DIRCOM)/rni88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/rni88.c
+
+wlog88n.o: $(DIRCOM)/wlog88n.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/wlog88n.c
+
+lan88n.o: $(DIRCOM)/lan88n.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/lan88n.c
+
+
+
+
+

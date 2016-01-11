@@ -1,0 +1,52 @@
+#############################################################################
+# Makefile for Z88H
+# for the GCC compiler
+# 16.9.2011 Rieg
+#############################################################################
+DIRECA = $(HOME)/z88v14os
+DIRUNI = $(DIRECA)/src/z88h/unix
+DIRCOM = $(DIRECA)/src/z88h/common
+DIROUT = $(DIRECA)/bin/unix32
+
+CC = gcc
+CFLAGS = -I$(DIRCOM) -DFR_UNIX -DFR_XDOUB -DFR_XLONG -DFR_LINUX -O2 
+
+LDLIBSOX = -lm -lc 
+
+OBJECTSH = z88h.o ale88h.o clr88.o stop88h.o who88h.o wlog88h.o wrim88h.o lan88h.o rdy88h.o 
+
+z88h: $(OBJECTSH)
+	$(CC) $(CFLAGS) -o $@ $(OBJECTSH) $(LDLIBSOX)
+	cp z88h $(DIROUT)
+
+z88h.o: $(DIRUNI)/z88h.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/z88h.c
+
+ale88h.o: $(DIRUNI)/ale88h.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/ale88h.c
+
+clr88.o: $(DIRUNI)/clr88.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/clr88.c
+
+stop88h.o: $(DIRUNI)/stop88h.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/stop88h.c
+
+who88h.o: $(DIRUNI)/who88h.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/who88h.c
+
+wrim88h.o: $(DIRUNI)/wrim88h.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/wrim88h.c
+
+rdy88h.o: $(DIRCOM)/rdy88h.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/rdy88h.c
+
+wlog88h.o: $(DIRCOM)/wlog88h.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/wlog88h.c
+
+lan88h.o: $(DIRCOM)/lan88h.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/lan88h.c
+
+
+
+
+

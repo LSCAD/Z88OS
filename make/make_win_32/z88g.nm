@@ -1,0 +1,68 @@
+# 27.7.2011 Rieg
+# Z88G 32-Bit Windows Makefile: 
+# goto Microsoft Visual Studio > Visual Studio Tools > Visual Studio Command Prompt
+# and enter:     nmake -f z88g.nm
+
+AUROVER=c:/z88v14os
+
+INTDIR=.
+
+OUTDIR=$(AUROVER)/bin/win32
+SRCCOM=$(AUROVER)/src/z88g/common
+SRCWIN=$(AUROVER)/src/z88g/win
+
+CC=cl.exe
+CFLAGS= /W0 /c /Od /D "WIN32" /D "_WINDOWS" /D "NDEBUG" /D "FR_XWIN32" \
+        /D "FR_WIN" /D "FR_XDOUB" /D "FR_XLONG" /I "$(SRCCOM)"
+
+RSC=rc.exe
+RCFLAGS=/Fo"$(INTDIR)/z88g.res" /I "$(SRCCOM)" /D "NDEBUG" 
+
+LD=link.exe
+LDFLAGS=     kernel32.lib user32.lib gdi32.lib winspool.lib comctl32.lib \
+             comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib \
+             uuid.lib odbc32.lib odbccp32.lib /subsystem:windows \
+             /machine:X86 /incremental:no /out:"$(OUTDIR)/z88g.exe" 
+
+OBJECTSO= ale88g.obj cosm88.obj dnas88.obj easyfont.obj lan88g.obj \
+          nast88.obj tob88g.obj wlog88g.obj wrim88g.obj z88g.obj z88g.res
+
+RESOURCE= z88g.res
+
+$(OUTDIR)/z88g.exe: $(OBJECTSO) $(OUTDIR) $(RESOURCE)
+	$(LD) $(LDFLAGS) $(OBJECTSO)
+
+$(INTDIR)/ale88g.obj: $(SRCWIN)/ale88g.c
+	$(CC) $(CFLAGS) $(SRCWIN)/ale88g.c
+
+$(INTDIR)/cosm88.obj: $(SRCCOM)/cosm88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/cosm88.c
+
+$(INTDIR)/dnas88.obj: $(SRCCOM)/dnas88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/dnas88.c
+
+$(INTDIR)/lan88g.obj: $(SRCCOM)/lan88g.c
+	$(CC) $(CFLAGS) $(SRCCOM)/lan88g.c
+
+$(INTDIR)/nast88.obj: $(SRCCOM)/nast88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/nast88.c
+
+$(INTDIR)/wrim88g.obj: $(SRCWIN)/wrim88g.c
+	$(CC) $(CFLAGS) $(SRCWIN)/wrim88g.c
+
+$(INTDIR)/tob88g.obj: $(SRCWIN)/tob88g.c
+	$(CC) $(CFLAGS) $(SRCWIN)/tob88g.c
+
+$(INTDIR)/easyfont.obj: $(SRCWIN)/easyfont.c
+	$(CC) $(CFLAGS) $(SRCWIN)/easyfont.c
+
+$(INTDIR)/wlog88g.obj: $(SRCCOM)/wlog88g.c
+	$(CC) $(CFLAGS) $(SRCCOM)/wlog88g.c
+
+$(INTDIR)/z88g.obj: $(SRCWIN)/z88g.c
+	$(CC) $(CFLAGS) $(SRCWIN)/z88g.c
+
+$(INTDIR)/z88g.res: $(SRCWIN)/z88g.rc
+	$(RSC) $(RCFLAGS) $(SRCWIN)/z88g.rc
+
+

@@ -1,0 +1,55 @@
+# 27.7.2011 Rieg
+# Z88COM 32-Bit Windows Makefile: 
+# goto Microsoft Visual Studio > Visual Studio Tools > Visual Studio Command Prompt
+# and enter:     nmake -f z88com.nm
+
+AUROVER=c:/z88v14os
+
+INTDIR=.
+
+OUTDIR=$(AUROVER)/bin/win32
+SRCCOM=$(AUROVER)/src/z88com/common
+SRCWIN=$(AUROVER)/src/z88com/win
+
+CC=cl.exe
+CFLAGS= /W0 /c /Od /D "WIN32" /D "_WINDOWS" /D "NDEBUG" /D "FR_XWIN32" \
+        /D "FR_WIN" /D "FR_XDOUB" /D "FR_XLONG" /I "$(SRCCOM)"
+
+RSC=rc.exe
+RCFLAGS=/Fo"$(INTDIR)/z88com.res" /I "$(SRCCOM)" /D "NDEBUG" 
+
+LD=link.exe
+LDFLAGS=     kernel32.lib user32.lib gdi32.lib winspool.lib comctl32.lib \
+             comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib \
+             uuid.lib odbc32.lib odbccp32.lib /subsystem:windows \
+             /machine:X86 /incremental:no /out:"$(OUTDIR)/z88com.exe" 
+
+OBJECTSO= ale88c.obj easyfont.obj lan88c.obj tob88c.obj wlog88c.obj z88com.obj z88com.res
+
+RESOURCE= z88com.res
+
+$(OUTDIR)/z88com.exe: $(OBJECTSO) $(OUTDIR) $(RESOURCE)
+	$(LD) $(LDFLAGS) $(OBJECTSO)
+
+$(INTDIR)/ale88c.obj: $(SRCWIN)/ale88c.c
+	$(CC) $(CFLAGS) $(SRCWIN)/ale88c.c
+
+$(INTDIR)/lan88c.obj: $(SRCCOM)/lan88c.c
+	$(CC) $(CFLAGS) $(SRCCOM)/lan88c.c
+
+$(INTDIR)/tob88c.obj: $(SRCWIN)/tob88c.c
+	$(CC) $(CFLAGS) $(SRCWIN)/tob88c.c
+
+$(INTDIR)/easyfont.obj: $(SRCWIN)/easyfont.c
+	$(CC) $(CFLAGS) $(SRCWIN)/easyfont.c
+
+$(INTDIR)/wlog88c.obj: $(SRCCOM)/wlog88c.c
+	$(CC) $(CFLAGS) $(SRCCOM)/wlog88c.c
+
+$(INTDIR)/z88com.obj: $(SRCWIN)/z88com.c
+	$(CC) $(CFLAGS) $(SRCWIN)/z88com.c
+
+$(INTDIR)/z88com.res: $(SRCWIN)/z88com.rc
+	$(RSC) $(RCFLAGS) $(SRCWIN)/z88com.rc
+
+

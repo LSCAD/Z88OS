@@ -1,0 +1,253 @@
+# 27.7.2011 Rieg
+# Z88R 32-Bit Windows Makefile: 
+# goto Microsoft Visual Studio > Visual Studio Tools > Visual Studio Command Prompt
+# and enter:     nmake -f z88r.nm
+
+AUROVER=c:/z88v14os
+
+INTDIR=.
+
+OUTDIR=$(AUROVER)/bin/win32
+SRCCOM=$(AUROVER)/src/z88r/common
+SRCWIN=$(AUROVER)/src/z88r/win
+
+CC=cl.exe
+CFLAGS= /W0 /c /Od /D "WIN32" /D "_WINDOWS" /D "NDEBUG" /D "FR_XWIN32" \
+        /D "FR_WIN" /D "FR_XDOUB" /D "FR_XLONG" /I "$(SRCCOM)"
+
+RSC=rc.exe
+RCFLAGS=/Fo"$(INTDIR)/z88r.res" /I "$(SRCCOM)" /D "NDEBUG" 
+
+LD=link.exe
+LDFLAGS=     kernel32.lib user32.lib gdi32.lib winspool.lib comctl32.lib \
+             comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib \
+             uuid.lib odbc32.lib odbccp32.lib /subsystem:windows \
+             /machine:X86 /incremental:no /out:"$(OUTDIR)/z88r.exe" 
+
+OBJECTSO= ale88r.obj apla88.obj bapla88.obj bcshe88.obj bhexa88.obj bhpla88.obj \
+          blqua88.obj bqshe88.obj bspla88.obj bspur88.obj btetr88.obj \
+          bshaf88.obj bshav88.obj choy88.obj cshe88.obj dyn88r.obj easyfont.obj \
+          forc88.obj fuvs88.obj hexa88.obj hpla88.obj isod88.obj jaco88.obj \
+          lan88r.obj lqua88.obj m1.obj m2.obj m3.obj m4.obj man88r.obj\
+          prfl88.obj qshe88.obj ri188r.obj ri588i.obj \
+          sapl88.obj scsh88.obj shad88.obj shaf88.obj shaq88.obj shav88.obj \
+          shex88.obj shpl88.obj siso88.obj slqu88.obj span88.obj sqsh88.obj \
+          spla88.obj spur88.obj sshd88.obj sshf88.obj sshq88.obj sshv88.obj \
+          sspl88.obj sspu88.obj stet88.obj stop88r.obj \
+          tetr88.obj tob88r.obj wlog88r.obj wria88r.obj wrim88r.obj \
+          z88a.obj z88ai.obj z88br.obj z88cr.obj z88dr.obj z88er.obj \
+          z88r.obj z88r.res 
+
+RESOURCE= z88r.res
+
+$(OUTDIR)/z88r.exe: $(OBJECTSO) $(OUTDIR) $(RESOURCE)
+	$(LD) $(LDFLAGS) $(OBJECTSO)
+
+$(INTDIR)/ale88r.obj: $(SRCWIN)/ale88r.c
+	$(CC) $(CFLAGS) $(SRCWIN)/ale88r.c
+
+$(INTDIR)/apla88.obj: $(SRCCOM)/apla88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/apla88.c
+
+$(INTDIR)/bapla88.obj: $(SRCCOM)/bapla88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/bapla88.c
+
+$(INTDIR)/bcshe88.obj: $(SRCCOM)/bcshe88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/bcshe88.c
+
+$(INTDIR)/bhexa88.obj: $(SRCCOM)/bhexa88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/bhexa88.c
+
+$(INTDIR)/bhpla88.obj: $(SRCCOM)/bhpla88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/bhpla88.c
+
+$(INTDIR)/blqua88.obj: $(SRCCOM)/blqua88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/blqua88.c
+
+$(INTDIR)/bqshe88.obj: $(SRCCOM)/bqshe88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/bqshe88.c
+
+$(INTDIR)/bspla88.obj: $(SRCCOM)/bspla88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/bspla88.c
+
+$(INTDIR)/bspur88.obj: $(SRCCOM)/bspur88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/bspur88.c
+
+$(INTDIR)/btetr88.obj: $(SRCCOM)/btetr88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/btetr88.c
+
+$(INTDIR)/bshaf88.obj: $(SRCCOM)/bshaf88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/bshaf88.c
+
+$(INTDIR)/bshav88.obj: $(SRCCOM)/bshav88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/bshav88.c
+
+$(INTDIR)/choy88.obj: $(SRCCOM)/choy88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/choy88.c
+
+$(INTDIR)/cshe88.obj: $(SRCCOM)/cshe88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/cshe88.c
+
+$(INTDIR)/dyn88r.obj: $(SRCCOM)/dyn88r.c
+	$(CC) $(CFLAGS) $(SRCCOM)/dyn88r.c
+
+$(INTDIR)/easyfont.obj: $(SRCWIN)/easyfont.c
+	$(CC) $(CFLAGS) $(SRCWIN)/easyfont.c
+
+$(INTDIR)/forc88.obj: $(SRCCOM)/forc88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/forc88.c
+
+$(INTDIR)/fuvs88.obj: $(SRCCOM)/fuvs88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/fuvs88.c
+
+$(INTDIR)/hexa88.obj: $(SRCCOM)/hexa88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/hexa88.c
+
+$(INTDIR)/hpla88.obj: $(SRCCOM)/hpla88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/hpla88.c
+
+$(INTDIR)/isod88.obj: $(SRCCOM)/isod88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/isod88.c
+
+$(INTDIR)/jaco88.obj: $(SRCCOM)/jaco88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/jaco88.c
+
+$(INTDIR)/lan88r.obj: $(SRCCOM)/lan88r.c
+	$(CC) $(CFLAGS) $(SRCCOM)/lan88r.c
+
+$(INTDIR)/lqua88.obj: $(SRCCOM)/lqua88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/lqua88.c
+
+$(INTDIR)/m1.obj: $(SRCCOM)/m1.c
+	$(CC) $(CFLAGS) $(SRCCOM)/m1.c
+
+$(INTDIR)/m2.obj: $(SRCCOM)/m2.c
+	$(CC) $(CFLAGS) $(SRCCOM)/m2.c
+
+$(INTDIR)/m3.obj: $(SRCCOM)/m3.c
+	$(CC) $(CFLAGS) $(SRCCOM)/m3.c 
+
+$(INTDIR)/m4.obj: $(SRCCOM)/m4.c
+	$(CC) $(CFLAGS) $(SRCCOM)/m4.c
+
+$(INTDIR)/man88r.obj: $(SRCCOM)/man88r.c
+	$(CC) $(CFLAGS) $(SRCCOM)/man88r.c
+
+$(INTDIR)/prfl88.obj: $(SRCCOM)/prfl88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/prfl88.c
+
+$(INTDIR)/qshe88.obj: $(SRCCOM)/qshe88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/qshe88.c
+
+$(INTDIR)/ri188r.obj: $(SRCCOM)/ri188r.c
+	$(CC) $(CFLAGS) $(SRCCOM)/ri188r.c
+
+$(INTDIR)/ri588i.obj: $(SRCCOM)/ri588i.c
+	$(CC) $(CFLAGS) $(SRCCOM)/ri588i.c
+
+$(INTDIR)/sapl88.obj: $(SRCCOM)/sapl88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/sapl88.c
+
+$(INTDIR)/scsh88.obj: $(SRCCOM)/scsh88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/scsh88.c
+
+$(INTDIR)/shad88.obj: $(SRCCOM)/shad88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/shad88.c
+
+$(INTDIR)/shaf88.obj: $(SRCCOM)/shaf88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/shaf88.c
+
+$(INTDIR)/shaq88.obj: $(SRCCOM)/shaq88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/shaq88.c
+
+$(INTDIR)/shav88.obj: $(SRCCOM)/shav88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/shav88.c
+
+$(INTDIR)/shex88.obj: $(SRCCOM)/shex88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/shex88.c
+
+$(INTDIR)/shpl88.obj: $(SRCCOM)/shpl88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/shpl88.c
+
+$(INTDIR)/siso88.obj: $(SRCCOM)/siso88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/siso88.c
+
+$(INTDIR)/slqu88.obj: $(SRCCOM)/slqu88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/slqu88.c
+
+$(INTDIR)/span88.obj: $(SRCCOM)/span88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/span88.c
+
+$(INTDIR)/sqsh88.obj: $(SRCCOM)/sqsh88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/sqsh88.c
+
+$(INTDIR)/spla88.obj: $(SRCCOM)/spla88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/spla88.c
+
+$(INTDIR)/spur88.obj: $(SRCCOM)/spur88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/spur88.c
+
+$(INTDIR)/sshd88.obj: $(SRCCOM)/sshd88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/sshd88.c
+
+$(INTDIR)/sshf88.obj: $(SRCCOM)/sshf88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/sshf88.c
+
+$(INTDIR)/sshq88.obj: $(SRCCOM)/sshq88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/sshq88.c
+
+$(INTDIR)/sshv88.obj: $(SRCCOM)/sshv88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/sshv88.c
+
+$(INTDIR)/sspl88.obj: $(SRCCOM)/sspl88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/sspl88.c
+
+$(INTDIR)/sspu88.obj: $(SRCCOM)/sspu88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/sspu88.c
+
+$(INTDIR)/stet88.obj: $(SRCCOM)/stet88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/stet88.c
+
+$(INTDIR)/stop88r.obj: $(SRCCOM)/stop88r.c
+	$(CC) $(CFLAGS) $(SRCCOM)/stop88r.c
+
+$(INTDIR)/tetr88.obj: $(SRCCOM)/tetr88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/tetr88.c
+
+$(INTDIR)/tob88r.obj: $(SRCWIN)/tob88r.c
+	$(CC) $(CFLAGS) $(SRCWIN)/tob88r.c
+
+$(INTDIR)/wlog88r.obj: $(SRCCOM)/wlog88r.c
+	$(CC) $(CFLAGS) $(SRCCOM)/wlog88r.c
+ 
+$(INTDIR)/wria88r.obj: $(SRCCOM)/wria88r.c
+	$(CC) $(CFLAGS) $(SRCCOM)/wria88r.c
+
+$(INTDIR)/wrim88r.obj: $(SRCWIN)/wrim88r.c
+	$(CC) $(CFLAGS) $(SRCWIN)/wrim88r.c
+
+$(INTDIR)/z88a.obj: $(SRCCOM)/z88a.c
+	$(CC) $(CFLAGS) $(SRCCOM)/z88a.c
+
+$(INTDIR)/z88ai.obj: $(SRCCOM)/z88ai.c
+	$(CC) $(CFLAGS) $(SRCCOM)/z88ai.c
+
+$(INTDIR)/z88br.obj: $(SRCCOM)/z88br.c
+	$(CC) $(CFLAGS) $(SRCCOM)/z88br.c
+
+$(INTDIR)/z88cr.obj: $(SRCCOM)/z88cr.c
+	$(CC) $(CFLAGS) $(SRCCOM)/z88cr.c
+
+$(INTDIR)/z88dr.obj: $(SRCCOM)/z88dr.c
+	$(CC) $(CFLAGS) $(SRCCOM)/z88dr.c
+
+$(INTDIR)/z88er.obj: $(SRCCOM)/z88er.c
+	$(CC) $(CFLAGS) $(SRCCOM)/z88er.c
+
+$(INTDIR)/z88r.obj: $(SRCWIN)/z88r.c
+	$(CC) $(CFLAGS) $(SRCWIN)/z88r.c
+
+$(INTDIR)/z88r.res: $(SRCWIN)/z88r.rc
+	$(RSC) $(RCFLAGS) $(SRCWIN)/z88r.rc
+
+

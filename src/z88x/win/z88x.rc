@@ -1,0 +1,141 @@
+/***********************************************************************
+* 
+*               *****   ***    ***
+*                  *   *   *  *   *
+*                 *     ***    ***
+*                *     *   *  *   *
+*               *****   ***    ***
+*
+* A FREE Finite Elements Analysis Program in ANSI C for the Windows OS.
+*
+* Composed and edited and copyright by 
+* Professor Dr.-Ing. Frank Rieg, University of Bayreuth, Germany
+*
+* eMail: 
+* frank.rieg@uni-bayreuth.de
+* dr.frank.rieg@t-online.de
+* 
+* V14.0  February 14, 2011
+*
+* Z88 should compile and run under any Windows release, starting
+* with Windows95.
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2, or (at your option)
+* any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; see the file COPYING.  If not, write to
+* the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+***********************************************************************/ 
+/***********************************************************************
+* Z88F.RC
+* 15.7.2011 Rieg
+***********************************************************************/
+#include <z88x.h>
+#include <windows.h>
+
+/***********************************************************************
+* Icon
+***********************************************************************/
+ICO_Z88X ICON Z88X.ICO
+
+/***********************************************************************
+* Cursor
+***********************************************************************/
+CUR_Z88X CURSOR Z88X.CUR
+
+/***********************************************************************
+* Toolbar
+***********************************************************************/
+BMP_Z88X BITMAP Z88X.BMP
+
+/***********************************************************************
+* Menue
+***********************************************************************/
+/*----------------------------------------------------------------------
+* Deutsch
+*---------------------------------------------------------------------*/
+GERMAN MENU
+  {
+  POPUP  "&Datei"
+    {
+    MENUITEM "&Info",        IDM_WER
+    MENUITEM "&Textgroesse", IDM_TEXTSIZE
+    MENUITEM "&Ende",        IDM_XIT
+    }
+  POPUP  "&Konvertierung"
+    {
+    MENUITEM "&1 von Z88I1.TXT nach Z88X.DXF ", IDM_I1TX
+    MENUITEM "&2 von Z88I*.TXT nach Z88X.DXF ", IDM_IATX
+    MENUITEM "&3 von Z88NI.TXT nach Z88X.DXF ", IDM_NITX
+    MENUITEM "&4 von Z88X.DXF nach Z88I1.TXT ", IDM_I1FX
+    MENUITEM "&5 von Z88X.DXF nach Z88I*.TXT ", IDM_IAFX
+    MENUITEM "&6 von Z88X.DXF nach Z88NI.TXT ", IDM_NIFX
+    }
+  POPUP  "&Berechnung"
+    {
+    MENUITEM "&Start", IDM_GO
+    }
+  }
+
+/*----------------------------------------------------------------------
+* Englisch
+*---------------------------------------------------------------------*/
+ENGLISH MENU
+  {
+  POPUP  "&File"
+    {
+    MENUITEM "&About",    IDM_WER
+    MENUITEM "&Textsize", IDM_TEXTSIZE
+    MENUITEM "&End",      IDM_XIT
+    }
+  POPUP  "&Type Conversion"
+    {
+    MENUITEM "&1 from Z88I1.TXT to Z88X.DXF ", IDM_I1TX
+    MENUITEM "&2 from Z88I*.TXT to Z88X.DXF ", IDM_IATX
+    MENUITEM "&3 from Z88NI.TXT to Z88X.DXF ", IDM_NITX
+    MENUITEM "&4 from Z88X.DXF to Z88I1.TXT ", IDM_I1FX
+    MENUITEM "&5 from Z88X.DXF to Z88I*.TXT ", IDM_IAFX
+    MENUITEM "&6 from Z88X.DXF to Z88NI.TXT ", IDM_NIFX
+    }
+  POPUP  "&Compute"
+    {
+    MENUITEM "&Go", IDM_GO
+    }
+  }
+
+/***********************************************************************
+* Dialogboxen
+***********************************************************************/
+/*----------------------------------------------------------------------
+* Textsize
+*---------------------------------------------------------------------*/
+Dlg_TextS88G DIALOG 6, 18, 117, 60
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "TEXTGROESSE"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "Textgroesse fuer Z88X.DXF", 101, 21, 8, 93, 10
+    EDITTEXT        IDDLG_V_TEXT, 17, 20, 97, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 17, 41, 40, 14
+    PUSHBUTTON      "Abbruch", IDCANCEL, 74, 41, 40, 14
+END
+
+Dlg_TextS88E DIALOG 6, 18, 117, 60
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "TEXTSIZE"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "Textsize for Z88X.DXF", 101, 21, 8, 93, 10
+    EDITTEXT        IDDLG_V_TEXT, 17, 20, 97, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 17, 41, 40, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 74, 41, 40, 14
+END
+

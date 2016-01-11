@@ -1,0 +1,242 @@
+#############################################################################
+# Makefile for Z88G
+# for the GCC compiler
+# 24.7.2011 Rieg
+#############################################################################
+DIRECA = $(HOME)/z88v14os
+DIRUNI = $(DIRECA)/src/z88r/unix
+DIRCOM = $(DIRECA)/src/z88r/common
+DIROUT = $(DIRECA)/bin/unix64
+
+CC = gcc
+CFLAGS = -I$(DIRCOM) -DFR_UNIX -DFR_XDOUB -DFR_XLONG -DFR_LINUX -O2 
+
+LDLIBSOX = -lm -lc 
+
+OBJECTSR = z88r.o ale88r.o dyn88r.o clr88.o jaco88.o choy88.o m1.o m2.o \
+ cshe88.o hexa88.o lqua88.o qshe88.o isod88.o tetr88.o spur88.o stop88r.o \
+ apla88.o  spla88.o hpla88.o who88r.o wlog88r.o prfl88.o wrim88r.o \
+ lan88r.o z88br.o z88cr.o ri588i.o bhexa88.o btetr88.o bqshe88.o bspla88.o \
+ bspur88.o blqua88.o bcshe88.o bapla88.o bhpla88.o ri188r.o z88a.o z88ai.o \
+ wria88r.o z88dr.o m3.o m4.o fuvs88.o scsh88.o shex88.o slqu88.o sqsh88.o \
+ siso88.o stet88.o sspu88.o sapl88.o sspl88.o shpl88.o span88.o z88er.o \
+ forc88.o shaq88.o sshq88.o shad88.o sshd88.o shaf88.o bshaf88.o sshf88.o \
+ shav88.o bshav88.o sshv88.o man88r.o
+
+z88r: $(OBJECTSR)
+	$(CC) $(CFLAGS) -o $@ $(OBJECTSR) $(LDLIBSOX)
+	cp z88r $(DIROUT)
+
+z88r.o: $(DIRUNI)/z88r.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/z88r.c
+
+ale88r.o: $(DIRUNI)/ale88r.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/ale88r.c
+
+who88r.o: $(DIRUNI)/who88r.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/who88r.c
+
+wrim88r.o: $(DIRUNI)/wrim88r.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/wrim88r.c
+
+clr88.o: $(DIRUNI)/clr88.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/clr88.c
+
+# allgemein gueltig:
+
+stop88r.o: $(DIRCOM)/stop88r.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/stop88r.c
+
+wlog88r.o: $(DIRCOM)/wlog88r.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/wlog88r.c
+
+lan88r.o: $(DIRCOM)/lan88r.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/lan88r.c
+
+dyn88r.o: $(DIRCOM)/dyn88r.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/dyn88r.c
+
+z88a.o: $(DIRCOM)/z88a.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/z88a.c
+
+z88ai.o: $(DIRCOM)/z88ai.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/z88ai.c
+
+z88br.o: $(DIRCOM)/z88br.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/z88br.c
+
+z88cr.o: $(DIRCOM)/z88cr.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/z88cr.c
+
+z88dr.o: $(DIRCOM)/z88dr.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/z88dr.c
+
+z88er.o: $(DIRCOM)/z88er.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/z88er.c
+
+jaco88.o: $(DIRCOM)/jaco88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/jaco88.c
+
+choy88.o: $(DIRCOM)/choy88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/choy88.c
+
+ri188r.o: $(DIRCOM)/ri188r.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/ri188r.c
+
+ri588i.o: $(DIRCOM)/ri588i.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/ri588i.c
+
+wria88r.o: $(DIRCOM)/wria88r.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/wria88r.c
+
+man88r.o: $(DIRCOM)/man88r.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/man88r.c
+
+# die Elementsteifigkeitsroutinen:
+
+m1.o: $(DIRCOM)/m1.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/m1.c
+
+m2.o: $(DIRCOM)/m2.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/m2.c
+
+cshe88.o: $(DIRCOM)/cshe88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/cshe88.c
+
+qshe88.o: $(DIRCOM)/qshe88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/qshe88.c
+
+hexa88.o: $(DIRCOM)/hexa88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/hexa88.c
+
+lqua88.o: $(DIRCOM)/lqua88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/lqua88.c
+
+isod88.o: $(DIRCOM)/isod88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/isod88.c
+
+tetr88.o: $(DIRCOM)/tetr88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/tetr88.c
+
+spur88.o: $(DIRCOM)/spur88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/spur88.c
+
+apla88.o: $(DIRCOM)/apla88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/apla88.c
+
+spla88.o: $(DIRCOM)/spla88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/spla88.c
+
+hpla88.o: $(DIRCOM)/hpla88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/hpla88.c
+
+shaq88.o: $(DIRCOM)/shaq88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/shaq88.c
+
+shad88.o: $(DIRCOM)/shad88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/shad88.c
+
+shaf88.o: $(DIRCOM)/shaf88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/shaf88.c
+
+shav88.o: $(DIRCOM)/shav88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/shav88.c
+
+# die Lastvektorroutinen:
+
+bhexa88.o: $(DIRCOM)/bhexa88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/bhexa88.c
+
+btetr88.o: $(DIRCOM)/btetr88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/btetr88.c
+
+bqshe88.o: $(DIRCOM)/bqshe88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/bqshe88.c
+
+bspla88.o: $(DIRCOM)/bspla88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/bspla88.c
+
+bspur88.o: $(DIRCOM)/bspur88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/bspur88.c
+
+blqua88.o: $(DIRCOM)/blqua88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/blqua88.c
+
+bcshe88.o: $(DIRCOM)/bcshe88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/bcshe88.c
+
+bapla88.o: $(DIRCOM)/bapla88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/bapla88.c
+
+bhpla88.o: $(DIRCOM)/bhpla88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/bhpla88.c
+
+bshaf88.o: $(DIRCOM)/bshaf88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/bshaf88.c
+
+bshav88.o: $(DIRCOM)/bshav88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/bshav88.c
+
+prfl88.o: $(DIRCOM)/prfl88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/prfl88.c
+
+# die Spannungsroutinen:
+
+fuvs88.o: $(DIRCOM)/fuvs88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/fuvs88.c
+
+span88.o: $(DIRCOM)/span88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/span88.c
+
+forc88.o: $(DIRCOM)/forc88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/forc88.c
+
+m3.o: $(DIRCOM)/m3.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/m3.c
+
+m4.o: $(DIRCOM)/m4.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/m4.c
+
+shex88.o: $(DIRCOM)/shex88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/shex88.c
+
+scsh88.o: $(DIRCOM)/scsh88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/scsh88.c
+
+slqu88.o: $(DIRCOM)/slqu88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/slqu88.c
+
+sqsh88.o: $(DIRCOM)/sqsh88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/sqsh88.c
+
+siso88.o: $(DIRCOM)/siso88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/siso88.c
+
+stet88.o: $(DIRCOM)/stet88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/stet88.c
+
+sspu88.o: $(DIRCOM)/sspu88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/sspu88.c
+
+sapl88.o: $(DIRCOM)/sapl88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/sapl88.c
+
+sspl88.o: $(DIRCOM)/sspl88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/sspl88.c
+
+shpl88.o: $(DIRCOM)/shpl88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/shpl88.c
+
+sshq88.o: $(DIRCOM)/sshq88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/sshq88.c
+
+sshd88.o: $(DIRCOM)/sshd88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/sshd88.c
+
+sshf88.o: $(DIRCOM)/sshf88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/sshf88.c
+
+sshv88.o: $(DIRCOM)/sshv88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/sshv88.c
+
+

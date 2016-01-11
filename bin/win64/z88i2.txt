@@ -1,0 +1,17 @@
+ 16                 16 Randbedingungen gesamt
+ 11   2   1  -7143  Knoten 11  am FG 2 Kraft -7143 gegeben
+143   2   1   7143  Knoten 143 am FG 2 Kraft  7143 gegeben
+216   1   2      0  Knoten 216 am FG 1 Verschiebung 0 gegeben
+216   2   2      0
+220   1   2      0
+220   2   2      0
+227   1   2      0
+227   2   2      0
+231   1   2      0
+231   2   2      0
+238   1   2      0
+238   2   2      0
+242   1   2      0
+242   2   2      0
+249   1   2      0
+249   2   2      0

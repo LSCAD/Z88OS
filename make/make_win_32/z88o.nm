@@ -1,0 +1,87 @@
+# 27.7.2011 Rieg
+# Z88O 32-Bit Windows Makefile: 
+# goto Microsoft Visual Studio > Visual Studio Tools > Visual Studio Command Prompt
+# goto c:/z88v14os/make/make_win_64 and enter:     nmake -f z88o.nm
+
+AUROVER=c:/z88v14os
+
+INTDIR=.
+
+OUTDIR=$(AUROVER)/bin/win32
+SRCCOM=$(AUROVER)/src/z88o/common
+SRCWIN=$(AUROVER)/src/z88o/win
+
+CC=cl.exe
+CFLAGS= /W0 /c /Od /D "WIN32" /D "_WINDOWS" /D "NDEBUG" /D "FR_XWIN32" \
+        /D "FR_WIN" /D "FR_XDOUB" /D "FR_XLONG" /I "$(SRCCOM)"
+
+RSC=rc.exe
+RCFLAGS=/Fo"$(INTDIR)/z88o.res" /I "$(SRCCOM)" /D "NDEBUG" 
+
+LD=link.exe
+LDFLAGS=     kernel32.lib user32.lib gdi32.lib winspool.lib comctl32.lib \
+             comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib \
+             uuid.lib odbc32.lib odbccp32.lib opengl32.lib /subsystem:windows \
+             /machine:X86 /incremental:no /out:"$(OUTDIR)/z88o.exe" 
+
+OBJECTSO= ale88o.obj dyn88o.obj lan88o.obj \
+          m9.obj m10.obj m11.obj m12.obj m13.obj m16.obj man88o.obj oc88.obj \
+          oglfont.obj rogl88.obj tob88o.obj wlog88o.obj  z88o.obj z88o.res
+
+RESOURCE= z88o.res
+
+$(OUTDIR)/z88o.exe: $(OBJECTSO) $(OUTDIR) $(RESOURCE)
+	$(LD) $(LDFLAGS) $(OBJECTSO)
+
+$(INTDIR)/ale88o.obj: $(SRCWIN)/ale88o.c
+	$(CC) $(CFLAGS) $(SRCWIN)/ale88o.c
+
+$(INTDIR)/dyn88o.obj: $(SRCCOM)/dyn88o.c
+	$(CC) $(CFLAGS) $(SRCCOM)/dyn88o.c
+
+$(INTDIR)/lan88o.obj: $(SRCCOM)/lan88o.c
+	$(CC) $(CFLAGS) $(SRCCOM)/lan88o.c
+
+$(INTDIR)/m9.obj: $(SRCCOM)/m9.c
+	$(CC) $(CFLAGS) $(SRCCOM)/m9.c
+
+$(INTDIR)/m10.obj: $(SRCCOM)/m10.c
+	$(CC) $(CFLAGS) $(SRCCOM)/m10.c
+
+$(INTDIR)/m11.obj: $(SRCWIN)/m11.c
+	$(CC) $(CFLAGS) $(SRCWIN)/m11.c
+
+$(INTDIR)/m12.obj: $(SRCCOM)/m12.c
+	$(CC) $(CFLAGS) $(SRCCOM)/m12.c
+
+$(INTDIR)/m13.obj: $(SRCWIN)/m13.c
+	$(CC) $(CFLAGS) $(SRCWIN)/m13.c
+
+$(INTDIR)/m16.obj: $(SRCCOM)/m16.c
+	$(CC) $(CFLAGS) $(SRCCOM)/m16.c
+
+$(INTDIR)/man88o.obj: $(SRCCOM)/man88o.c
+	$(CC) $(CFLAGS) $(SRCCOM)/man88o.c
+
+$(INTDIR)/oc88.obj: $(SRCCOM)/oc88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/oc88.c
+
+$(INTDIR)/oglfont.obj: $(SRCWIN)/oglfont.c
+	$(CC) $(CFLAGS) $(SRCWIN)/oglfont.c
+
+$(INTDIR)/rogl88.obj: $(SRCWIN)/rogl88.c
+	$(CC) $(CFLAGS) $(SRCWIN)/rogl88.c
+
+$(INTDIR)/tob88o.obj: $(SRCWIN)/tob88o.c
+	$(CC) $(CFLAGS) $(SRCWIN)/tob88o.c
+
+$(INTDIR)/wlog88o.obj: $(SRCWIN)/wlog88o.c
+	$(CC) $(CFLAGS) $(SRCWIN)/wlog88o.c
+
+$(INTDIR)/z88o.obj: $(SRCWIN)/z88o.c
+	$(CC) $(CFLAGS) $(SRCWIN)/z88o.c
+
+$(INTDIR)/z88o.res: $(SRCWIN)/z88o.rc
+	$(RSC) $(RCFLAGS) $(SRCWIN)/z88o.rc
+
+

@@ -1,0 +1,453 @@
+/***********************************************************************
+* 
+*               *****   ***    ***
+*                  *   *   *  *   *
+*                 *     ***    ***
+*                *     *   *  *   *
+*               *****   ***    ***
+*
+* A FREE Finite Elements Analysis Program in ANSI C for the Windows OS.
+*
+* Composed and edited and copyright by 
+* Professor Dr.-Ing. Frank Rieg, University of Bayreuth, Germany
+*
+* eMail: 
+* frank.rieg@uni-bayreuth.de
+* dr.frank.rieg@t-online.de
+* 
+* V14.0  February 14, 2011
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2, or (at your option)
+* any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; see the file COPYING.  If not, write to
+* the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+***********************************************************************/ 
+/***********************************************************************
+* Z88O.RC
+* 17.7.2011 Rieg
+***********************************************************************/
+#include <z88o.h>
+#include <windows.h>
+
+/***********************************************************************
+* Icon
+***********************************************************************/
+ICO_Z88O ICON Z88O.ICO
+
+/***********************************************************************
+* Cursor
+***********************************************************************/
+CUR_Z88O CURSOR Z88O.CUR
+
+/***********************************************************************
+* Toolbar
+***********************************************************************/
+BMP_Z88O BITMAP Z88O.BMP
+
+/***********************************************************************
+* Menue
+***********************************************************************/
+/*----------------------------------------------------------------------
+* Deutsch
+*---------------------------------------------------------------------*/
+GERMAN MENU
+  {
+  POPUP  "&Datei"
+    {
+    MENUITEM "&Ende",                    IDM_XIT
+    MENUITEM SEPARATOR
+    MENUITEM "&Info",                    IDM_WER
+    }
+
+  POPUP  "&Labels"
+    {
+    MENUITEM "&No Labels",               IDM_NOLABELS
+    MENUITEM "&Knoten",                  IDM_KNOTEN
+    MENUITEM "&Elemente",                IDM_ELEMENTE
+    MENUITEM "&Alles labeln",            IDM_LALLES
+    }
+
+  POPUP  "&Bild"
+    {
+    MENUITEM "Ver&groe.\tBILD HOCH",     IDM_PRIOR
+    MENUITEM "Ver&klei.\tBILD RUNTER",   IDM_NEXT
+    MENUITEM SEPARATOR
+    MENUITEM "Versch. X &re\tCUR RECHTS",IDM_RIGHT
+    MENUITEM "Versch. X &li\tCUR LINKS", IDM_LEFT
+    MENUITEM "Versch. Y &ho\tCUR HOCH",  IDM_UP
+    MENUITEM "Versch. Y r&u\tCUR RUNTER",IDM_DOWN
+    MENUITEM "Versch. Z &+\tPOS 1",      IDM_HOME
+    MENUITEM "Versch. Z &-\tENDE",       IDM_END
+    MENUITEM SEPARATOR
+    MENUITEM "Ro&tation X -\tF2",        IDM_F2
+    MENUITEM "Rot&ation X +\tF3",        IDM_F3
+    MENUITEM "Rotat&ion Y -\tF4",        IDM_F4
+    MENUITEM "Rotati&on Y +\tF5",        IDM_F5
+    MENUITEM "Rotatio&n Z -\tF6",        IDM_F6
+    MENUITEM "Rotation &Z +\tF7",        IDM_F7
+    MENUITEM "Rotationen &0\tF8",        IDM_F8
+    }
+
+  POPUP  "&Faktoren"
+    {
+    MENUITEM "&Verschiebungen",          IDM_VER
+    MENUITEM "&Rotationen 3-D",          IDM_ROT
+    MENUITEM "&Z-Limit zum Betrachter",  IDM_ZM
+    }
+
+  POPUP  "&Randbedingungen"
+    {
+    MENUITEM "RBD &nicht zeigen",        IDM_NORBD
+    MENUITEM "RBD &zeigen",              IDM_YESRBD
+    MENUITEM "Zoom &+",                  IDM_ZOPLUS
+    MENUITEM "Zoom &-",                  IDM_ZOMINUS
+    POPUP "&nur einzelne RB zeigen"
+      {
+      MENUITEM "&alle RB",                  IDM_RBDALL
+      MENUITEM "nur U&1=UX=0",              IDM_RBDUX
+      MENUITEM "nur U&2=UY=0",              IDM_RBDUY
+      MENUITEM "nur U&3=UZ=0",              IDM_RBDUZ
+      MENUITEM "nur U&4=RotX=0",            IDM_RBDU4
+      MENUITEM "nur U&5=RotY=0",            IDM_RBDU5
+      MENUITEM "nur U&6=RotZ=0",            IDM_RBDU6
+      MENUITEM "nur U &vorgegeben",         IDM_RBDUA
+      MENUITEM "nur &Oberflaechenlasten",   IDM_RBDOL
+      MENUITEM "nur &Kraefte X",            IDM_RBDFX
+      MENUITEM "nur K&raefte Y",            IDM_RBDFY
+      MENUITEM "nur Krae&fte Z",            IDM_RBDFZ
+      }
+    }
+
+  POPUP  "&Groesse Gausspt."
+    {
+    MENUITEM "Zoom &+",                  IDM_GPZOPLUS
+    MENUITEM "Zoom &-",                  IDM_GPZOMINUS
+    }
+
+  POPUP  "&Koordinatensystem"
+    {
+    MENUITEM "Koordinatensystem &nein",  IDM_NOKOOR
+    MENUITEM "Koordinatensystem &ja",    IDM_YESKOOR
+    }
+
+  POPUP  "&Netz ueber Spannungen"
+    {
+    MENUITEM "Netz ueber Spannungen &nein",IDM_NONOST
+    MENUITEM "Netz ueber Spannungen &ja",  IDM_YESNOST
+    }
+  }
+
+/*----------------------------------------------------------------------
+* Englisch
+*---------------------------------------------------------------------*/
+ENGLISH MENU
+  {
+  POPUP  "&File"
+    {
+    MENUITEM "&End",                     IDM_XIT
+    MENUITEM SEPARATOR
+    MENUITEM "&About",                   IDM_WER
+    }
+
+  POPUP  "&Labels"
+    {
+    MENUITEM "N&o Labels",               IDM_NOLABELS
+    MENUITEM "&Nodes",                   IDM_KNOTEN
+    MENUITEM "&Elements",                IDM_ELEMENTE
+    MENUITEM "Label &all",               IDM_LALLES
+    }
+
+  POPUP  "&Zoom"
+    {
+    MENUITEM "&More\tPRIOR",             IDM_PRIOR
+    MENUITEM "L&ess\tNEXT",              IDM_NEXT
+    MENUITEM SEPARATOR
+    MENUITEM "Panning X &Right\tRIGHT",  IDM_RIGHT
+    MENUITEM "Panning X &Left\tLEFT",    IDM_LEFT
+    MENUITEM "Panning Y &Up\tUP",        IDM_UP
+    MENUITEM "Panning Y &Down\tDOWN",    IDM_DOWN
+    MENUITEM "Panning Z &+\tHOME",       IDM_HOME
+    MENUITEM "Panning Z &-\tEND",        IDM_END
+    MENUITEM SEPARATOR
+    MENUITEM "Ro&tation X -\tF2",        IDM_F2
+    MENUITEM "Rot&ation X +\tF3",        IDM_F3
+    MENUITEM "Rotat&ion Y -\tF4",        IDM_F4
+    MENUITEM "Rotati&on Y +\tF5",        IDM_F5
+    MENUITEM "Rotatio&n Z -\tF6",        IDM_F6
+    MENUITEM "Rotation &Z +\tF7",        IDM_F7
+    MENUITEM "Rotationen &0\tF8",        IDM_F8
+    }
+
+  POPUP  "Fac&tors"
+    {
+    MENUITEM "&Deflections",             IDM_VER
+    MENUITEM "&Rotations 3-D",           IDM_ROT
+    MENUITEM "&Z limit towards you",     IDM_ZM
+
+    }
+
+  POPUP  "&Boundary Conditions"
+    {
+    MENUITEM "&No  BC",                  IDM_NORBD
+    MENUITEM "&Yes BC",                  IDM_YESRBD
+    MENUITEM "Zoom &+",                  IDM_ZOPLUS
+    MENUITEM "Zoom &-",                  IDM_ZOMINUS
+    POPUP "&Only show single BC"
+      {
+      MENUITEM "&all the BCs",               IDM_RBDALL
+      MENUITEM "only U&1=UX=0",              IDM_RBDUX
+      MENUITEM "only U&2=UY=0",              IDM_RBDUY
+      MENUITEM "only U&3=UZ=0",              IDM_RBDUZ
+      MENUITEM "only U&4=RotX=0",            IDM_RBDU4
+      MENUITEM "only U&5=RotY=0",            IDM_RBDU5
+      MENUITEM "only U&6=RotZ=0",            IDM_RBDU6
+      MENUITEM "only U &given",              IDM_RBDUA
+      MENUITEM "only &Surface Loads",        IDM_RBDOL
+      MENUITEM "only &Forces X",             IDM_RBDFX
+      MENUITEM "only F&orces Y",             IDM_RBDFY
+      MENUITEM "only Fo&rces Z",             IDM_RBDFZ
+      }
+    }
+
+  POPUP  "&Size Gausspt."
+    {
+    MENUITEM "Zoom &+",                  IDM_GPZOPLUS
+    MENUITEM "Zoom &-",                  IDM_GPZOMINUS
+    }
+
+  POPUP  "&Coordinate System"
+    {
+    MENUITEM "Coordinate System &no",    IDM_NOKOOR
+    MENUITEM "Coordinate System &yes",   IDM_YESKOOR
+    }
+
+  POPUP  "&Mesh over Stresses"
+    {
+    MENUITEM "Mesh over Stresses &no",   IDM_NONOST
+    MENUITEM "Mesh over Stresses &yes",  IDM_YESNOST
+    }
+  }
+
+/***********************************************************************
+* Accelerators
+***********************************************************************/
+
+Z88O ACCELERATORS
+  {
+  VK_PRIOR, IDM_PRIOR, VIRTKEY, NOINVERT
+  VK_NEXT , IDM_NEXT,  VIRTKEY, NOINVERT
+  VK_UP,    IDM_UP,    VIRTKEY, NOINVERT
+  VK_DOWN,  IDM_DOWN,  VIRTKEY, NOINVERT
+  VK_LEFT,  IDM_LEFT,  VIRTKEY, NOINVERT
+  VK_RIGHT, IDM_RIGHT, VIRTKEY, NOINVERT
+  VK_HOME,  IDM_HOME,  VIRTKEY, NOINVERT
+  VK_END,   IDM_END,   VIRTKEY, NOINVERT
+  VK_F2,    IDM_F2,    VIRTKEY, NOINVERT
+  VK_F3,    IDM_F3,    VIRTKEY, NOINVERT
+  VK_F4,    IDM_F4,    VIRTKEY, NOINVERT
+  VK_F5,    IDM_F5,    VIRTKEY, NOINVERT
+  VK_F6,    IDM_F6,    VIRTKEY, NOINVERT
+  VK_F7,    IDM_F7,    VIRTKEY, NOINVERT
+  VK_F8,    IDM_F8,    VIRTKEY, NOINVERT
+  }
+
+/***********************************************************************
+* Dialogboxen
+***********************************************************************/
+
+/*----------------------------------------------------------------------
+* Struktur..
+*---------------------------------------------------------------------*/
+Dlg_Struc88G DIALOG 6, 18, 117, 60
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "STRUKTURFILE"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "Strukturfile Typ Z88I1.TXT", 101, 21, 8, 93, 10
+    EDITTEXT        IDDLG_V_TEXT2, 17, 20, 97, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 17, 41, 40, 14
+    PUSHBUTTON      "Abbruch", IDCANCEL, 74, 41, 40, 14
+END
+
+Dlg_Struc88E DIALOG 6, 18, 117, 60
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "STRUCTUREFILE"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "Structure File Type Z88I1.TXT", 101, 21, 8, 93, 10
+    EDITTEXT        IDDLG_V_TEXT2, 17, 20, 97, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 17, 41, 40, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 74, 41, 40, 14
+END
+
+/*----------------------------------------------------------------------
+* Vergroesserungsfaktoren..
+*---------------------------------------------------------------------*/
+Dlg_Ver88G DIALOG 6, 18, 138, 100
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "VERGROESSERUNG VERSCHIEBUNGEN"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "fuer 2-D Strukturen nur FUX, FUY", 101, 14, 7, 121, 10
+    LTEXT           "FUX", 102, 11, 23, 20, 10
+    EDITTEXT        IDDLG_V_TEXT9, 33, 21, 100, 12, ES_AUTOHSCROLL
+    LTEXT           "FUY", 104, 11, 43, 20, 10
+    EDITTEXT        IDDLG_V_TEXT10, 33, 41, 100, 12, ES_AUTOHSCROLL
+    LTEXT           "FUZ", 106, 10, 61, 20, 10
+    EDITTEXT        IDDLG_V_TEXT11, 33, 59, 100, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 33, 78, 40, 14
+    PUSHBUTTON      "Abbruch", IDCANCEL, 93, 78, 40, 14
+END
+
+Dlg_Ver88E DIALOG 6, 18, 138, 100
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "MAGNIFICATION DEFLECTIONS"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "for 2-D Structures only FUX, FUY", 101, 14, 7, 121, 10
+    LTEXT           "FUX", 102, 11, 23, 20, 10
+    EDITTEXT        IDDLG_V_TEXT9, 33, 21, 100, 12, ES_AUTOHSCROLL
+    LTEXT           "FUY", 104, 11, 43, 20, 10
+    EDITTEXT        IDDLG_V_TEXT10, 33, 41, 100, 12, ES_AUTOHSCROLL
+    LTEXT           "FUZ", 106, 10, 61, 20, 10
+    EDITTEXT        IDDLG_V_TEXT11, 33, 59, 100, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 33, 78, 40, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 93, 78, 40, 14
+END
+
+/*----------------------------------------------------------------------
+* Rotationen
+*---------------------------------------------------------------------*/
+Dlg_Rot88G DIALOG 6, 18, 138, 100
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "ROTATIONEN 3-D"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "nur fuer 3-D Strukturen sinnvoll", 101, 14, 7, 121, 10
+    LTEXT           "ROTX", 102, 11, 23, 20, 10
+    EDITTEXT        IDDLG_V_TEXT12, 33, 21, 100, 12, ES_AUTOHSCROLL
+    LTEXT           "ROTY", 104, 11, 43, 20, 10
+    EDITTEXT        IDDLG_V_TEXT13, 33, 41, 100, 12, ES_AUTOHSCROLL
+    LTEXT           "ROTZ", 106, 10, 61, 20, 10
+    EDITTEXT        IDDLG_V_TEXT14, 33, 59, 100, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 33, 78, 40, 14
+    PUSHBUTTON      "Abbruch", IDCANCEL, 93, 78, 40, 14
+END
+
+Dlg_Rot88E DIALOG 6, 18, 138, 100
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "ROTATIONS 3-D"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "only useful for 3-D Structures", 101, 14, 7, 121, 10
+    LTEXT           "ROTX", 102, 11, 23, 20, 10
+    EDITTEXT        IDDLG_V_TEXT12, 33, 21, 100, 12, ES_AUTOHSCROLL
+    LTEXT           "ROTY", 104, 11, 43, 20, 10
+    EDITTEXT        IDDLG_V_TEXT13, 33, 41, 100, 12, ES_AUTOHSCROLL
+    LTEXT           "ROTZ", 106, 10, 61, 20, 10
+    EDITTEXT        IDDLG_V_TEXT14, 33, 59, 100, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 33, 78, 40, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 93, 78, 40, 14
+END
+
+/*----------------------------------------------------------------------
+* ZM..
+*---------------------------------------------------------------------*/
+Dlg_ZM88G DIALOG 6, 18, 117, 60
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "Z-Limit zum Betrachter"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "Clipping -Z", 101, 21, 8, 93, 10
+    EDITTEXT        IDDLG_V_TEXT15, 17, 20, 97, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 17, 41, 40, 14
+    PUSHBUTTON      "Abbruch", IDCANCEL, 74, 41, 40, 14
+END
+
+Dlg_ZM88E DIALOG 6, 18, 117, 60
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "Z limit towards you"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "Clipping -Z", 101, 21, 8, 93, 10
+    EDITTEXT        IDDLG_V_TEXT15, 17, 20, 97, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 17, 41, 40, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 74, 41, 40, 14
+END
+
+/*----------------------------------------------------------------------
+* Knoten von - bis
+*---------------------------------------------------------------------*/
+Dlg_Kno88G DIALOG 100, 40, 120, 80
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "KNOTENNUMMERN"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "Bereich zum Plotten angeben", 101, 14, 7, 121, 10
+    LTEXT           "von", 102, 11, 23, 20, 10
+    EDITTEXT        IDDLG_V_TEXT16, 33, 21, 40, 12, ES_AUTOHSCROLL
+    LTEXT           "bis", 104, 11, 43, 20, 10
+    EDITTEXT        IDDLG_V_TEXT17, 33, 41, 40, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 10, 60, 40, 14
+    PUSHBUTTON      "Abbruch", IDCANCEL, 70, 60, 40, 14
+END
+
+/*----------------------------------------------------------------------
+* Knoten von - bis
+*---------------------------------------------------------------------*/
+Dlg_Kno88E DIALOG 100, 40, 120, 80
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "Nodal Numbers"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "define range fot plotting", 101, 14, 7, 121, 10
+    LTEXT           "from", 102, 11, 23, 20, 10
+    EDITTEXT        IDDLG_V_TEXT16, 33, 21, 40, 12, ES_AUTOHSCROLL
+    LTEXT           "to", 104, 11, 43, 20, 10
+    EDITTEXT        IDDLG_V_TEXT17, 33, 41, 40, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 10, 60, 40, 14
+    PUSHBUTTON      "Dismiss", IDCANCEL, 70, 60, 40, 14
+END
+
+/*----------------------------------------------------------------------
+* Elemente von - bis
+*---------------------------------------------------------------------*/
+Dlg_Ele88G DIALOG 100, 40, 120, 80
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "ELEMENTNUMMERN"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "Bereich zum Plotten angeben", 101, 14, 7, 121, 10
+    LTEXT           "von", 102, 11, 23, 20, 10
+    EDITTEXT        IDDLG_V_TEXT18, 33, 21, 40, 12, ES_AUTOHSCROLL
+    LTEXT           "bis", 104, 11, 43, 20, 10
+    EDITTEXT        IDDLG_V_TEXT19, 33, 41, 40, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 10, 60, 40, 14
+    PUSHBUTTON      "Abbruch", IDCANCEL, 70, 60, 40, 14
+END
+
+/*----------------------------------------------------------------------
+* Knoten von - bis
+*---------------------------------------------------------------------*/
+Dlg_Ele88E DIALOG 100, 40, 120, 80
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUPWINDOW | WS_VISIBLE | WS_DLGFRAME | WS_THICKFRAME
+CAPTION "Element Numbers"
+FONT 10, "Arial"
+BEGIN
+    LTEXT           "define range fot plotting", 101, 14, 7, 121, 10
+    LTEXT           "from", 102, 11, 23, 20, 10
+    EDITTEXT        IDDLG_V_TEXT18, 33, 21, 40, 12, ES_AUTOHSCROLL
+    LTEXT           "to", 104, 11, 43, 20, 10
+    EDITTEXT        IDDLG_V_TEXT19, 33, 41, 40, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 10, 60, 40, 14
+    PUSHBUTTON      "Dismiss", IDCANCEL, 70, 60, 40, 14
+END

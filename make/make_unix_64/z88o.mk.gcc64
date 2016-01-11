@@ -1,0 +1,68 @@
+#############################################################################
+# Makefile for Z88G
+# for the GCC compiler
+# 22.7.2011 Rieg
+#############################################################################
+DIRECA = $(HOME)/z88v14os
+DIRUNI = $(DIRECA)/src/z88o/unix
+DIRCOM = $(DIRECA)/src/z88o/common
+DIROUT = $(DIRECA)/bin/unix64
+
+CC = gcc
+
+CFLAGS = -I$(DIRCOM) -O2 -fomit-frame-pointer -DFR_UNIX -DFR_XDOUB -DFR_XLONG -DFR_LINUX \
+`pkg-config --cflags --libs gtk+-2.0 gdkglext-1.0 gdkglext-x11-1.0 gtkglext-1.0 gtkglext-x11-1.0` 
+
+OBJECTSO = z88o.o cb88o.o lan88o.o dyn88o.o wlog88o.o ale88o.o rcoo88.o \
+ m9.o m10.o m12.o m15.o oc88.o m16.o man88o.o
+
+z88o: $(OBJECTSO)
+	$(CC) $(CFLAGS) -o $@ $(OBJECTSO)
+	cp z88o $(DIROUT)
+
+z88o.o: $(DIRUNI)/z88o.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/z88o.c
+
+cb88o.o: $(DIRUNI)/cb88o.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/cb88o.c
+
+ale88o.o: $(DIRUNI)/ale88o.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/ale88o.c
+
+wlog88o.o: $(DIRUNI)/wlog88o.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/wlog88o.c
+
+rcoo88.o: $(DIRUNI)/rcoo88.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/rcoo88.c
+
+m15.o: $(DIRUNI)/m15.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/m15.c
+
+dyn88o.o: $(DIRCOM)/dyn88o.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/dyn88o.c
+
+m9.o: $(DIRCOM)/m9.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/m9.c
+
+m10.o: $(DIRCOM)/m10.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/m10.c
+
+m12.o: $(DIRCOM)/m12.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/m12.c
+
+m16.o: $(DIRCOM)/m16.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/m16.c
+
+oc88.o: $(DIRCOM)/oc88.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/oc88.c
+
+lan88o.o: $(DIRCOM)/lan88o.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/lan88o.c
+
+man88o.o: $(DIRCOM)/man88o.c
+	$(CC) $(CFLAGS) -c $(DIRCOM)/man88o.c
+
+
+
+
+

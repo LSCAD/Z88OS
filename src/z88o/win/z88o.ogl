@@ -1,0 +1,131 @@
+Look for hints at end of file..
+Erlaeuterungen stehen am Fileende..
+
+OPENGL START
+
+  DEFAULT START
+    FYCOR  1.00
+    COLOR  1.00 1.00 1.00 1.00
+    FAZOO  0.15
+  DEFAULT END
+
+  STRESS START
+    RED    0.00  0.00  0.00  0.00  0.00  0.00  1.00  1.00  1.00  1.00  1.00  1.00
+    GREEN  0.00  0.00  0.25  0.50  0.75  1.00  1.00  0.85  0.75  0.50  0.35  0.00
+    BLUE   0.00  1.00  1.00  1.00  1.00  1.00  0.00  0.00  0.00  0.00  0.00  0.00
+  STRESS END
+
+  LIGHT0 START
+    SPECULA0  0.75  0.75  0.95  1.00
+    DIFFUSE0  0.70  0.70  0.70  1.00
+    AMBIENT0  0.20  0.20  0.20  1.00
+    POSITIO0  -100. +100. -100. 0.00
+  LIGHT0 END
+
+  LIGHT1 START
+    SPECULA1  0.75  0.75  0.95  1.00
+    DIFFUSE1  0.70  0.70  0.70  1.00
+    AMBIENT1  0.20  0.20  0.20  1.00
+    POSITIO1  +100. +100. -100. 0.00
+  LIGHT1 END
+
+  LIGHT2 START
+    SPECULA2  0.95  0.45  0.00  1.00
+    POSITIO2  -50.  -50.  +100. 0.00
+  LIGHT2 END
+
+  MAT START
+    DIFF_MA   0.90  0.90  0.90  1.00
+    SPEC_MA   0.60  0.60  0.60  1.00
+    SHINING   50.
+  MAT END
+
+  HIDDENLINE START
+    COLOR     0.00  0.00  0.00
+    OFFSET    1.00  0.00
+    LINEWI    1.5
+  HIDDENLINE END
+
+  LABEL START
+    NODES    1.00  0.00  0.00 
+    ELEMENTS 0.00  1.00  0.00 
+  LABEL END
+
+OPENGL END
+     
+-----------------------------------------------------------------------------
+Special hints for OpenGL plot program Z88O
+-----------------------------------------------------------------------------
+With the keyword FYCOR you may adjust your screen. Load a square or
+circular structure and make sure that the X dimensions meet the Y
+dimensions. COLOR is the background color. FAZOO is the size of the boundary
+condition markers.
+
+Warning: Be carefull when changing values in the section OPENGL 
+START! Consult the OpenGL Programming Guide and the OpenGL Reference
+Manual from Addison-Wesley for proper understanding of the OpenGL state
+machine. If you are an OpenGL newcomer inproper entries will result in
+sometimes funny but mostly odd rendered scenes.
+ 
+All colors in OpenGL are of the type Red-Green-Blue with values varying
+from 0. to 1.0. Usually, Z88 reads one line with the entry for red, the
+entry for green and the entry for blue. This is true for the background
+color, the lights, the material (MAT), the hidden lines and the labels.
+Let the 4th entry -if it exists- unchanged (the so-called Alpha value).
+
+Pay attention to the section STRESS START: There are 9 columns for the
+ranges of stresses and deflections, but the first columns with 0., 0., 0.
+has no meaning. Start editing with the second column = the first color. 
+
+The light positions have four entries: X,Y and Z. The 4th entry is the W
+value for the so-called homogeneous coordinates. If W is 0 then the point
+lies in infinity and the beam meets the point X, Y, Z. Consult the OpenGL
+Reference Manual for further informations.
+
+The value for SHINING (= GL_SHININESS) may vary from 0. to 128.
+
+The HIDDENLINE section features the color for the lines and in the second
+line the "factor" and "units" for the command glPolygonOffset. Very
+special. Consult the OpenGL Reference Manual for further infomations.
+
+-----------------------------------------------------------------------------
+Spezielle Hinweise fuer das OpenGL Plotprogramm Z88O
+-----------------------------------------------------------------------------
+Mit dem Schluesselwort FYCOR koennen Sie Ihren Bildschirm anpassen.
+Am besten laden Sie eine quadratische oder kreisrunde Struktur und stellen
+durch Veraendern von FYCOR sicher, dass X- und Y- Abmessungen gleich sind.
+COLOR ist die Hintergrundfarbe, und FAZOO steuert die Groesse der Punkte
+fuer die Randbedingungen.
+
+Achtung: Seien Sie vorsichtig beim Veraendern von Werten in der Sektion
+OPENGL START! Ziehen Sie den OpenGL Programming Guide und das OpenGL
+Reference Manual von Addison-Wesley zu Rate, damit Sie die Hintergruende
+der Werte verstehen. Falls Sie OpenGL-Neuling sind, dann kann unbedachtes
+Aendern der Werte fuer zwar mitunter lustige, meist aber merkwuerdige
+Darstellungen sorgen.
+ 
+Alle Farben in OpenGL sind vom Typ Rot-Gruen-Blau mit Werten von 0. bis
+1. Normalerweise liest Z88 jeweils eine Zeile mit den Werten fuer Rot,
+Gruen und Blau ein. Das gilt fuer die Hintergrundfarbe, die Lichter, die
+Materialeigenschaften (MAT), die verdeckten Linien und die Knoten- und
+Elementnummern. Lassen Sie den 4. Wert -wenn er vorhanden ist- unveraen-
+dert (das ist der sog. Alpha- Wert).
+
+Die Sektion STRESS START weicht davon ab: Es sind zwar 9 Spalten fuer die
+Bereiche der Spannungen und Verformungen vorhanden, aber die erste Spalte
+mit 0., 0., 0. hat keine Bedeutung. Die zweite Spalte repraesentiert die
+erste Farbe. 
+
+Die Lichtpositionen haben vier Eintraege: X, Y und Z. Der 4.Wert ist der
+W-Wert fuer die sog. homogenen Koordinaten. Wenn dieses W 0 ist, dann
+liegt der eigentliche Beleuchtungspunkt unendlich weit weg und sendet
+einen Lichtstrahl durch den Punkt X, Y, Z. Sehen Sie im OpenGL Reference
+Manual nach.
+
+Der Wert fuer SHINING (= GL_SHININESS) muss zwischen 0. und 128. liegen.
+
+Die HIDDENLINE Sektion definiert in der ersten Zeile die Farben fuer die
+verdeckten Linien und in der zweiten Zeile die Werte "factor" und "units"
+fuer den Befehl glPolygonOffset. Sehr speziell. Sehen Sie im OpenGL
+Reference Manual nach.
+

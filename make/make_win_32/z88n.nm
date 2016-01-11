@@ -1,0 +1,97 @@
+# 27.7.2011 Rieg
+# Z88N 32-Bit Windows Makefile: 
+# goto Microsoft Visual Studio > Visual Studio Tools > Visual Studio Command Prompt
+# and enter:     nmake -f z88n.nm
+
+AUROVER=c:/z88v14os
+
+INTDIR=.
+
+OUTDIR=$(AUROVER)/bin/win32
+SRCCOM=$(AUROVER)/src/z88n/common
+SRCWIN=$(AUROVER)/src/z88n/win
+
+CC=cl.exe
+CFLAGS= /W0 /c /Od /D "WIN32" /D "_WINDOWS" /D "NDEBUG" /D "FR_XWIN32" \
+        /D "FR_WIN" /D "FR_XDOUB" /D "FR_XLONG" /I "$(SRCCOM)"
+
+RSC=rc.exe
+RCFLAGS=/Fo"$(INTDIR)/z88n.res" /I "$(SRCCOM)" /D "NDEBUG" 
+
+LD=link.exe
+LDFLAGS=     kernel32.lib user32.lib gdi32.lib winspool.lib comctl32.lib \
+             comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib \
+             uuid.lib odbc32.lib odbccp32.lib /subsystem:windows \
+             /machine:X86 /incremental:no /out:"$(OUTDIR)/z88n.exe" 
+
+OBJECTSO= ale88n.obj dyn88n.obj easyfont.obj join88.obj lan88n.obj \
+          mc188n.obj mc288n.obj mc388n.obj mc488n.obj mc588n.obj \
+          mc688n.obj mc788n.obj mc888n.obj rni88.obj subn88.obj \
+          tob88n.obj wlog88n.obj wrim88n.obj z88n.obj z88n.res
+
+RESOURCE= z88n.res
+
+$(OUTDIR)/z88n.exe: $(OBJECTSO) $(OUTDIR) $(RESOURCE)
+	$(LD) $(LDFLAGS) $(OBJECTSO)
+
+$(INTDIR)/ale88n.obj: $(SRCWIN)/ale88n.c
+	$(CC) $(CFLAGS) $(SRCWIN)/ale88n.c
+
+$(INTDIR)/dyn88n.obj: $(SRCCOM)/dyn88n.c
+	$(CC) $(CFLAGS) $(SRCCOM)/dyn88n.c
+
+$(INTDIR)/join88.obj: $(SRCCOM)/join88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/join88.c
+
+$(INTDIR)/lan88n.obj: $(SRCCOM)/lan88n.c
+	$(CC) $(CFLAGS) $(SRCCOM)/lan88n.c
+
+$(INTDIR)/mc188n.obj: $(SRCCOM)/mc188n.c
+	$(CC) $(CFLAGS) $(SRCCOM)/mc188n.c
+
+$(INTDIR)/mc288n.obj: $(SRCCOM)/mc288n.c
+	$(CC) $(CFLAGS) $(SRCCOM)/mc288n.c
+
+$(INTDIR)/mc388n.obj: $(SRCCOM)/mc388n.c
+	$(CC) $(CFLAGS) $(SRCCOM)/mc388n.c
+
+$(INTDIR)/mc488n.obj: $(SRCCOM)/mc488n.c
+	$(CC) $(CFLAGS) $(SRCCOM)/mc488n.c
+
+$(INTDIR)/mc588n.obj: $(SRCCOM)/mc588n.c
+	$(CC) $(CFLAGS) $(SRCCOM)/mc588n.c
+
+$(INTDIR)/mc688n.obj: $(SRCCOM)/mc688n.c
+	$(CC) $(CFLAGS) $(SRCCOM)/mc688n.c
+
+$(INTDIR)/mc788n.obj: $(SRCCOM)/mc788n.c
+	$(CC) $(CFLAGS) $(SRCCOM)/mc788n.c
+
+$(INTDIR)/mc888n.obj: $(SRCCOM)/mc888n.c
+	$(CC) $(CFLAGS) $(SRCCOM)/mc888n.c
+
+$(INTDIR)/rni88.obj: $(SRCCOM)/rni88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/rni88.c
+
+$(INTDIR)/subn88.obj: $(SRCCOM)/subn88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/subn88.c
+
+$(INTDIR)/wrim88n.obj: $(SRCWIN)/wrim88n.c
+	$(CC) $(CFLAGS) $(SRCWIN)/wrim88n.c
+
+$(INTDIR)/tob88n.obj: $(SRCWIN)/tob88n.c
+	$(CC) $(CFLAGS) $(SRCWIN)/tob88n.c
+
+$(INTDIR)/easyfont.obj: $(SRCWIN)/easyfont.c
+	$(CC) $(CFLAGS) $(SRCWIN)/easyfont.c
+
+$(INTDIR)/wlog88n.obj: $(SRCCOM)/wlog88n.c
+	$(CC) $(CFLAGS) $(SRCCOM)/wlog88n.c
+
+$(INTDIR)/z88n.obj: $(SRCWIN)/z88n.c
+	$(CC) $(CFLAGS) $(SRCWIN)/z88n.c
+
+$(INTDIR)/z88n.res: $(SRCWIN)/z88n.rc
+	$(RSC) $(RCFLAGS) $(SRCWIN)/z88n.rc
+
+
