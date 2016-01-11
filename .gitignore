@@ -3,6 +3,3 @@
 *.ko
 *.obj
 *.elf
-
-# Debug files
-*.dSYM/
