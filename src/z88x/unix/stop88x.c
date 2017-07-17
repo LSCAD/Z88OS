@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V10.0  December 12, 2001
+* V15.0  November 18, 2015
 *
 * Z88 should compile and run under any UNIX OS and Motif 2.0.
 *

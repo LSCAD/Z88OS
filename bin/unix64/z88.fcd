@@ -1,11 +1,11 @@
-Header file Z88.FCD for Prof.Dr. Frank Rieg's free FEA program Z88 V14OS. This file
+Header file Z88.FCD for Prof.Dr. Frank Rieg's free FEA program Z88 V15OS. This file
 lets you choose fonts, colors and dimensions for Z88O.
 Please see hints at end of file
 
-In dieser Datei koennen Sie Fonts, Farben und Abmessungen fuer Z88 V14OS waehlen.
+In dieser Datei koennen Sie Fonts, Farben und Abmessungen fuer Z88 V15OS waehlen.
 Bitte Hinweise am Dateiende beachten
 
-24.4.2012 Rieg
+9.3.2017 Rieg
 
 ********************************************************************************
 Z88COM START
@@ -24,7 +24,7 @@ Z88COM START
 
     Your HTML-or Internet Browser's prefix
     Prefix fuer Ihren HTML- oder Internet Browser
-    CPREFIX      $HOME/z88v14os/docu/
+    CPREFIX      $HOME/z88v15os/docu/
 
   WINDOW END
 
@@ -39,9 +39,9 @@ Z88O START
 -----------------------------------------------------------------------------------
     IW_DRAWAR     800
     IH_DRAWAR     500
-    PANGO_FONT    Sans
-    PANGO_SIZE    12
-    DEPTH_SIZE	  1
+    SCALE_FONT    0.55
+    THICK_FONT    1
+    DEPTH_SIZE    1
   WINDOW END
 
 -----------------------------------------------------------------------------------

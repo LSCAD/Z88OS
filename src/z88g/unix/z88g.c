@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 ***********************************************************************/ 
 /***********************************************************************
 * Z88G
-* 21.7.2011 Rieg
+* 18.11.2015 Rieg
 * wandelt COSMOS-Files oder NASTRAN-Files 
 * aus Pro/MESH (PTC, Pro/ENGINEER) 
 * in Z88I*.TXT- Files fuer die Z88- Elementtypen:
@@ -88,7 +88,7 @@ FILE *fdyn,*fwlo,*fpro,*fin,*fi1,*fi2,*fi5;
 
 char cdyn[8] = "z88.dyn";
 char clgd[9] = "z88g.log";
-char ccos[9] = "z88g.cos";
+char ccco[9] = "z88g.cos";
 char cnas[9] = "z88g.nas";
 char cin[8]  = "z88g.in";
 char ci1[10] = "z88i1.txt";

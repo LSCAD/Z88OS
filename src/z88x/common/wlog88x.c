@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 ***********************************************************************/ 
 /***********************************************************************
 * wlog88x gibt Log-Datei-Meldungen aus (1 FR_INT4, 1 int)
-* 29.7.2011 Rieg
+* 25.11.2015 Rieg
 ***********************************************************************/ 
 
 /***********************************************************************
@@ -79,7 +79,7 @@ extern FR_INT4 LANG;
 switch(iatx)
   {
   case LOG_BZ88X:
-    fprintf(fwlo,"Start Z88X Version 14OS");
+    fprintf(fwlo,"Start Z88X Version 15OS");
     fflush(fwlo);
   break;
 

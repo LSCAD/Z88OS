@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0 January 14, 2011
+* V15.0 November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@
 /***********************************************************************
 * Z88DR.C
 * Spannungsprozessor fuer Z88R
-* 3.8.2011 Rieg
+* 2.12.2015 Rieg
 ***********************************************************************/
 
 /***********************************************************************
@@ -130,6 +130,7 @@ int  sshq88(void);
 int  sshd88(void);
 int  sshf88(void);
 int  sshv88(void);
+int  stim88(void);
 
 /****************************************************************************
 *  globale Variable
@@ -156,6 +157,10 @@ extern FR_DOUBLEAY rizz;
 extern FR_DOUBLEAY ezz;
 extern FR_DOUBLEAY rit;
 extern FR_DOUBLEAY wt;
+extern FR_DOUBLEAY xcp;
+extern FR_DOUBLEAY ycp;
+extern FR_DOUBLEAY zcp;
+extern FR_DOUBLEAY rkap;
 extern FR_DOUBLEAY smw;
 extern FR_DOUBLEAY smwku;
 extern FR_DOUBLEAY gmw;
@@ -172,6 +177,7 @@ extern FR_INT4AY ivon_elp;
 extern FR_INT4AY ibis_elp; 
 extern FR_INT4AY ivon_int;
 extern FR_INT4AY ibis_int;   
+extern FR_INT4AY ifbeti; 
 extern FR_INT4AY intos;
 extern FR_INT4AY jsm;
 
@@ -195,7 +201,9 @@ extern FR_DOUBLE p[];                      /* ist 3 x 20 +1, SHEX88 */
 * Variable
 *-------------------------------------------------------------------------*/
 extern FR_DOUBLE emode,rnuee,qparae,riyye,eyye,rizze,ezze,rite,wte;
-extern FR_INT4 nel,ktyp,IDYNMEM,LANG,jpri,ifnili,ngau;
+extern FR_DOUBLE xkp,ykp,zkp,rkape;
+
+extern FR_INT4 nel,ktyp,IDYNMEM,LANG,jpri,ifnili,ngau,ifbetie;
 extern FR_INT4 ndim,nkp,ne,nfg,mmat,melp,mint,nfgp1,nkoi,ibflag,ipflag;
 extern FR_INT4 mxknot,mxfrei,ninto,kdflag,isflag,kc,noci,iqflag,ihflag;
 
@@ -260,12 +268,12 @@ if(ifnili == 0)
   {
   if(LANG == 1)
     {
-    fprintf(fo3,"Ausgabedatei Z88O3.TXT : Spannungen, erzeugt mit Z88R V14OS\n");
+    fprintf(fo3,"Ausgabedatei Z88O3.TXT : Spannungen, erzeugt mit Z88R V15OS\n");
     fprintf(fo3,"                         **********\n");
     }
   if(LANG == 2)
     {
-    fprintf(fo3,"output file Z88O3.TXT : stresses, computed by Z88R V14OS\n");
+    fprintf(fo3,"output file Z88O3.TXT : stresses, computed by Z88R V15OS\n");
     fprintf(fo3,"                        ********\n");
     }
 
@@ -347,6 +355,7 @@ for(k= 1;k <= ne;k++)
 *                    22  12-knoten volumenschale
 *                    23  8-knoten flaches schalenelement
 *                    24  6-knoten flaches schalenelement
+*                    25  balken in allg.lage,Bernoulli + Timoshenko
 **--------------------------------------------------------------------*/
 /*----------------------------------------------------------------------
 * E-modul und Nue feststellen
@@ -383,12 +392,17 @@ for(i = 1;i <= melp;i++)
     if(ibflag == 1)
 
       {
-      riyye= riyy[i];
-      eyye = eyy[i];
-      rizze= rizz[i];
-      ezze = ezz[i];
-      rite = rit[i];
-      wte  = wt[i];
+      riyye=   riyy[i];
+      eyye =   eyy[i];
+      rizze=   rizz[i];
+      ezze =   ezz[i];
+      rite =   rit[i];
+      wte  =   wt[i];
+      ifbetie= ifbeti[i];
+      xkp    = xcp[i];
+      ykp    = ycp[i];
+      zkp    = zcp[i];
+      rkape  = rkap[i];
       } 
 
     if(ipflag != 0 || ihflag != 0)
@@ -1771,6 +1785,55 @@ L60:;
 *---------------------------------------------------------------------*/
     }
 
+/*----------------------------------------------------------------------
+* Start Balkenelement Nr.25
+*---------------------------------------------------------------------*/
+  else if(ityp[k]== 25)
+    {
+    wtyd88j(k,25);
+
+/*----------------------------------------------------------------------
+
+* Balkenelement : zutreffende Koordinaten bestimmen 
+*---------------------------------------------------------------------*/
+    xk[1] = x [koi[koffs[k]]];
+    yk[1] = y [koi[koffs[k]]];
+    zk[1] = z [koi[koffs[k]]];
+    xk[2] = x [koi[koffs[k]+1]];
+    yk[2] = y [koi[koffs[k]+1]];
+    zk[2] = z [koi[koffs[k]+1]];
+           
+/*----------------------------------------------------------------------
+* Spannungsberechnung fuer Balkenelement im Raum
+
+*---------------------------------------------------------------------*/
+    if(ifnili == 0)
+      {
+      if(LANG == 1) fprintf(fo3,"\n\nElement #= " P5D " Typ =3D-Balken Nr.25\
+  Knoten " P5D "            Knoten " P5D,k,koi[koffs[k]],koi[koffs[k]+1]);
+      if(LANG == 2) fprintf(fo3,"\n\nelement #= " P5D " type =3Dbeam no.25\
+   node  " P5D "             node  " P5D,k,koi[koffs[k]],koi[koffs[k]+1]);
+
+      fprintf(fo3,"\n    SIGXX       TAUXX       SIGZZ1\
+      SIGYY1      SIGZZ2      SIGYY2");
+      }
+
+    mspan[1]= ioffs[koi[koffs[k]  ]] -1;
+    mspan[2]= ioffs[koi[koffs[k]+1]] -1;
+         
+    mxknot= 2;
+    mxfrei= 6;
+
+    span88();
+    stim88();
+    
+    goto L7000;
+
+/*----------------------------------------------------------------------
+* Ende Balkenelement Nr.25
+*---------------------------------------------------------------------*/
+    }
+
 
 L7000:;
   
@@ -1787,7 +1850,7 @@ L7000:;
 * Spannungen addieren fuer alle Nicht-Balken
 *=====================================================================*/
 if((isflag == 1 || isflag == 2 || isflag == 3) && 
-   !(ityp[1] == 2 || ityp[1] == 5 || ityp[1] == 13))
+   !(ityp[1] == 2 || ityp[1] == 5 || ityp[1] == 13 || ityp[1] == 25))
   {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

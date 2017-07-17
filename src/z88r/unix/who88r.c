@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0 February 14, 2011
+* V15.0 November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 * the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA. 
 /***********************************************************************
 *  function who88r gibt Ueberschrift aus
-*  24.5.2012
+*  7.3.2017
 ***********************************************************************/ 
 
 /***********************************************************************
@@ -68,13 +68,13 @@ printf("                *****   ***    ***\n");
 
 if(LANG==1) 
   {
-  printf(" von Univ.Prof.Dr.-Ing. FRANK RIEG (C),2012 V14OS\n");
+  printf(" von Univ.Prof.Dr.-Ing. FRANK RIEG (C),2017 V15OS\n");
   printf("               der Universal-Solver\n");
  }
 
 if(LANG==2) 
   {
-  printf("   by Prof.Dr. FRANK RIEG (C), Germany,2012 V14OS\n");
+  printf("   by Prof.Dr. FRANK RIEG (C), Germany,2017 V15OS\n");
   printf("               the all-in-one solver\n");   
 }
 

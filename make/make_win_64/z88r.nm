@@ -1,9 +1,9 @@
-# 17.7.2011 Rieg
+# 7.3.2017 Rieg
 # Z88R 64-Bit Windows Makefile: 
 # goto Microsoft Visual Studio > Visual Studio Tools > Visual Studio Command Prompt
 # and enter:     nmake -f z88r.nm
 
-AUROVER=c:/z88v14os
+AUROVER=c:/z88v15os
 
 INTDIR=.
 
@@ -33,8 +33,8 @@ OBJECTSO= ale88r.obj apla88.obj bapla88.obj bcshe88.obj bhexa88.obj bhpla88.obj 
           sapl88.obj scsh88.obj shad88.obj shaf88.obj shaq88.obj shav88.obj \
           shex88.obj shpl88.obj siso88.obj slqu88.obj span88.obj sqsh88.obj \
           spla88.obj spur88.obj sshd88.obj sshf88.obj sshq88.obj sshv88.obj \
-          sspl88.obj sspu88.obj stet88.obj stop88r.obj \
-          tetr88.obj tob88r.obj wlog88r.obj wria88r.obj wrim88r.obj \
+          sspl88.obj sspu88.obj stet88.obj stop88r.obj stim88.obj \
+          tetr88.obj tob88r.obj timo88.obj wlog88r.obj wria88r.obj wrim88r.obj \
           z88a.obj z88ai.obj z88br.obj z88cr.obj z88dr.obj z88er.obj \
           z88r.obj z88r.res 
 
@@ -208,11 +208,17 @@ $(INTDIR)/sspu88.obj: $(SRCCOM)/sspu88.c
 $(INTDIR)/stet88.obj: $(SRCCOM)/stet88.c
 	$(CC) $(CFLAGS) $(SRCCOM)/stet88.c
 
+$(INTDIR)/stim88.obj: $(SRCCOM)/stim88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/stim88.c
+
 $(INTDIR)/stop88r.obj: $(SRCCOM)/stop88r.c
 	$(CC) $(CFLAGS) $(SRCCOM)/stop88r.c
 
 $(INTDIR)/tetr88.obj: $(SRCCOM)/tetr88.c
 	$(CC) $(CFLAGS) $(SRCCOM)/tetr88.c
+
+$(INTDIR)/timo88.obj: $(SRCCOM)/timo88.c
+	$(CC) $(CFLAGS) $(SRCCOM)/timo88.c
 
 $(INTDIR)/tob88r.obj: $(SRCWIN)/tob88r.c
 	$(CC) $(CFLAGS) $(SRCWIN)/tob88r.c

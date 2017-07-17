@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015, 2011
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 ***********************************************************************/ 
 /***********************************************************************
 * Z88H fuer Windows
-* 3.8.2011 Rieg
+* 7.3.2017 Rieg
 * Cuthill- McKee Algorithmus fuer Z88I1.TXT, Z88I2.TXT und Z88I5.TXT.
 * besonders fuer Files, die mit Z88G aus Pro/ENGINEER/Pro/MESH
 * erzeugt wurden 
@@ -370,16 +370,16 @@ switch (Message)
       case IDM_WER:
         if(LANG == 1) strcpy(cmess,
 "Cuthill-McKee Programm Z88H fuer Windows\n\
-Version 14OS\n\
+Version 15OS\n\
 Copyright Univ.-Prof.Dr.-Ing. Frank Rieg,\n\
-Universitaet Bayreuth, 2011\n\
+Universitaet Bayreuth, 2017\n\
 Alle Rechte vorbehalten\n");
 
           if(LANG == 2) strcpy(cmess,
 "Cuthill-McKee Program Z88H for Windows\n\
-Version 14OS\n\
+Version 15OS\n\
 Copyright Prof.Dr. Frank Rieg,\n\
-University of Bayreuth, Germany 2011\n\
+University of Bayreuth, Germany 2017\n\
 All rights reserved\n");
 
 #ifdef FR_XQUAD
@@ -419,6 +419,7 @@ All rights reserved\n");
 /*======================================================================
 * COMMAND : Hilfe
 *=====================================================================*/
+      case ITC_HELP:
         fcfg= fopen(cfg,"r");          /* Z88COM.CFG oeffnen */
         if(fcfg == NULL)
           {
@@ -663,9 +664,10 @@ if (ityp == 1 || ityp == 7 || ityp == 8 || ityp == 20 || ityp == 23)
   }
 
 /*----------------------------------------------------------------------
-* Schreiben der Balken Nr.2, 13, Welle Nr.5, Stab Nr.4, Nr.9
+* Schreiben der Balken Nr.2, 13, 25, Welle Nr.5, Stab Nr.4, Nr.9
 *---------------------------------------------------------------------*/	
-if (ityp == 2 || ityp == 4 || ityp == 5 || ityp == 9 || ityp == 13)
+if (ityp == 2 || ityp == 4  || ityp == 5 
+ || ityp == 9 || ityp == 13 || ityp == 25)
   {
   ianz= 2;
   fprintf(fcut,PD "\n",ianz);
@@ -1427,7 +1429,7 @@ for(i = 1; i <= ne; i++)
     iperm[koi[5]],iperm[koi[6]],iperm[koi[7]],iperm[koi[8]]);
     }
 
-  if(ityp == 2 || ityp == 4 || ityp == 5 || ityp == 9 || ityp == 13)
+  if(ityp == 2 || ityp == 4 || ityp == 5 || ityp == 9 || ityp == 13 || ityp == 25)
     {
     sscanf(cstring,PDB PD,&koi[1],&koi[2]);
 

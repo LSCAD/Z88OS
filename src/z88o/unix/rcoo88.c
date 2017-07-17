@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 ***********************************************************************/ 
 /***********************************************************************
 * RCOO88 fuer UNIX: Farben einlesen fuer Z88O
-* 31.7.2011 Rieg
+* 18.11.2015 Rieg
 ***********************************************************************/
 /***********************************************************************
 * UNIX
@@ -70,7 +70,7 @@ int rcoo88(void)
 
 FILE *fcol;
 
-extern FR_DOUBLE fycor,fazoo;
+extern FR_DOUBLE fycor,fazoo,scale,dicke;
 
 extern GLfloat   back_col[];
 extern GLfloat   rot[], gruen[], blau[];
@@ -86,7 +86,7 @@ extern GLfloat   bline;
 
 extern int       IW_DRAWAR,IH_DRAWAR;  
 
-extern char      CBROWSER[],CPREFIX[],CPANGO_FONT[],CPANGO_SIZE[];
+extern char      CBROWSER[],CPREFIX[],CSCALE_FONT[],CTHICK_FONT[];
 
 float            f0,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11;
 
@@ -167,10 +167,10 @@ if( (strstr(cline,"Z88O START"))!= NULL)              /* File */
           sscanf(cline,"%s %d",cdummy,&IW_DRAWAR);
         if( (strstr(cline,"IH_DRAWAR"))!= NULL) 
           sscanf(cline,"%s %d",cdummy,&IH_DRAWAR);
-        if( (strstr(cline,"PANGO_FONT"))!= NULL) 
-          sscanf(cline,"%s %s",cdummy,CPANGO_FONT);
-        if( (strstr(cline,"PANGO_SIZE"))!= NULL) 
-          sscanf(cline,"%s %s",cdummy,CPANGO_SIZE);
+        if( (strstr(cline,"SCALE_FONT"))!= NULL) 
+          sscanf(cline,"%s %s",cdummy,CSCALE_FONT);
+        if( (strstr(cline,"THICK_FONT"))!= NULL) 
+          sscanf(cline,"%s %s",cdummy,CTHICK_FONT);
         }
       while( (strstr(cline,"WINDOW END"))== NULL);
       }         

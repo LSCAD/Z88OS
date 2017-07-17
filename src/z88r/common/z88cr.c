@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  January 14, 2011
+* V15.0 November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@
 * z88cr.c
 * Einbau der Randbedingungen basiert gedanklich auf
 * einem FORTRAN-Programm von H.R.Schwarz, Uni Zuerich. 
-* 19.7.2011 Rieg 
+* 2.12.2015 Rieg 
 ***********************************************************************/
 
 /***********************************************************************
@@ -355,14 +355,14 @@ if(jpri == 1)
   {
   if(LANG == 1)
     {
-    fprintf(fo1,"Ausgabedatei Z88O1.TXT  Randbedingungen, erzeugt mit Z88R V14OS\n");
+    fprintf(fo1,"Ausgabedatei Z88O1.TXT  Randbedingungen, erzeugt mit Z88R V15OS\n");
     fprintf(fo1,"                        ***************\n\n");
     fprintf(fo1,"Anzahl gegebene Randbedingungen: " PD "\n\n",nrb);
     }
 
   if(LANG == 2)
     {
-    fprintf(fo1,"output file Z88O1.TXT : constraints, produced by Z88R V14OS\n");
+    fprintf(fo1,"output file Z88O1.TXT : constraints, produced by Z88R V15OS\n");
     fprintf(fo1,"                        ***********\n\n");
     fprintf(fo1,"number of given constraints: " PD "\n\n",nrb);
     }

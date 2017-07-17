@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 ***********************************************************************/ 
 /***********************************************************************
 *  Z88N fuer Windows
-*  3.8.2011
+*  7.3.2017
 ***********************************************************************/
 
 /***********************************************************************
@@ -396,16 +396,16 @@ switch (Message)
       case IDM_WER:
         if(LANG == 1) strcpy(cmess,
 "Netzgenerator Z88N fuer Windows\n\
-Version 14OS\n\
+Version 15OS\n\
 Copyright Univ.-Prof.Dr.-Ing. Frank Rieg,\n\
-Universitaet Bayreuth, 2011\n\
+Universitaet Bayreuth, 2017\n\
 Alle Rechte vorbehalten\n");
 
           if(LANG == 2) strcpy(cmess,
 "Mesh Generator Z88N for Windows\n\
-Version 14OS\n\
+Version 15OS\n\
 Copyright Prof.Dr. Frank Rieg,\n\
-University of Bayreuth, Germany 2011\n\
+University of Bayreuth, Germany 2017\n\
 All rights reserved\n");
 
 #ifdef FR_XQUAD
@@ -445,6 +445,7 @@ All rights reserved\n");
 /*======================================================================
 * COMMAND : Hilfe
 *=====================================================================*/
+      case ITC_HELP:
         fcfg= fopen(cfg,"r");          /* Z88COM.CFG oeffnen */
         if(fcfg == NULL)
           {

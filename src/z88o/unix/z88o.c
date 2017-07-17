@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 *****************************************************************************/ 
 /*****************************************************************************
 * Z88O fuer UNIX, X11 und gtk+
-* 22.7.2011 Rieg
+* 18.11.2015 Rieg
 *****************************************************************************/
 /*****************************************************************************
 * UNIX
@@ -43,8 +43,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <gdkgl.h>
+#include <gtkglarea.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkgl.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #endif
@@ -143,11 +144,6 @@ int      man88o(void);
 *****************************************************************************/
 GtkWidget *H_WIN;
 GtkWidget *DRAWA;
-
-PangoFont *font;
-char      CF_GRAFICS[128];
-GLuint    font_list_base;
-
 
 FILE *fdyn,*fwlo,*fi1,*fi2,*fi5,*fo2,*fo5,*fo8,*fman;
 
@@ -252,6 +248,8 @@ FR_DOUBLE fzoom= 1.1;
 FR_DOUBLE zorbd= 1.0;
 FR_DOUBLE zoogp= 0.25;
 FR_DOUBLE fazoo= 0.17;
+FR_DOUBLE scale= 2.0;
+FR_DOUBLE dicke= 2.0;
 
 FR_DOUBLE sigmin,sigmax=0.,siginc;
 FR_DOUBLE snemin,snemax=0.,sneinc;
@@ -313,7 +311,7 @@ char  co8[10]   = "z88o8.txt";
 char  cman[11]  = "z88man.txt";
 
 char  CBROWSER[128],CPREFIX[128];
-char  CPANGO_FONT[64],CPANGO_SIZE[32];
+char  CSCALE_FONT[32],CTHICK_FONT[32];
 
 char  cfname[256];
 char  ctname[256];
@@ -334,13 +332,22 @@ char cbytes[128];
 GtkWidget *PB_UNVER,*PB_VERFO,*PB_LIGHT,*PB_HIDDE,*PB_WIREF;
 GtkWidget *PB_SSPAN,*PB_SGAUS,*PB_SGAPU,*PB_VX,*PB_VY,*PB_VZ,*PB_SRBD,*PB_KOOR;
 
+/*--------------------------------------------------------------------------
+* fuer das gtkglarea-Widget
+*-------------------------------------------------------------------------*/
+int attrlist[]= {GDK_GL_RGBA,
+                 GDK_GL_DOUBLEBUFFER,
+                 GDK_GL_RED_SIZE,   8,
+                 GDK_GL_GREEN_SIZE, 8,
+                 GDK_GL_BLUE_SIZE,  8,
+                 GDK_GL_DEPTH_SIZE,24,  /* bei Win und Mac gehen auch 32 */
+                 GDK_GL_NONE};
+
 /*****************************************************************************
 * Main
 *****************************************************************************/
 int main (int argc, char *argv[])
 {
-GdkGLConfig *glconfig;
-
 GtkWidget *HBOX,*VBOX,*G_VBOX;
 GtkWidget *HSEP1,*HSEP2,*HSEP3,*HSEP4;
 GtkWidget *PB_RUN,*PB_QUIT,*PB_HELP,*PB_INFO,*PB_FILE,*PB_ASCA,*PB_MAUS;
@@ -360,10 +367,15 @@ gint      ispace= 3;
 char      cstring[256];
 
 /*----------------------------------------------------------------------------
-*  gtk und gtkglext initialisieren
+*  gtk initialisieren
 *---------------------------------------------------------------------------*/
 gtk_init (&argc, &argv);
-gtk_gl_init (&argc, &argv);
+
+if(gdk_gl_query() == FALSE) 
+  {
+  g_print("OpenGL geht nicht!\n");
+  return 0;
+  }
 
 /*---------------------------------------------------------------------------
 * lan88o starten
@@ -388,9 +400,8 @@ if(iret != 0)
   exit(1);
   }
 
-strcpy(CF_GRAFICS,CPANGO_FONT);
-strcat(CF_GRAFICS," ");
-strcat(CF_GRAFICS,CPANGO_SIZE);
+scale= atof(CSCALE_FONT);
+dicke= atof(CTHICK_FONT);
 
 ym*= fycor;
 yp*= fycor;
@@ -400,21 +411,6 @@ yp*= fycor;
 *---------------------------------------------------------------------------*/
 iret= dyn88o();
 if(iret != 0) ale88o(iret);
-
-/*----------------------------------------------------------------------------
-*  das OpenGL-Visual configurieren, ggf. auf Single-Puffer schalten
-*---------------------------------------------------------------------------*/
-glconfig = gdk_gl_config_new_by_mode(GDK_GL_MODE_RGB | GDK_GL_MODE_DEPTH  |
-                                     GDK_GL_MODE_DOUBLE);
-if(glconfig == NULL)
-  {
-  glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB | GDK_GL_MODE_DEPTH);
-  if(glconfig == NULL)
-    {
-    g_print ("### OpenGL not possible ###\n");
-    exit (1);
-    }
-  }
 
 /*----------------------------------------------------------------------------
 *  Toplevel-Window und Standard-Events
@@ -437,10 +433,9 @@ G_VBOX= gtk_vbox_new(FALSE, 0);
 /*----------------------------------------------------------------------------
 *  das Drawing-Widget erzeugen
 *---------------------------------------------------------------------------*/
-DRAWA = gtk_drawing_area_new();
-gtk_widget_set_size_request(DRAWA,IW_DRAWAR,IH_DRAWAR);
+DRAWA= GTK_WIDGET(gtk_gl_area_new(attrlist));
 
-gtk_widget_set_gl_capability(DRAWA,glconfig,NULL,TRUE,GDK_GL_RGBA_TYPE);
+gtk_widget_set_size_request(DRAWA,IW_DRAWAR,IH_DRAWAR);
 
 gtk_widget_set_events(DRAWA,GDK_EXPOSURE_MASK | GDK_BUTTON_PRESS_MASK |
                             GDK_BUTTON1_MOTION_MASK |

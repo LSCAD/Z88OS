@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0 January 14, 2011
+* V15.0 November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 ***********************************************************************/
 /***********************************************************************
 * z88er.c
-* 3.8.2011 Rieg
+* 2.12.2015 Rieg
 ***********************************************************************/
 
 /***********************************************************************
@@ -119,6 +119,7 @@ int  shaq88(void);
 int  shad88(void);
 int  shaf88(void);
 int  shav88(void);
+int  timo88(void);
 
 /****************************************************************************
 *  globale Variable
@@ -146,6 +147,10 @@ extern FR_DOUBLEAY rizz;
 extern FR_DOUBLEAY ezz;
 extern FR_DOUBLEAY rit;
 extern FR_DOUBLEAY wt;
+extern FR_DOUBLEAY xcp;
+extern FR_DOUBLEAY ycp;
+extern FR_DOUBLEAY zcp;
+extern FR_DOUBLEAY rkap;
 extern FR_DOUBLEAY fsum1;
 extern FR_DOUBLEAY fsum2;
 extern FR_DOUBLEAY fsum3;
@@ -165,6 +170,7 @@ extern FR_INT4AY ibis_elp;
 extern FR_INT4AY ivon_int;
 extern FR_INT4AY ibis_int;   
 extern FR_INT4AY intord;
+extern FR_INT4AY ifbeti;
 
 /*--------------------------------------------------------------------------
 * Arrays
@@ -195,7 +201,9 @@ extern FR_DOUBLE dsv[];
 * Variable
 *-------------------------------------------------------------------------*/
 extern FR_DOUBLE emode,rnuee,qparae,riyye,eyye,rizze,ezze,rite,wte;
-extern FR_INT4 intore,nel,ktyp;
+extern FR_DOUBLE xkp,ykp,zkp,rkape;
+
+extern FR_INT4 intore,nel,ktyp,ifbetie;
 extern FR_INT4 IDYNMEM,LANG,jpri,ifnili;
 extern FR_INT4 ndim,nkp,ne,nfg,mmat,mint,melp,nfgp1,nkoi,ibflag,ipflag;
 extern FR_INT4 mxknot,mxfrei,mxfe,kch1,kch2,kch3,iqflag,ihflag;
@@ -219,12 +227,12 @@ if(jpri == 1)
   {
   if(LANG == 1)
     {
-    fprintf(fo4,"Ausgabedatei Z88O4.TXT : Knotenkraefte, erzeugt mit Z88R V14OS\n");
+    fprintf(fo4,"Ausgabedatei Z88O4.TXT : Knotenkraefte, erzeugt mit Z88R V15OS\n");
     fprintf(fo4,"                         *************\n\n");
     }
   if(LANG == 2)
     {
-    fprintf(fo4,"output file Z88O4.TXT : nodal forces, computed by Z88R V14OS\n");
+    fprintf(fo4,"output file Z88O4.TXT : nodal forces, computed by Z88R V15OS\n");
     fprintf(fo4,"                        ************\n\n");
     }
   }
@@ -271,6 +279,7 @@ for(k= 1;k <= ne;k++)
 *                    22  12-knoten volumenschalenele.
 *                    23  4-knoten ahmad-element
 *                    24  6-knoten flache Schale (Schei-Pla)
+*                    25  balken in allg.lage,Bernoulli + Timoshenko
 *---------------------------------------------------------------------*/
 /*----------------------------------------------------------------------
 * E-modul und Nue feststellen
@@ -307,12 +316,17 @@ for(i = 1;i <= melp;i++)
     if(ibflag == 1)
 
       {
-      riyye= riyy[i];
-      eyye = eyy[i];
-      rizze= rizz[i];
-      ezze = ezz[i];
-      rite = rit[i];
-      wte  = wt[i];
+      riyye=   riyy[i];
+      eyye =   eyy[i];
+      rizze=   rizz[i];
+      ezze =   ezz[i];
+      rite =   rit[i];
+      wte  =   wt[i];
+      ifbetie= ifbeti[i];
+      xkp    = xcp[i];
+      ykp    = ycp[i];
+      zkp    = zcp[i];
+      rkape  = rkap[i];
       } 
 
     if(ipflag != 0 || ihflag != 0)
@@ -2023,7 +2037,84 @@ L60:;
 * Ende 6-Knoten Schale
 *---------------------------------------------------------------------*/
     }
-    
+      
+/*----------------------------------------------------------------------
+* Start Balkenelement Nr.25
+*---------------------------------------------------------------------*/
+  else if(ityp[k]== 25)
+    {
+    wtye88j(k,25);
+
+/*----------------------------------------------------------------------
+* Balkenelement : zutreffende Koordinaten bestimmen 
+*---------------------------------------------------------------------*/
+    xk[1] = x [koi[koffs[k]]];
+    yk[1] = y [koi[koffs[k]]];
+    zk[1] = z [koi[koffs[k]]];
+    xk[2] = x [koi[koffs[k]+1]];
+    yk[2] = y [koi[koffs[k]+1]];
+    zk[2] = z [koi[koffs[k]+1]];
+           
+/*----------------------------------------------------------------------
+* Elementsteifigkeitsmatrix fuer Balkenelement berechen
+*---------------------------------------------------------------------*/
+    timo88();
+
+/*----------------------------------------------------------------------
+* Compilation fuer timo88, kompakte Speicherung mit Pointervektor
+*---------------------------------------------------------------------*/
+    mcomp[1]= ioffs[koi[koffs[k]  ]] -1;
+    mcomp[2]= ioffs[koi[koffs[k]+1]] -1;
+         
+    mxknot= 2;
+    mxfrei= 6;
+    mxfe  = 12;
+
+    forc88();
+
+    if(ifnili == 0)
+      {
+      if(LANG == 1)
+        {
+
+        fprintf(fo4,"\nElement # = " P5D "     Typ = Balken Nr.25 im Raum",k);
+        fprintf(fo4,"\nKnoten       F(1)           F(2)           F(3)\
+           F(4)           F(5)           F(6)");
+        }
+      if(LANG == 2)
+      {
+        fprintf(fo4,"\nelement # = " P5D "     type = beam no.25 in space",k);
+        fprintf(fo4,"\nnode         F(1)           F(2)           F(3)\
+           F(4)           F(5)           F(6)");
+        }
+ 
+      j= 1;
+      for(i = 1;i <= 2;i++)
+        {
+        fprintf(fo4,NL P5DB B213E B213E B213E B213E B213E B213E,
+        koi[koffs[k]+i-1],f[j],f[j+1],f[j+2],f[j+3],f[j+4],f[j+5]);
+        j+= 6;   
+        }
+      }
+  
+    j= 1;
+    for(i = 1;i <= 2;i++)
+      {
+      fsum1[koi[koffs[k]+i-1]] += f[j];
+      fsum2[koi[koffs[k]+i-1]] += f[j+1];
+      fsum3[koi[koffs[k]+i-1]] += f[j+2];
+      fsum4[koi[koffs[k]+i-1]] += f[j+3];
+      fsum5[koi[koffs[k]+i-1]] += f[j+4];
+      fsum6[koi[koffs[k]+i-1]] += f[j+5];
+      j+= 6;   
+      }
+
+    goto L7000;
+
+/*----------------------------------------------------------------------
+* Ende Balkenelement Nr.25
+*---------------------------------------------------------------------*/
+    } 
 
 L7000:;
 if(ifnili == 0) fprintf(fo4,"\n");

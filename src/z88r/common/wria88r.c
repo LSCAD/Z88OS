@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0 January 14, 2011
+* V15.0 November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 ***********************************************************************/
 /***********************************************************************
 * wria88r.c beschreibt Z88O0.TXT, oeffnet und schliesst dieses File
-* 18.7.2011 Rieg
+* 14.12.2015 Rieg
 ***********************************************************************/
 
 /***********************************************************************
@@ -74,6 +74,7 @@
 #define B22D "  %2d"
 #define P2DB "%2d "
 #define PD "%d"
+#define PDL "%d "
 #endif
 
 #ifdef FR_XLONG
@@ -83,6 +84,7 @@
 #define B22D "  %2ld"
 #define P2DB "%2ld "
 #define PD "%ld"
+#define PDL "%ld "
 #endif
 
 #ifdef FR_XLOLO
@@ -92,6 +94,7 @@
 #define B22D "  %2lld"
 #define P2DB "%2lld "
 #define PD "%lld"
+#define PDL "%lld "
 #endif
 
 #ifdef FR_XDOUB
@@ -138,6 +141,10 @@ extern FR_DOUBLEAY rizz;
 extern FR_DOUBLEAY ezz;
 extern FR_DOUBLEAY rit;
 extern FR_DOUBLEAY wt;
+extern FR_DOUBLEAY xcp;
+extern FR_DOUBLEAY ycp;
+extern FR_DOUBLEAY zcp;
+extern FR_DOUBLEAY rkap;
 
 extern FR_INT4AY koi;
 extern FR_INT4AY ip;
@@ -151,6 +158,7 @@ extern FR_INT4AY ivon_elp;
 extern FR_INT4AY ibis_elp; 
 extern FR_INT4AY ivon_int;
 extern FR_INT4AY ibis_int;   
+extern FR_INT4AY ifbeti; 
 extern FR_INT4AY intord;
 extern FR_INT4AY intos;
 
@@ -190,7 +198,7 @@ wlog88r(0,LOG_WRIO0);
 *---------------------------------------------------------------------*/
 if(LANG == 1)
 {
-fprintf(fo0,"Ausgabedatei Z88O0.TXT: Strukturdaten, erzeugt mit Z88R V14OS\n");
+fprintf(fo0,"Ausgabedatei Z88O0.TXT: Strukturdaten, erzeugt mit Z88R V15OS\n");
 fprintf(fo0,"                        *************\n");
 
 fprintf(fo0,"\nStrukturdaten: Dimension=" PD " Knoten=" PD " Elemente=" PD " FG=" PD " KFLAG=" PD, ndim,nkp,ne,nfg,kflag);
@@ -201,7 +209,7 @@ fprintf(fo0,"\nSteuerflags: IBFLAG=" PD " IPFLAG=" PD " IQFLAG=" PD " IHFLAG=" P
 
 if(LANG == 2)
 {
-fprintf(fo0,"output file Z88O0.TXT: structure info, produced by Z88R V14OS\n");
+fprintf(fo0,"output file Z88O0.TXT: structure info, produced by Z88R V15OS\n");
 fprintf(fo0,"                       **************\n");
 
 fprintf(fo0,"\nstructure data: Dimension=" PD " nodes=" PD " elements=" PD " DOF=" PD " KFLAG=" PD, ndim,nkp,ne,nfg,kflag);
@@ -270,10 +278,10 @@ for(i = 1;i <= ne;i++)
     }
     
 /*----------------------------------------------------------------------
-* Ausschreiben Koinzidenz fuer Elemente 2, 4, 5 , 9 & 13
+* Ausschreiben Koinzidenz fuer Elemente 2, 4, 5 , 9 , 13 & 25
 *---------------------------------------------------------------------*/
-  if(ityp[i] == 2 || ityp[i] == 4 || ityp[i] == 5 ||
-     ityp[i] == 9 || ityp[i] == 13 )
+  if(ityp[i] == 2 || ityp[i] == 4  || ityp[i] == 5 ||
+     ityp[i] == 9 || ityp[i] == 13 || ityp[i] == 25)
     { 
     fprintf(fo0,NLB PDB PDB NLB PDB PDB NLE,i,ityp[i],
     koi[koffs[i]  ],koi[koffs[i]+1]);
@@ -427,8 +435,9 @@ for(i = 1; i <= mint; i++)
 fprintf(fo0,"\n\nElementparameter-Saetze=" PD,melp);
 for(i = 1; i <= melp; i++)
   fprintf(fo0,"\nvon=" PD " bis=" PD " QPARA=" PGB " IYY=" PGB " EYY=" PGB " IZZ=" PGB
-  " EZZ=" PGB " IT=" PGB " WT=" PGB,
-    ivon_elp[i],ibis_elp[i],qpara[i],riyy[i],eyy[i],rizz[i],ezz[i],rit[i],wt[i]);
+  " EZZ=" PGB " IT=" PGB " WT=" PGB " IFBETI=" PDL " XCP=" PGB " YCP=" PGB " ZCP=" PGB "RKAP=" PGB,
+    ivon_elp[i],ibis_elp[i],qpara[i],riyy[i],eyy[i],rizz[i],
+    ezz[i],rit[i],wt[i],ifbeti[i],xcp[i],ycp[i],zcp[i],rkap[i]);
 }
 
 if(LANG == 2)
@@ -445,9 +454,10 @@ for(i = 1; i <= mint; i++)
 
 fprintf(fo0,"\n\nelement parameter sets=" PD,melp);
 for(i = 1; i <= melp; i++)
-  fprintf(fo0,"\nfrom=" PD " to=" PD " QPARA=" PGB " IYY=" PGB " EYY=" PGB " IZZ=" PGB
-  " EZZ=" PGB " IT=" PGB " WT=" PGB,
-    ivon_elp[i],ibis_elp[i],qpara[i],riyy[i],eyy[i],rizz[i],ezz[i],rit[i],wt[i]);
+    fprintf(fo0,"\nfrom=" PD " to=" PD " QPARA=" PGB " IYY=" PGB " EYY=" PGB " IZZ=" PGB
+  " EZZ=" PGB " IT=" PGB " WT=" PGB " IFBETI=" PDL " XCP=" PGB " YCP=" PGB " ZCP=" PGB "RKAP=" PGB,
+    ivon_elp[i],ibis_elp[i],qpara[i],riyy[i],eyy[i],rizz[i],
+    ezz[i],rit[i],wt[i],ifbeti[i],xcp[i],ycp[i],zcp[i],rkap[i]);
 }
 
 fprintf(fo0,"\n");

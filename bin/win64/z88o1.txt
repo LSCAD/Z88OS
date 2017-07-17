@@ -1,0 +1,21 @@
+output file Z88O1.TXT : constraints, produced by Z88R V15OS
+                        ***********
+
+number of given constraints: 16
+
+  node#    11   DOF 2  lo/di flag 1   load          -7.1430000E+03
+  node#   143   DOF 2  lo/di flag 1   load          +7.1430000E+03
+  node#   216   DOF 1  lo/di flag 2   displacement  +0.0000000E+00
+  node#   216   DOF 2  lo/di flag 2   displacement  +0.0000000E+00
+  node#   220   DOF 1  lo/di flag 2   displacement  +0.0000000E+00
+  node#   220   DOF 2  lo/di flag 2   displacement  +0.0000000E+00
+  node#   227   DOF 1  lo/di flag 2   displacement  +0.0000000E+00
+  node#   227   DOF 2  lo/di flag 2   displacement  +0.0000000E+00
+  node#   231   DOF 1  lo/di flag 2   displacement  +0.0000000E+00
+  node#   231   DOF 2  lo/di flag 2   displacement  +0.0000000E+00
+  node#   238   DOF 1  lo/di flag 2   displacement  +0.0000000E+00
+  node#   238   DOF 2  lo/di flag 2   displacement  +0.0000000E+00
+  node#   242   DOF 1  lo/di flag 2   displacement  +0.0000000E+00
+  node#   242   DOF 2  lo/di flag 2   displacement  +0.0000000E+00
+  node#   249   DOF 1  lo/di flag 2   displacement  +0.0000000E+00
+  node#   249   DOF 2  lo/di flag 2   displacement  +0.0000000E+00

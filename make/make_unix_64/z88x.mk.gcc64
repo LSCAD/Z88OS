@@ -1,9 +1,9 @@
 #############################################################################
 # Makefile for Z88N
 # for the GCC compiler
-# 31.7.2011 Rieg
+# 7.3.2017 Rieg
 #############################################################################
-DIRECA = $(HOME)/z88v14os
+DIRECA = $(HOME)/z88v15os
 DIRUNI = $(DIRECA)/src/z88x/unix
 DIRCOM = $(DIRECA)/src/z88x/common
 DIROUT = $(DIRECA)/bin/unix64
@@ -18,7 +18,7 @@ OBJECTSX = z88x.o ale88x.o dyn88x.o clr88.o koi88x.o rea88x.o stop88x.o\
 
 z88x: $(OBJECTSX)
 	$(CC) $(CFLAGS) -o $@ $(OBJECTSX) $(LDLIBSOX)
-	cp z88x $(DIROUT)
+	mv -f z88x $(DIROUT)
 
 z88x.o: $(DIRUNI)/z88x.c
 	$(CC) $(CFLAGS) -c $(DIRUNI)/z88x.c

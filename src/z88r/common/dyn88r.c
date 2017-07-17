@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0 January 14, 2011
+* V15.0 November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@
 /***********************************************************************
 *  function dyn88r liest z88.dyn aus und laesst memory kommen
 *  hier wird File Z88.DYN erneut geoeffnet (vorher schon in lan88r)
-*  25.7.2011 Rieg 
+*  2.12.2015 Rieg 
 ***********************************************************************/ 
 
 /***********************************************************************
@@ -90,6 +90,10 @@ extern FR_DOUBLEAY rizz;
 extern FR_DOUBLEAY ezz;
 extern FR_DOUBLEAY rit;
 extern FR_DOUBLEAY wt;
+extern FR_DOUBLEAY xcp;
+extern FR_DOUBLEAY ycp;
+extern FR_DOUBLEAY zcp;
+extern FR_DOUBLEAY rkap;
 extern FR_DOUBLEAY pres;
 extern FR_DOUBLEAY tr1;
 extern FR_DOUBLEAY tr2;
@@ -122,6 +126,7 @@ extern FR_INT4AY ivon_elp;
 extern FR_INT4AY ibis_elp;
 extern FR_INT4AY ivon_int;
 extern FR_INT4AY ibis_int;
+extern FR_INT4AY ifbeti;
 extern FR_INT4AY intord;
 extern FR_INT4AY intos;
 extern FR_INT4AY nep;
@@ -570,6 +575,7 @@ else
 
 /*======================================================================
 *  memory fuer ivon_elp,ibis_elp,qpara,riyy,eyy,rizz,ezz,rit,wt
+*              ifbeti,xcp,ycp,zcp,rkap
 *=====================================================================*/
 ivon_elp= (FR_INT4AY) FR_CALLOC((MAXPEL+1),sizeof(FR_INT4));
 if(ivon_elp == NULL)
@@ -661,22 +667,38 @@ if(wt == NULL)
 else
   wlog88r(88,LOG_ARRAYOK);
 
-/*======================================================================
-*  memory fuer pres,tr1,tr2,nep,noi,noffs
-*  Annahme: max. 8 Knoten pro Oberflaeche
-*=====================================================================*/
-pres= (FR_DOUBLEAY) FR_CALLOC((MAXPR+1),sizeof(FR_DOUBLE));
-if(pres == NULL)
+ifbeti= (FR_INT4AY) FR_CALLOC((MAXPEL+1),sizeof(FR_INT4));
+if(ifbeti == NULL)
+  {
+  wlog88r(89,LOG_ARRAYNOTOK);
+  fclose(fwlo);
+  return(AL_NOMEMY);
+  }
+else
+  wlog88r(89,LOG_ARRAYOK);
+
+xcp= (FR_DOUBLEAY) FR_CALLOC((MAXPEL+1),sizeof(FR_DOUBLE));
+if(xcp == NULL)
   {
   wlog88r(90,LOG_ARRAYNOTOK);
   fclose(fwlo);
   return(AL_NOMEMY);
   }
 else
+  wlog88r(90,LOG_ARRAYOK);
+
+ycp= (FR_DOUBLEAY) FR_CALLOC((MAXPEL+1),sizeof(FR_DOUBLE));
+if(ycp == NULL)
+  {
+  wlog88r(91,LOG_ARRAYNOTOK);
+  fclose(fwlo);
+  return(AL_NOMEMY);
+  }
+else
   wlog88r(91,LOG_ARRAYOK);
 
-tr1= (FR_DOUBLEAY) FR_CALLOC((MAXPR+1),sizeof(FR_DOUBLE));
-if(tr1 == NULL)
+zcp= (FR_DOUBLEAY) FR_CALLOC((MAXPEL+1),sizeof(FR_DOUBLE));
+if(zcp == NULL)
   {
   wlog88r(92,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -685,8 +707,8 @@ if(tr1 == NULL)
 else
   wlog88r(92,LOG_ARRAYOK);
 
-tr2= (FR_DOUBLEAY) FR_CALLOC((MAXPR+1),sizeof(FR_DOUBLE));
-if(tr2 == NULL)
+rkap= (FR_DOUBLEAY) FR_CALLOC((MAXPEL+1),sizeof(FR_DOUBLE));
+if(rkap == NULL)
   {
   wlog88r(93,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -695,41 +717,12 @@ if(tr2 == NULL)
 else
   wlog88r(93,LOG_ARRAYOK);
 
-nep= (FR_INT4AY) FR_CALLOC((MAXPR+1),sizeof(FR_INT4));
-if(nep == NULL)
-  {
-  wlog88r(94,LOG_ARRAYNOTOK);
-  fclose(fwlo);
-  return(AL_NOMEMY);
-  }
-else
-  wlog88r(94,LOG_ARRAYOK);
-
-noi= (FR_INT4AY) FR_CALLOC((MAXPR*8+1),sizeof(FR_INT4));
-if(noi == NULL)
-  {
-  wlog88r(95,LOG_ARRAYNOTOK);
-  fclose(fwlo);
-  return(AL_NOMEMY);
-  }
-else
-  wlog88r(95,LOG_ARRAYOK);
-
-noffs= (FR_INT4AY) FR_CALLOC((MAXPR+1),sizeof(FR_INT4));
-if(noffs == NULL)
-  {
-  wlog88r(96,LOG_ARRAYNOTOK);
-  fclose(fwlo);
-  return(AL_NOMEMY);
-  }
-else
-  wlog88r(96,LOG_ARRAYOK);
-
 /*======================================================================
-*  memory fuer smw,jsm,smwku
+*  memory fuer pres,tr1,tr2,nep,noi,noffs
+*  Annahme: max. 8 Knoten pro Oberflaeche
 *=====================================================================*/
-smw= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
-if(smw == NULL)
+pres= (FR_DOUBLEAY) FR_CALLOC((MAXPR+1),sizeof(FR_DOUBLE));
+if(pres == NULL)
   {
   wlog88r(100,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -738,8 +731,8 @@ if(smw == NULL)
 else
   wlog88r(100,LOG_ARRAYOK);
 
-jsm= (FR_INT4AY) FR_CALLOC((MAXK+1),sizeof(FR_INT4));
-if(jsm == NULL)
+tr1= (FR_DOUBLEAY) FR_CALLOC((MAXPR+1),sizeof(FR_DOUBLE));
+if(tr1 == NULL)
   {
   wlog88r(101,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -748,8 +741,8 @@ if(jsm == NULL)
 else
   wlog88r(101,LOG_ARRAYOK);
 
-smwku= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
-if(smwku == NULL)
+tr2= (FR_DOUBLEAY) FR_CALLOC((MAXPR+1),sizeof(FR_DOUBLE));
+if(tr2 == NULL)
   {
   wlog88r(102,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -758,11 +751,8 @@ if(smwku == NULL)
 else
   wlog88r(102,LOG_ARRAYOK);
 
-/*======================================================================
-*  memory fuer gmw,gmwku
-*=====================================================================*/
-gmw= (FR_DOUBLEAY) FR_CALLOC((MAXE+1),sizeof(FR_DOUBLE));
-if(gmw == NULL)
+nep= (FR_INT4AY) FR_CALLOC((MAXPR+1),sizeof(FR_INT4));
+if(nep == NULL)
   {
   wlog88r(103,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -771,8 +761,8 @@ if(gmw == NULL)
 else
   wlog88r(103,LOG_ARRAYOK);
 
-gmwku= (FR_DOUBLEAY) FR_CALLOC((MAXE+1),sizeof(FR_DOUBLE));
-if(gmwku == NULL)
+noi= (FR_INT4AY) FR_CALLOC((MAXPR*8+1),sizeof(FR_INT4));
+if(noi == NULL)
   {
   wlog88r(104,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -781,11 +771,8 @@ if(gmwku == NULL)
 else
   wlog88r(104,LOG_ARRAYOK);
 
-/*======================================================================
-*  memory fuer sigvku
-*=====================================================================*/
-sigvku= (FR_DOUBLEAY) FR_CALLOC((MAXGP+1),sizeof(FR_DOUBLE));
-if(sigvku == NULL)
+noffs= (FR_INT4AY) FR_CALLOC((MAXPR+1),sizeof(FR_INT4));
+if(noffs == NULL)
   {
   wlog88r(105,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -795,10 +782,10 @@ else
   wlog88r(105,LOG_ARRAYOK);
 
 /*======================================================================
-*  memory fuer fsum1 - fsum6
+*  memory fuer smw,jsm,smwku
 *=====================================================================*/
-fsum1= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
-if(fsum1 == NULL)
+smw= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
+if(smw == NULL)
   {
   wlog88r(110,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -807,8 +794,8 @@ if(fsum1 == NULL)
 else
   wlog88r(110,LOG_ARRAYOK);
 
-fsum2= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
-if(fsum2 == NULL)
+jsm= (FR_INT4AY) FR_CALLOC((MAXK+1),sizeof(FR_INT4));
+if(jsm == NULL)
   {
   wlog88r(111,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -816,9 +803,9 @@ if(fsum2 == NULL)
   }
 else
   wlog88r(111,LOG_ARRAYOK);
-  
-fsum3= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
-if(fsum3 == NULL)
+
+smwku= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
+if(smwku == NULL)
   {
   wlog88r(112,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -827,8 +814,11 @@ if(fsum3 == NULL)
 else
   wlog88r(112,LOG_ARRAYOK);
 
-fsum4= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
-if(fsum4 == NULL)
+/*======================================================================
+*  memory fuer gmw,gmwku
+*=====================================================================*/
+gmw= (FR_DOUBLEAY) FR_CALLOC((MAXE+1),sizeof(FR_DOUBLE));
+if(gmw == NULL)
   {
   wlog88r(113,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -836,9 +826,9 @@ if(fsum4 == NULL)
   }
 else
   wlog88r(113,LOG_ARRAYOK);
-  
-fsum5= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
-if(fsum5 == NULL)
+
+gmwku= (FR_DOUBLEAY) FR_CALLOC((MAXE+1),sizeof(FR_DOUBLE));
+if(gmwku == NULL)
   {
   wlog88r(114,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -846,9 +836,12 @@ if(fsum5 == NULL)
   }
 else
   wlog88r(114,LOG_ARRAYOK);
-  
-fsum6= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
-if(fsum6 == NULL)
+
+/*======================================================================
+*  memory fuer sigvku
+*=====================================================================*/
+sigvku= (FR_DOUBLEAY) FR_CALLOC((MAXGP+1),sizeof(FR_DOUBLE));
+if(sigvku == NULL)
   {
   wlog88r(115,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -858,10 +851,10 @@ else
   wlog88r(115,LOG_ARRAYOK);
 
 /*======================================================================
-*  memory fuer sdu,tmt,tm,zm
+*  memory fuer fsum1 - fsum6
 *=====================================================================*/
-sdu= (FR_DOUBLEAY) FR_CALLOC((MAXTRA+1),sizeof(FR_DOUBLE));
-if(sdu == NULL)
+fsum1= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
+if(fsum1 == NULL)
   {
   wlog88r(120,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -870,8 +863,8 @@ if(sdu == NULL)
 else
   wlog88r(120,LOG_ARRAYOK);
 
-tmt= (FR_DOUBLEAY) FR_CALLOC((MAXTRA+1),sizeof(FR_DOUBLE));
-if(tmt == NULL)
+fsum2= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
+if(fsum2 == NULL)
   {
   wlog88r(121,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -879,9 +872,9 @@ if(tmt == NULL)
   }
 else
   wlog88r(121,LOG_ARRAYOK);
-
-tm = (FR_DOUBLEAY) FR_CALLOC((MAXTRA+1),sizeof(FR_DOUBLE));
-if(tm == NULL)
+  
+fsum3= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
+if(fsum3 == NULL)
   {
   wlog88r(122,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -890,8 +883,8 @@ if(tm == NULL)
 else
   wlog88r(122,LOG_ARRAYOK);
 
-zm = (FR_DOUBLEAY) FR_CALLOC((MAXTRA+1),sizeof(FR_DOUBLE));
-if(zm == NULL)
+fsum4= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
+if(fsum4 == NULL)
   {
   wlog88r(123,LOG_ARRAYNOTOK);
   fclose(fwlo);
@@ -899,6 +892,69 @@ if(zm == NULL)
   }
 else
   wlog88r(123,LOG_ARRAYOK);
+  
+fsum5= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
+if(fsum5 == NULL)
+  {
+  wlog88r(124,LOG_ARRAYNOTOK);
+  fclose(fwlo);
+  return(AL_NOMEMY);
+  }
+else
+  wlog88r(124,LOG_ARRAYOK);
+  
+fsum6= (FR_DOUBLEAY) FR_CALLOC((MAXK+1),sizeof(FR_DOUBLE));
+if(fsum6 == NULL)
+  {
+  wlog88r(125,LOG_ARRAYNOTOK);
+  fclose(fwlo);
+  return(AL_NOMEMY);
+  }
+else
+  wlog88r(125,LOG_ARRAYOK);
+
+/*======================================================================
+*  memory fuer sdu,tmt,tm,zm
+*=====================================================================*/
+sdu= (FR_DOUBLEAY) FR_CALLOC((MAXTRA+1),sizeof(FR_DOUBLE));
+if(sdu == NULL)
+  {
+  wlog88r(130,LOG_ARRAYNOTOK);
+  fclose(fwlo);
+  return(AL_NOMEMY);
+  }
+else
+  wlog88r(130,LOG_ARRAYOK);
+
+tmt= (FR_DOUBLEAY) FR_CALLOC((MAXTRA+1),sizeof(FR_DOUBLE));
+if(tmt == NULL)
+  {
+  wlog88r(131,LOG_ARRAYNOTOK);
+  fclose(fwlo);
+  return(AL_NOMEMY);
+  }
+else
+  wlog88r(131,LOG_ARRAYOK);
+
+tm = (FR_DOUBLEAY) FR_CALLOC((MAXTRA+1),sizeof(FR_DOUBLE));
+if(tm == NULL)
+  {
+  wlog88r(132,LOG_ARRAYNOTOK);
+  fclose(fwlo);
+  return(AL_NOMEMY);
+  }
+else
+  wlog88r(132,LOG_ARRAYOK);
+
+zm = (FR_DOUBLEAY) FR_CALLOC((MAXTRA+1),sizeof(FR_DOUBLE));
+if(zm == NULL)
+  {
+  wlog88r(133,LOG_ARRAYNOTOK);
+  fclose(fwlo);
+  return(AL_NOMEMY);
+  }
+else
+  wlog88r(133,LOG_ARRAYOK);
  
 /***********************************************************************
 * alles o.k. 
@@ -921,6 +977,8 @@ RDYNMEM+= 2*((double)MAXMAT+1.)*sizeof(FR_INT4);       /* ivon_mat,ibis_mat */
 
 RDYNMEM+= 2*((double)MAXPEL+1.)*sizeof(FR_INT4);       /* ivon_elp,ibis_elp */
 RDYNMEM+= 7*((double)MAXPEL+1.)*sizeof(FR_DOUBLE);     /* qpara,riyy,eyy,rizz,ezz,rit,wt */
+RDYNMEM+=   ((double)MAXPEL+1.)*sizeof(FR_INT4);       /* ifbeti */
+RDYNMEM+= 4*((double)MAXPEL+1.)*sizeof(FR_DOUBLE);     /* xcp,ycp,zcp,rkap */
 
 RDYNMEM+= 4*((double)MAXJNT+1.)*sizeof(FR_INT4);       /* ivon_int,ibis_int,intord,intos */
 

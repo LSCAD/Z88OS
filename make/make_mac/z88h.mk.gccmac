@@ -1,15 +1,15 @@
 #############################################################################
 # Makefile for Z88H MAC
 # for the GCC compiler
-# 14.8.2011 Rieg
+# 7.3.2017  Rieg
 #############################################################################
-DIRECA = $(HOME)/z88v14os
+DIRECA = $(HOME)/z88v15os
 DIRUNI = $(DIRECA)/src/z88h/unix
 DIRCOM = $(DIRECA)/src/z88h/common
 DIROUT = $(DIRECA)/bin/mac
 
 CC = gcc
-CFLAGS = -I$(DIRCOM) -arch x86_64 -DFR_UNIX -DFR_XDOUB -DFR_XLONG -DFR_LINUX -O2 
+CFLAGS = -I$(DIRCOM) -DFR_UNIX -DFR_XDOUB -DFR_XLONG -DFR_LINUX -O2 
 
 LDLIBSOX = -lm -lc 
 
@@ -17,7 +17,7 @@ OBJECTSH = z88h.o ale88h.o clr88.o stop88h.o who88h.o wlog88h.o wrim88h.o lan88h
 
 z88h: $(OBJECTSH)
 	$(CC) $(CFLAGS) -o $@ $(OBJECTSH) $(LDLIBSOX)
-	cp z88h $(DIROUT)
+	mv -f z88h $(DIROUT)
 
 z88h.o: $(DIRUNI)/z88h.c
 	$(CC) $(CFLAGS) -c $(DIRUNI)/z88h.c

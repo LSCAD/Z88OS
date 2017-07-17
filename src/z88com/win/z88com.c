@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 ***********************************************************************/ 
 /***********************************************************************
 * Z88COM fuer Windows
-* 10.8.2011 Rieg
+* 7.3.2017 Rieg
 ***********************************************************************/
 
 /***********************************************************************
@@ -164,7 +164,7 @@ wndclass.hIconSm       = LoadIcon(hInstance, MAKEINTRESOURCE(ICO_Z88COM));
 
 RegisterClassEx(&wndclass);
 
-hWnd = CreateWindow(capname,"Z88-Commander Z88COM V14OS",
+hWnd = CreateWindow(capname,"Z88-Commander Z88COM V15OS",
                     WS_OVERLAPPEDWINDOW,
                       0,  10,
                     500, 200,
@@ -529,16 +529,16 @@ switch (Message)
       case IDM_WER:
         if(LANG == 1) strcpy(cmess,
 "Z88 Commander Z88COM fuer Windows\n\
-Version 14OS\n\
+Version 15OS\n\
 Copyright Univ.-Prof.Dr.-Ing. Frank Rieg,\n\
-Universitaet Bayreuth, 2011\n\
+Universitaet Bayreuth, 2017\n\
 Alle Rechte vorbehalten\n");
 
         if(LANG == 2) strcpy(cmess,
 "Z88 Commander Z88COM for Windows\n\
-Version 14OS\n\
+Version 15OS\n\
 Copyright Prof.Dr. Frank Rieg,\n\
-University of Bayreuth, Germany 2011\n\
+University of Bayreuth, Germany 2017\n\
 All rights reserved\n");
 
 #ifdef FR_XQUAD

@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@
 *  tet288  mit Spannungen, Eckknoten
 *  tet388  Hidden Line
 *  tet488  mit Spannungen, Elemente
-*  17.7.2011 RIEG
+*  18.11.2015 RIEG
 **********************************************************/
 
 /*----------------------------------------------------------------------
@@ -96,11 +96,11 @@ for (i= 1; i <= ne; i++)
   {
 
 /*----------------------------------------------------------------------
-* Stab 4 u. 9, Balken 2 und 13, Welle 5
+* Stab 4 u. 9, Balken 2 und 13, Welle 5, Balken 25
 *---------------------------------------------------------------------*/
   if(ityp[i] == 4 || ityp[i] == 9  || 
      ityp[i] == 2 || ityp[i] == 13 ||
-     ityp[i] == 5)
+     ityp[i] == 5 || ityp[i] == 25)
     {       
 
 /*======================================================================
@@ -120,7 +120,7 @@ for (i= 1; i <= ne; i++)
       glVertex3d( xe[1],ye[1],ze[1]);
       glVertex3d( xe[2],ye[2],ze[2]);
     glEnd();
-    }  /* Stab 4 u. 9, Balken 2 und 13, Welle 5 */
+    }  /* Stab 4 u. 9, Balken 2 und 13, Welle 5, Balken 25 */
 
 /*----------------------------------------------------------------------
 * Scheibe 7,Torus 8,Scheibe 11,Torus 12 u.Platte 19 u. 20, Schale 23
@@ -954,11 +954,11 @@ for (i= 1; i <= ne; i++)
   {
 
 /*----------------------------------------------------------------------
-* Stab 4 u. 9, Balken 2 und 13, Welle 5
+* Stab 4 u. 9, Balken 2 und 13, Welle 5, Balken 25
 *---------------------------------------------------------------------*/
   if(ityp[i] == 4 || ityp[i] == 9  || 
      ityp[i] == 2 || ityp[i] == 13 ||
-     ityp[i] == 5)
+     ityp[i] == 5 || ityp[i] == 25)
     {       
 
 /*======================================================================
@@ -984,7 +984,7 @@ for (i= 1; i <= ne; i++)
         glVertex3d(xe[k],ye[k],ze[k]);
         }
     glEnd();
-    }  /* Stab 4 u. 9, Balken 2 und 13, Welle 5 */
+    }  /* Stab 4 u. 9, Balken 2 und 13, Welle 5, Balken 25 */
 
 /*----------------------------------------------------------------------
 * Scheibe 7,Torus 8,Scheibe 11,Torus 12 u.Platte 19 u.20,Schale 23
@@ -1246,11 +1246,11 @@ for (i= 1; i <= ne; i++)
   {
 
 /*----------------------------------------------------------------------
-* Stab 4 u. 9, Balken 2 und 13, Welle 5
+* Stab 4 u. 9, Balken 2 und 13, Welle 5, Balken 25
 *---------------------------------------------------------------------*/
   if(ityp[i] == 4 || ityp[i] == 9  || 
      ityp[i] == 2 || ityp[i] == 13 ||
-     ityp[i] == 5)
+     ityp[i] == 5 || ityp[i] == 25)
     {       
 
 /*======================================================================
@@ -1270,7 +1270,7 @@ for (i= 1; i <= ne; i++)
       glVertex3d( xe[1],ye[1],ze[1]);
       glVertex3d( xe[2],ye[2],ze[2]);
     glEnd();
-    }  /* Stab 4 u. 9, Balken 2 und 13, Welle 5 */
+    }  /* Stab 4 u. 9, Balken 2 und 13, Welle 5, Balken 25 */
 
 
 /*----------------------------------------------------------------------
@@ -1508,11 +1508,11 @@ for (i= 1; i <= ne; i++)
   {
 
 /*----------------------------------------------------------------------
-* Stab 4 u. 9, Balken 2 und 13, Welle 5
+* Stab 4 u. 9, Balken 2 und 13, Welle 5, Balken 25
 *---------------------------------------------------------------------*/
   if(ityp[i] == 4 || ityp[i] == 9  || 
      ityp[i] == 2 || ityp[i] == 13 ||
-     ityp[i] == 5)
+     ityp[i] == 5 || ityp[i] == 25)
     {       
 
 /*======================================================================
@@ -1533,7 +1533,7 @@ for (i= 1; i <= ne; i++)
       glVertex3d( xe[1],ye[1],ze[1]);
       glVertex3d( xe[2],ye[2],ze[2]);
     glEnd();
-    }    /* Stab 4 u. 9, Balken 2 und 13, Welle 5 */
+    }    /* Stab 4 u. 9, Balken 2 und 13, Welle 5, Balken 25*/
 
 
 /*----------------------------------------------------------------------

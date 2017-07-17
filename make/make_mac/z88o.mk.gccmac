@@ -1,29 +1,30 @@
 #############################################################################
 # Makefile for Z88O MAC
 # for the GCC compiler
-# 14.8.2011 Rieg
+# 7.3.2017 Rieg
 #############################################################################
-DIRECA = $(HOME)/z88v14os
+DIRECA = $(HOME)/z88v15os
 DIRUNI = $(DIRECA)/src/z88o/unix
 DIRCOM = $(DIRECA)/src/z88o/common
 DIROUT = $(DIRECA)/bin/mac
 
 CC = gcc
 
-CFLAGS = -I$(DIRCOM) -arch x86_64 -O2 -fomit-frame-pointer -DFR_UNIX -DFR_XDOUB -DFR_XLONG -DFR_LINUX \
-`pkg-config --cflags --libs gtk+-2.0 gdkglext-1.0 gdkglext-x11-1.0 gtkglext-1.0 gtkglext-x11-1.0` 
+CFLAGS = -I$(DIRCOM) -I$(DIRUNI) -fomit-frame-pointer  \
+-DFR_UNIX -DFR_XDOUB -DFR_XLONG -DFR_LINUX -lX11 -lGL -lm \
+`pkg-config --cflags --libs gtk+-2.0` 
 
 OBJECTSO = z88o.o cb88o.o lan88o.o dyn88o.o wlog88o.o ale88o.o rcoo88.o \
- m9.o m10.o m12.o m15.o oc88.o m16.o man88o.o
+ m9.o m10.o m12.o m15.o oc88.o m16.o man88o.o fr_gltext3d.o gdkgl.o gtkglarea.o
 
 z88o: $(OBJECTSO)
 	$(CC) $(CFLAGS) -o $@ $(OBJECTSO)
-	cp z88o $(DIROUT)
+	mv -f z88o $(DIROUT)
 
 z88o.o: $(DIRUNI)/z88o.c
 	$(CC) $(CFLAGS) -c $(DIRUNI)/z88o.c
 
-cb88o.o: $(DIRUNI)/cb88o.c
+cb88o.o: $(DIRUNI)/cb88o.c 
 	$(CC) $(CFLAGS) -c $(DIRUNI)/cb88o.c
 
 ale88o.o: $(DIRUNI)/ale88o.c
@@ -38,6 +39,15 @@ rcoo88.o: $(DIRUNI)/rcoo88.c
 m15.o: $(DIRUNI)/m15.c
 	$(CC) $(CFLAGS) -c $(DIRUNI)/m15.c
 
+fr_gltext3d.o: $(DIRUNI)/fr_gltext3d.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/fr_gltext3d.c
+
+gdkgl.o: $(DIRUNI)/gdkgl.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/gdkgl.c
+
+gtkglarea.o: $(DIRUNI)/gtkglarea.c
+	$(CC) $(CFLAGS) -c $(DIRUNI)/gtkglarea.c
+
 dyn88o.o: $(DIRCOM)/dyn88o.c
 	$(CC) $(CFLAGS) -c $(DIRCOM)/dyn88o.c
 
@@ -50,7 +60,7 @@ m10.o: $(DIRCOM)/m10.c
 m12.o: $(DIRCOM)/m12.c
 	$(CC) $(CFLAGS) -c $(DIRCOM)/m12.c
 
-m16.o: $(DIRCOM)/m16.c
+m16.o: $(DIRCOM)/m16.c 
 	$(CC) $(CFLAGS) -c $(DIRCOM)/m16.c
 
 oc88.o: $(DIRCOM)/oc88.c

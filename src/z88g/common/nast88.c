@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -370,12 +370,12 @@ if(ICFLAG == 6) /* Schalen */
 
 if(LANG == 1)
   fprintf(fi1,
-  PD5B PD5B PD5B PD5B PD5B "  Z88I1.TXT,via Z88G V14OS NASTRAN\n",
+  PD5B PD5B PD5B PD5B PD5B "  Z88I1.TXT,via Z88G V15OS NASTRAN\n",
   ndim,nkp,ne,nfg,kflag);
 
 if(LANG == 2)
   fprintf(fi1,
-  PD5B PD5B PD5B PD5B PD5B "  Z88I1.TXT, by Z88G V14OS NASTRAN\n",
+  PD5B PD5B PD5B PD5B PD5B "  Z88I1.TXT, by Z88G V15OS NASTRAN\n",
   ndim,nkp,ne,nfg,kflag);
 
 /*----------------------------------------------------------------------
@@ -667,12 +667,12 @@ if(ICFLAG == 6)
 *=====================================================================*/
 if(LANG == 1)
   {
-  fprintf(fi5,PD5B "  Z88I5.TXT, via Z88G V14OS NASTRAN\n",nfl);
+  fprintf(fi5,PD5B "  Z88I5.TXT, via Z88G V15OS NASTRAN\n",nfl);
   }
   
 if(LANG == 2)
   {
-  fprintf(fi5,PD5B "  Z88I5.TXT, by Z88G V14OS NASTRAN\n",nfl);
+  fprintf(fi5,PD5B "  Z88I5.TXT, by Z88G V15OS NASTRAN\n",nfl);
   }
 
 /*----------------------------------------------------------------------

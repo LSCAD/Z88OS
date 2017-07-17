@@ -1,9 +1,9 @@
 #############################################################################
 # Makefile for Z88G
 # for the GCC compiler
-# 22.7.2011 Rieg
+# 7.3.2017 Rieg
 #############################################################################
-DIRECA = $(HOME)/z88v14os
+DIRECA = $(HOME)/z88v15os
 DIRUNI = $(DIRECA)/src/z88g/unix
 DIRCOM = $(DIRECA)/src/z88g/common
 DIROUT = $(DIRECA)/bin/unix64
@@ -18,7 +18,7 @@ OBJECTSG = z88g.o ale88g.o clr88.o stop88g.o cosm88.o nast88.o dnas88.o\
 
 z88g: $(OBJECTSG)
 	$(CC) $(CFLAGS) -o $@ $(OBJECTSG) $(LDLIBSOX)
-	cp z88g $(DIROUT)
+	mv -f z88g $(DIROUT)
 
 z88g.o: $(DIRUNI)/z88g.c
 	$(CC) $(CFLAGS) -c $(DIRUNI)/z88g.c

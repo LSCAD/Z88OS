@@ -1,13 +1,11 @@
-Header file Z88.FCD for Prof.Dr. Frank Rieg's free FEA program Z88 V14.
-This file fits well for the LINUX OS
-
-This file lets you choose fonts, colors and dimensions for Z88 X-programs
+Header file Z88.FCD for Prof.Dr. Frank Rieg's free FEA program Z88 V15OS. This file
+lets you choose fonts, colors and dimensions for Z88O.
 Please see hints at end of file
 
-In dieser Datei koennen Sie Fonts, Farben und Abmessungen fuer Z88
-X-Programme waehlen. Bitte Hinweise am Dateiende beachten
+In dieser Datei koennen Sie Fonts, Farben und Abmessungen fuer Z88 V15OS waehlen.
+Bitte Hinweise am Dateiende beachten
 
-13.4.2009 Rieg
+18.11.2015 Rieg
 
 ********************************************************************************
 Z88COM START
@@ -22,81 +20,69 @@ Z88COM START
 
     Your HTML-Browser or Internet-Browser for use with Z88
     Ihr HTML- oder Internet- Browser fuer Z88
-    CBROWSER     firefox
+    CBROWSER     acroread
 
     Your HTML-or Internet Browser's prefix
     Prefix fuer Ihren HTML- oder Internet Browser
-    CPREFIX      file:///home/frank/gtk/
+    CPREFIX      $HOME/z88v14os/docu/
 
   WINDOW END
 
 Z88COM END
 
-********************************************************************************
-Z88MOD START
-********************************************************************************
---------------------------------------------------------------------------------
-  WINDOW START
---------------------------------------------------------------------------------
-    PANGO_FONT    courier
-    PANGO_SIZE    16
 
-  WINDOW END
-
-Z88MOD END
-
-
-********************************************************************************
+***********************************************************************************
 Z88O START
-********************************************************************************
---------------------------------------------------------------------------------
+***********************************************************************************
+-----------------------------------------------------------------------------------
   WINDOW START
---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
     IW_DRAWAR     800
-    IH_DRAWAR     600  
-    PANGO_FONT    courier
-    PANGO_SIZE    14
+    IH_DRAWAR     500
+    SCALE_FONT    0.55
+    THICK_FONT    1
+    DEPTH_SIZE    1
   WINDOW END
 
---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
   OPENGL START
---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 
     DEFAULT START
-      FYCOR  1.35
+      FYCOR  1.00
       COLOR  1.00  1.00  1.00  1.00
       FAZOO  0.15
     DEFAULT END
 
-  STRESS START
-    RED    0.00  0.00  0.00  0.00  0.00  0.00  1.00  1.00  1.00  1.00  1.00  1.00
-    GREEN  0.00  0.00  0.25  0.50  0.75  1.00  1.00  0.85  0.75  0.50  0.35  0.00
-    BLUE   0.00  1.00  1.00  1.00  1.00  1.00  0.00  0.00  0.00  0.00  0.00  0.00
-  STRESS END
+    STRESS START
+      RED    0.00  0.00  0.00  0.00  0.00  0.00  1.00  1.00  1.00  1.00  1.00  1.00
+      GREEN  0.00  0.00  0.25  0.50  0.75  1.00  1.00  0.85  0.75  0.50  0.35  0.00
+      BLUE   0.00  1.00  1.00  1.00  1.00  1.00  0.00  0.00  0.00  0.00  0.00  0.00
+    STRESS END
 
     LIGHT0 START
-      SPECULA0  0.75  0.75  0.95  1.00
-      DIFFUSE0  0.70  0.70  0.70  1.00
-      AMBIENT0  0.20  0.20  0.20  1.00
+      SPECULA0  0.35  0.35  0.40  1.00
+      DIFFUSE0  0.70  0.70  0.75  1.00
+      AMBIENT0  0.15  0.15  0.15  1.00
       POSITIO0  -100. +100. -100. 0.00
     LIGHT0 END
 
     LIGHT1 START
-      SPECULA1  0.75  0.75  0.95  1.00
-      DIFFUSE1  0.70  0.70  0.70  1.00
-      AMBIENT1  0.20  0.20  0.20  1.00
+      SPECULA1  0.25  0.25  0.30  1.00
+      DIFFUSE1  0.35  0.35  0.40  1.00
+      AMBIENT1  0.18  0.18  0.18  1.00
       POSITIO1  +100. +100. -100. 0.00
     LIGHT1 END
 
     LIGHT2 START
-      SPECULA2  0.95  0.45  0.00  1.00
+      SPECULA2  0.45  0.50  0.50  1.00
       POSITIO2  -50.  -50.  +100. 0.00
     LIGHT2 END
 
     MAT START
-      DIFF_MA   0.90  0.90  0.90  1.00
-      SPEC_MA   0.60  0.60  0.60  1.00
-      SHINING   50.
+      DIFF_MA   0.90  0.90  0.95  1.00
+      SPEC_MA   0.60  0.60  0.65  1.00
+      SHINING   110.
     MAT END
 
     HIDDENLINE START
@@ -115,53 +101,13 @@ Z88O START
 Z88O END
    
  
----------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Hints:
----------------------------------------------------------------------------
-By changing the values of this file you can modify the look of Z88's X-
-programs. At the moment these are the Z88-Commander Z88COM (Section
-Z88COM START ..... Z88COM END), the plot program Z88P (Section Z88P START
-... Z88P END) and the plot program Z88O (Section Z88O START... Z88O END). 
-Make sure to store a copy of the original header file Z88.FCD. Z88COM
-and Z88P do only run with a correct Z88.FCD file.
+-----------------------------------------------------------------------------------
+By changing the values of this file you can modify the look of Z88O.
 
-Z88's X-programs read the keywords in capital letters, for example
-
-Z88COM START                           : keyword Z88COM START      
-                                       : empty line, read as a comment
-  WINDOW START                         : keyword WINDOW START
-                                       : empty line, read as a comment
-    Your editor for use with Z88       : no function, read as a comment
-    Ihr Editor fuer Z88                : no function, read as a comment
-    CEDITOR      joe                   : keyword CEDITOR, "joe" is read
-                                       : empty line, read as a comment
-    Your Internet-Browser for Z88      : no function, read as a comment
-    Ihr Internet- Browser fuer Z88     : no function, read as a comment
-    CBROWSER     arena                 : keyword CBROWSER, "arena" is read
-                                       : empty line, read as a comment
-    Your Internet Browser's prefix     : no function, read as a comment
-    Prefix fuer Ihren Internet Browser : no function, read as a comment
-    CPREFIX                            : keyword CPREFIX, an empty string 
-........
-
-
-1) Internet Browsers
---------------------
-If you would like to use the Netscape Navigator, then enter
-           CBROWSER  /home/johndoe/netscape/netscape
-assuming Netscape is located in a directory /home/johndoe/netscape and
-           CPREFIX   file:///home/johndoe/z88/
-assuming the Z88 files are located in a directory /home/johndoe/z88
-
-The Arena Browser does not need a prefix. Therefore, an empty string
-following the keyword CPREFIX works fine.
-
-
-2) Special hints for OpenGL plot program Z88O
----------------------------------------------
-With the keyword FYCOR you may adjust your screen. Load a square or
-circular structure and make sure that the X dimensions meet the Y
-dimensions.
+Special hints for OpenGL plot program Z88O
+------------------------------------------
 
 Warning: Be carefull when changing values in the section OPENGL 
 START! Consult the OpenGL Programming Guide and the OpenGL Reference
@@ -193,49 +139,14 @@ may try some other values for LINEWI depending on your type of structure.
 Good values are 0.5 ~ 3.0 for Mesh over Stresses.
 
 
----------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Hinweise:
----------------------------------------------------------------------------
-Sie koennen das Aussehen der Z88 X-Programme durch Modifizieren der Werte
-dieser Datei veraendern. Dies betrifft momentan die X- Programme Z88COM
-(Sektion Z88COM START ..... Z88COM END), Z88P (Sektion Z88P START .....
-Z88P END) und Z88O (Sektion Z88O START ..... Z88O END). Verwahren Sie eine
-Originalkopie von Z88.FCD. Denn Z88COM und Z88P laufen nur mit einer
-korrekten Datei Z88.FCD.
+-----------------------------------------------------------------------------------
+Sie koennen das Aussehen von Z88O durch Modifizieren der Werte
+dieser Datei veraendern.
 
-Z88 X- Programme lesen die grossgeschriebenen Schluesselworte, z.B.
-
-Z88COM START                           :Schluesselwort Z88COM START      
-                                       :Leerzeile,als Kommentar gelesen
-  WINDOW START                         :Schluesselwort WINDOW START
-                                       :Leerzeile,als Kommentar gelesen
-    Your editor for use with Z88       :keine Funktion,als Kommentar gelesen
-    Ihr Editor fuer Z88                :keine Funktion,als Kommentar gelesen
-    CEDITOR      joe                   :Schluessel CEDITOR, "joe" einlesen
-                                       :Leerzeile,als Kommentar gelesen
-    Your Internet-Browser for Z88      :keine Funktion,als Kommentar gelesen
-    Ihr Internet- Browser fuer Z88     :keine Funktion,als Kommentar gelesen
-    CBROWSER     arena                 :Schluessel CBROWSER,"arena" einlesen
-                                       :Leerzeile,als Kommentar gelesen
-    Your Internet Browser's prefix     :keine Funktion,als Kommentar gelesen
-    Prefix fuer Ihren Internet Browser :keine Funktion,als Kommentar gelesen
-    CPREFIX                            :Schluessel CPREFIX, Leerstring lesen 
-........
-
-
-1) Internet Browser
--------------------
-Falls Sie den Netscape Navigator nutzen wollen, dann geben Sie ein
-           CBROWSER  /home/harry/netscape/netscape
-unter der Annahme, dass Netscape im Directory /home/harry/netscape steht und
-           CPREFIX   file:///home/harry/z88/
-unter der Annahme, dass die Z88-Dateien im Directory /home/harry/z88 stehen.
-
-2) Spezielle Hinweise fuer das OpenGL Plotprogramm Z88O
--------------------------------------------------------
-Mit dem Schluesselwort FYCOR koennen Sie Ihren Bildschirm anpassen.
-Am besten laden Sie eine quadratische oder kreisrunde Struktur und stellen
-durch Veraendern von FYCOR sicher, dass X- und Y- Abmessungen gleich sind.
+Spezielle Hinweise fuer das OpenGL Plotprogramm Z88O
+----------------------------------------------------
 
 Achtung: Seien Sie vorsichtig beim Veraendern von Werten in der Sektion
 OPENGL START! Ziehen Sie den OpenGL Programming Guide und das OpenGL
@@ -269,4 +180,3 @@ verdeckten Linien und in der zweiten Zeile die Werte "factor" und "units"
 fuer den Befehl glPolygonOffset. Sehr speziell. Sehen Sie im OpenGL
 Reference Manual nach. Was Sie problemlos variieren koennen ist LINEWI.
 Gute Werte fuer Netz ueber Spannungen sind 0.5 ~ 3.0.
-

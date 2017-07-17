@@ -1,9 +1,9 @@
-# 27.7.2011 Rieg
+# 14.12.2015 Rieg
 # Z88O 32-Bit Windows Makefile: 
 # goto Microsoft Visual Studio > Visual Studio Tools > Visual Studio Command Prompt
-# goto c:/z88v14os/make/make_win_64 and enter:     nmake -f z88o.nm
+# goto c:/z88v15os/make/make_win_64 and enter:     nmake -f z88o.nm
 
-AUROVER=c:/z88v14os
+AUROVER=c:/z88v15os
 
 INTDIR=.
 

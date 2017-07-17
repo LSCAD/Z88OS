@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 ****************************************************************************************/ 
 /****************************************************************************************
 * Z88COM fuer X11 und gtk+
-* 1.7.2011 Rieg
+* 25.11.2015 Rieg
 ****************************************************************************************/
 
 /****************************************************************************************
@@ -184,15 +184,15 @@ if(iret != 0)
   gtk_init(&argc,&argv);
 
   HWND=   gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title   (GTK_WINDOW(HWND),"Z88COM V14OS");
+  gtk_window_set_title   (GTK_WINDOW(HWND),"Z88COM V15OS");
   gtk_window_set_position(GTK_WINDOW(HWND),GTK_WIN_POS_CENTER);
   g_signal_connect       (GTK_OBJECT(HWND),"destroy",GTK_SIGNAL_FUNC(CB_EXIT),NULL);
 
 /*---------------------------------------------------------------------------------------
 *  Ueberschrift
 *--------------------------------------------------------------------------------------*/
-  if(LANG == 1) strcpy(cstring,"Der Z88-Commander Version 14OS");
-  if(LANG == 2) strcpy(cstring,"The Z88 Commander Version 14OS");
+  if(LANG == 1) strcpy(cstring,"Der Z88-Commander Version 15OS");
+  if(LANG == 2) strcpy(cstring,"The Z88 Commander Version 15OS");
   LB_UEBER= gtk_label_new(cstring); 
 
   HSEP1= gtk_hseparator_new();

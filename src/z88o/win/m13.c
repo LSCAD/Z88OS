@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@
 * malk88  -  Knotennummern malen
 * tet588  -  Wireframe 
 * fsrb88  -  Farbskala Randbedingungen
-* 31.7.2011 Rieg
+* 2.12.2015 Rieg
 ***********************************************************************/ 
 /***********************************************************************
 * Windows
@@ -363,11 +363,11 @@ for (i= 1; i <= ne; i++)
     if(i >= jevon && i <= jebis) iflag= 1;
 
 /*----------------------------------------------------------------------
-* Stab 4 u. 9, Balken 2 und 13, Welle 5
+* Stab 4 u. 9, Balken 2 und 13, Welle 5 & Balken 25
 *---------------------------------------------------------------------*/
   if(ityp[i] == 4 || ityp[i] == 9  || 
      ityp[i] == 2 || ityp[i] == 13 ||
-     ityp[i] == 5)
+     ityp[i] == 5 || ityp[i] == 25)
     {       
     if(iflag)
       {
@@ -385,7 +385,7 @@ for (i= 1; i <= ne; i++)
       glVertex3d(xv[koi[koffs[i]+1]],yv[koi[koffs[i]+1]],zv[koi[koffs[i]+1]]);
     glEnd();
 
-    }  /* Stab 4 u. 9, Balken 2 und 13, Welle 5 */
+    }  /* Stab 4 u. 9, Balken 2 und 13, Welle 5 & Balken 25 */
 
 
 /*----------------------------------------------------------------------

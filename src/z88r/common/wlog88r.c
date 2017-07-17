@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0 January 14, 2011
+* V15.0 November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 ***********************************************************************/ 
 /***********************************************************************
 * wlog88r gibt Log-Datei-Meldungen aus (1 FR_INT4, 1 int)
-* 3.8.2011 Rieg
+* 2.12.2015 Rieg
 ***********************************************************************/ 
 
 /***********************************************************************
@@ -79,8 +79,8 @@ extern FR_INT4 LANG;
 switch(iatx)
   {
   case LOG_BZ88R:
-    if(LANG == 1) fprintf(fwlo,"Start Z88R Version 14OS");
-    if(LANG == 2) fprintf(fwlo,"start Z88R version 14OS");
+    if(LANG == 1) fprintf(fwlo,"Start Z88R Version 15OS");
+    if(LANG == 2) fprintf(fwlo,"start Z88R version 15OS");
     fflush(fwlo);
   break;
 
@@ -650,8 +650,8 @@ switch(iatx)
   break;
 
   case LOG_BZ88D:
-    if(LANG == 1) fprintf(fwlo,"Start Z88DR Version 14OS");
-    if(LANG == 2) fprintf(fwlo,"start Z88DR version 14OS");
+    if(LANG == 1) fprintf(fwlo,"Start Z88DR Version 15OS");
+    if(LANG == 2) fprintf(fwlo,"start Z88DR version 15OS");
     fflush(fwlo);
   break;
 
@@ -686,8 +686,8 @@ switch(iatx)
   break;
 
   case LOG_BZ88E:
-    if(LANG == 1) fprintf(fwlo,"Start Z88ER Version 14OS");
-    if(LANG == 2) fprintf(fwlo,"start Z88ER version 14OS");
+    if(LANG == 1) fprintf(fwlo,"Start Z88ER Version 15OS");
+    if(LANG == 2) fprintf(fwlo,"start Z88ER version 15OS");
     fflush(fwlo);
   break;
 

@@ -1,22 +1,22 @@
 #############################################################################
 # Makefile for Z88COM MAC
 # for the GCC compiler
-# 14.8.2011 Rieg
+# 7.3.2017 Rieg
 #############################################################################
-DIRECA = $(HOME)/z88v14os
+DIRECA = $(HOME)/z88v15os
 DIRUNI = $(DIRECA)/src/z88com/unix
 DIRCOM = $(DIRECA)/src/z88com/common
 DIROUT = $(DIRECA)/bin/mac
 
 CC = gcc
-CFLAGS = -I$(DIRCOM) -arch x86_64 -DFR_UNIX -DFR_XDOUB -DFR_XLONG -DFR_LINUX -O2 \
+CFLAGS = -I$(DIRCOM) -DFR_UNIX -DFR_XDOUB -DFR_XLONG -DFR_LINUX -O2 \
          `pkg-config --cflags --libs gtk+-2.0`
 
 OBJECTSC = z88com.o cb88c.o ale88c.o lan88c.o wlog88c.o rcol88c.o
 
 z88com: $(OBJECTSC)
 	$(CC) $(CFLAGS) -o $@ $(OBJECTSC)
-	cp z88com $(DIROUT)
+	mv -f z88com $(DIROUT)
 
 z88com.o: $(DIRUNI)/z88com.c
 	$(CC) $(CFLAGS) -c $(DIRUNI)/z88com.c

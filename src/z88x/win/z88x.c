@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * Z88 should compile and run under any Windows release.
 *
@@ -35,7 +35,7 @@
 ***********************************************************************/ 
 /**********************************************************************
 *  Z88X
-*  10.1.2012 Rieg
+*  7.3.2017 Rieg
 ***********************************************************************/
 
 /***********************************************************************
@@ -482,16 +482,16 @@ switch (Message)
       case IDM_WER:
         if(LANG == 1) strcpy(cmess,
 "DXF-Konverter Z88X fuer Windows\n\
-Version 14OS\n\
+Version 15OS\n\
 Copyright Univ.-Prof.Dr.-Ing. Frank Rieg,\n\
-Universitaet Bayreuth, 2012\n\
+Universitaet Bayreuth, 2017\n\
 Alle Rechte vorbehalten\n");
 
           if(LANG == 2) strcpy(cmess,
 "DXF Converter Z88X for Windows\n\
-Version 14OS\n\
+Version 15OS\n\
 Copyright Prof.Dr. Frank Rieg,\n\
-University of Bayreuth, Germany 2012\n\
+University of Bayreuth, Germany 2017\n\
 All rights reserved\n");
 
 #ifdef FR_XQUAD

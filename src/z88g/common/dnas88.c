@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -348,12 +348,12 @@ ifrei= 3;
 
 if(LANG == 1)
   fprintf(fi1,
-  PD5B PD5B PD5B PD5B PD5B " Z88I1.TXT,via Z88G V14OS NASTRAN\n",
+  PD5B PD5B PD5B PD5B PD5B " Z88I1.TXT,via Z88G V15OS NASTRAN\n",
   ndim,nkp,ne,nfg,kflag);
 
 if(LANG == 2)
   fprintf(fi1,
-  PD5B PD5B PD5B PD5B PD5B " Z88I1.TXT, by Z88G V14OS NASTRAN\n",
+  PD5B PD5B PD5B PD5B PD5B " Z88I1.TXT, by Z88G V15OS NASTRAN\n",
   ndim,nkp,ne,nfg,kflag);
   
   
@@ -361,8 +361,8 @@ if(LANG == 2)
 /*----------------------------------------------------------------------
 * 1.Zeile Z88I2.TXT schreiben
 *---------------------------------------------------------------------*/
-if(LANG == 1) fprintf(fi2,PD5B "  Z88I2.TXT,via Z88G V14OS NASTRAN\n",nrb);
-if(LANG == 2) fprintf(fi2,PD5B "  Z88I2.TXT, by Z88G V14OS NASTRAN\n",nrb);
+if(LANG == 1) fprintf(fi2,PD5B "  Z88I2.TXT,via Z88G V15OS NASTRAN\n",nrb);
+if(LANG == 2) fprintf(fi2,PD5B "  Z88I2.TXT, by Z88G V15OS NASTRAN\n",nrb);
 
 
 /*----------------------------------------------------------------------
@@ -647,9 +647,9 @@ fclose(fi2);
 * Z88I5.TXT: erste Zeile
 *=====================================================================*/
 if(LANG == 1)
-  fprintf(fi5,PD5 "   Z88I5.TXT,via Z88G V14OS NASTRAN\n",n);
+  fprintf(fi5,PD5 "   Z88I5.TXT,via Z88G V15OS NASTRAN\n",n);
 if(LANG == 2)
-  fprintf(fi5,PD5 "   Z88I5.TXT, by Z88G V14OS NASTRAN\n",n);
+  fprintf(fi5,PD5 "   Z88I5.TXT, by Z88G V15OS NASTRAN\n",n);
 
 /*======================================================================
 * fuer jedes Dreieck mit Druck Flaeche und Normalenvektor bestimmen

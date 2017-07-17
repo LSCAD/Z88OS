@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0 November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 ****************************************************************************/ 
 /****************************************************************************
 *  Programm z88r.c - der lineare Universal-Solver - OpenSource-Version
-*  24.5.2012 Rieg
+*  7.3.2017 Rieg
 ****************************************************************************/
 /****************************************************************************
 * Windows
@@ -199,6 +199,10 @@ FR_DOUBLEAY rizz;
 FR_DOUBLEAY ezz;
 FR_DOUBLEAY rit;
 FR_DOUBLEAY wt;
+FR_DOUBLEAY xcp;
+FR_DOUBLEAY ycp;
+FR_DOUBLEAY zcp;
+FR_DOUBLEAY rkap;
 FR_DOUBLEAY pres;
 FR_DOUBLEAY tr1;
 FR_DOUBLEAY tr2;
@@ -231,6 +235,7 @@ FR_INT4AY ivon_int;
 FR_INT4AY ibis_int;
 FR_INT4AY ivon_mat;
 FR_INT4AY ibis_mat;
+FR_INT4AY ifbeti;
 FR_INT4AY intord;
 FR_INT4AY intos;
 FR_INT4AY nep;
@@ -270,16 +275,17 @@ FR_DOUBLE zc[9];
 
 FR_INT4 mcomp[21];                    /* 21 ist MAXPA */
 FR_INT4 mspan[21];                    /* 21 ist MAXPA */
-FR_INT4 jetyp[25];                    /* 24 Elementtypen */
+FR_INT4 jetyp[26];                    /* 25 Elementtypen */
 
 /*---------------------------------------------------------------------------
 * Variable
 *--------------------------------------------------------------------------*/
 FR_DOUBLE emode,rnuee,qparae,riyye,eyye,rizze,ezze,rite,wte,eps,rp;
+FR_DOUBLE xkp,ykp,zkp,rkape;
 FR_DOUBLE pree,tr1e,tr2e,rpomega,rpalpha;
 
 FR_INT4   intore,nel,ktyp,maxit,kfoun,jelem,ngau,nrb,mmat,mint,melp;
-FR_INT4   LANG,IDYNMEM,jpri,ifnili,icore,idumpmax,ihflag;
+FR_INT4   LANG,IDYNMEM,jpri,ifnili,icore,idumpmax,ihflag,ifbetie;
 FR_INT4   ndim,nkp,ne,nfg,nfgp1,nkoi,kflag,ibflag,ipflag,npr,iqflag;
 FR_INT4   mxknot,mxfrei,ninto,kc,isflag,mxfe,kdflag,kch1,kch2,kch3;
 
@@ -602,16 +608,16 @@ switch (Message)
       case IDM_WER:
         if(LANG == 1) strcpy(cmess,
 "Der lineare Z88-Solver Z88R fuer Windows\n\
-Version 14OS\n\
+Version 15OS\n\
 Copyright Univ.-Prof.Dr.-Ing. Frank Rieg,\n\
-Universitaet Bayreuth, 2012\n\
+Universitaet Bayreuth, 2017\n\
 Alle Rechte vorbehalten\n");
 
           if(LANG == 2) strcpy(cmess,
 "The linear Z88 Solver Z88R for Windows\n\
-Version 14OS\n\
+Version 15OS\n\
 Copyright Prof.Dr. Frank Rieg,\n\
-University of Bayreuth, Germany 2012\n\
+University of Bayreuth, Germany 2017\n\
 All rights reserved\n");
 
 #ifdef FR_XQUAD
@@ -1209,7 +1215,7 @@ wlog88r(0,LOG_WRIO2);
 
 if(LANG == 1)
   {
-  fprintf(fo2,"Ausgabedatei Z88O2.TXT: Verschiebungen, erzeugt mit Z88R V14OS\n");
+  fprintf(fo2,"Ausgabedatei Z88O2.TXT: Verschiebungen, erzeugt mit Z88R V15OS\n");
   fprintf(fo2,"                        **************\n");
   fprintf(fo2,"Lastfall: 1");
   fprintf(fo2,
@@ -1219,7 +1225,7 @@ if(LANG == 1)
 
 if(LANG == 2)
   {
-  fprintf(fo2,"output file Z88O2.TXT: displacements, computed by Z88R V14OS\n");
+  fprintf(fo2,"output file Z88O2.TXT: displacements, computed by Z88R V15OS\n");
   fprintf(fo2,"                       *************\n");
   fprintf(fo2,"Loadcase: 1");
   fprintf(fo2,
@@ -1293,7 +1299,7 @@ FR_INT4 k,i,janz;
 * ggf. Ausschreiben von Z88O8.TXT fuer alle Nicht-Balken
 *=====================================================================*/
 if((isflag == 1 || isflag == 2 || isflag == 3) && 
-   !(ityp[1] == 2 || ityp[1] == 5 || ityp[1] == 13))
+   !(ityp[1] == 2 || ityp[1] == 5 || ityp[1] == 13 || ityp[1] == 25))
   {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

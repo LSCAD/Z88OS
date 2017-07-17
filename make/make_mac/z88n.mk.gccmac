@@ -1,15 +1,15 @@
 #############################################################################
 # Makefile for Z88N MAC
 # for the GCC compiler
-# 14.8.2011 Rieg
+# 7.3.2017 Rieg
 #############################################################################
-DIRECA = $(HOME)/z88v14os
+DIRECA = $(HOME)/z88v15os
 DIRUNI = $(DIRECA)/src/z88n/unix
 DIRCOM = $(DIRECA)/src/z88n/common
 DIROUT = $(DIRECA)/bin/mac
 
 CC = gcc
-CFLAGS = -I$(DIRCOM) -arch x86_64 -DFR_UNIX -DFR_XDOUB -DFR_XLONG -DFR_LINUX -O2 
+CFLAGS = -I$(DIRCOM) -DFR_UNIX -DFR_XDOUB -DFR_XLONG -DFR_LINUX -O2 
 
 LDLIBSOX = -lm -lc 
 
@@ -19,7 +19,7 @@ OBJECTSN = z88n.o ale88n.o dyn88n.o clr88.o join88.o subn88.o stop88n.o\
 
 z88n: $(OBJECTSN)
 	$(CC) $(CFLAGS) -o $@ $(OBJECTSN) $(LDLIBSOX)
-	cp z88n $(DIROUT)
+	mv -f z88n $(DIROUT)
 
 z88n.o: $(DIRUNI)/z88n.c
 	$(CC) $(CFLAGS) -c $(DIRUNI)/z88n.c

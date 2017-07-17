@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 ***********************************************************************/ 
 /***********************************************************************
 * Z88H
-* 3.8.2011 Rieg
+* 14.12.2015 Rieg
 * Cuthill-McKee Algorithmus fuer Z88I1.TXT, Z88I2.TXT und Z88I5.TXT.
 ***********************************************************************/
 
@@ -292,9 +292,10 @@ if (ityp == 1 || ityp == 7 || ityp == 8 || ityp == 20 || ityp == 23)
   }
 
 /*----------------------------------------------------------------------
-* Schreiben der Balken Nr.2, 13, Welle Nr.5, Stab Nr.4, Nr.9
+* Schreiben der Balken Nr.2, 13, 25, Welle Nr.5, Stab Nr.4, Nr.9
 *---------------------------------------------------------------------*/	
-if (ityp == 2 || ityp == 4 || ityp == 5 || ityp == 9 || ityp == 13)
+if (ityp == 2 || ityp == 4  || ityp == 5 
+ || ityp == 9 || ityp == 13 || ityp == 25)
   {
   ianz= 2;
   fprintf(fcut,PD "\n",ianz);
@@ -1056,7 +1057,7 @@ for(i = 1; i <= ne; i++)
     iperm[koi[5]],iperm[koi[6]],iperm[koi[7]],iperm[koi[8]]);
     }
 
-  if(ityp == 2 || ityp == 4 || ityp == 5 || ityp == 9 || ityp == 13)
+  if(ityp == 2 || ityp == 4 || ityp == 5 || ityp == 9 || ityp == 13 || ityp == 25)
     {
     sscanf(cstring,PDB PD,&koi[1],&koi[2]);
 

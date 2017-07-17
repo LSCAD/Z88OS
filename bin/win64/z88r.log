@@ -1,0 +1,111 @@
+
+Solver SICCG, ICFLAG = 1
+opening file Z88.DYN
+MAXGS   = 6000000
+MAXKOI  = 1200000
+MAXK    = 60000
+MAXE    = 300000
+MAXNFG  = 200000
+MAXMAT  = 32
+MAXPEL  = 32
+MAXINT  = 32
+MAXESM = 3600
+MAXPR = 10000
+MAXIEZ  = 10000
+file Z88.DYN read ..seems to be o.k.
+allocating dynamic memory:
+memory id 1 allocated
+memory id 2 allocated
+memory id 10 allocated
+memory id 11 allocated
+memory id 16 allocated
+memory id 20 allocated
+memory id 21 allocated
+memory id 22 allocated
+memory id 23 allocated
+memory id 24 allocated
+memory id 30 allocated
+memory id 31 allocated
+memory id 32 allocated
+memory id 40 allocated
+memory id 41 allocated
+memory id 42 allocated
+memory id 43 allocated
+memory id 50 allocated
+memory id 60 allocated
+memory id 61 allocated
+memory id 62 allocated
+memory id 63 allocated
+memory id 64 allocated
+memory id 65 allocated
+memory id 70 allocated
+memory id 71 allocated
+memory id 72 allocated
+memory id 73 allocated
+memory id 80 allocated
+memory id 81 allocated
+memory id 82 allocated
+memory id 83 allocated
+memory id 84 allocated
+memory id 85 allocated
+memory id 86 allocated
+memory id 87 allocated
+memory id 88 allocated
+memory id 89 allocated
+memory id 90 allocated
+memory id 91 allocated
+memory id 92 allocated
+memory id 93 allocated
+memory id 100 allocated
+memory id 101 allocated
+memory id 102 allocated
+memory id 103 allocated
+memory id 104 allocated
+memory id 105 allocated
+memory id 110 allocated
+memory id 111 allocated
+memory id 112 allocated
+memory id 113 allocated
+memory id 114 allocated
+memory id 115 allocated
+memory id 120 allocated
+memory id 121 allocated
+memory id 122 allocated
+memory id 123 allocated
+memory id 124 allocated
+memory id 125 allocated
+memory id 130 allocated
+memory id 131 allocated
+memory id 132 allocated
+memory id 133 allocated
+dynamic memory totally allocated: 191 MB
+leaving storage function DYN88R
+start reading function RI188I
+reading Z88I1.TXT
+reading coordinates
+reading element information
+Z88I1.TXT read, leaving reading function RI188R
+start Z88AI
+leaving Z88AI
+start writing function WRIA88R
+writing Z88O0.TXT
+vector GS needs 6855 Elemente
+vector KOI needs 540 Elemente
+leaving writing function WRIA88R
+start Z88BR
+leaving Z88BR
+start Z88CR
+reading Z88I2.TXT
+incorporating constraints pass 1
+reading Z88I2.TXT
+incorporating constraints pass 2
+writing Z88O1.TXT
+start SCAL88
+start SICCG88
+ 52 iterations done
+leaving Z88CR
+computing stresses
+Z88DR done
+computing nodal forces
+Z88ER done
+writing Z88O2.TXT

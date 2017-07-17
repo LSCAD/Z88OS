@@ -1,9 +1,10 @@
 #############################################################################
 # Makefile for Z88COM
 # for the GCC compiler
-# 1.8.2011 Rieg
+# Warning: Mind the order of arguments:$(CC) $(OBJECTSC) $(CFLAGS) -o $@
+# 9.3.2017 Rieg
 #############################################################################
-DIRECA = $(HOME)/z88v14os
+DIRECA = $(HOME)/z88v15os
 DIRUNI = $(DIRECA)/src/z88com/unix
 DIRCOM = $(DIRECA)/src/z88com/common
 DIROUT = $(DIRECA)/bin/unix64
@@ -15,8 +16,8 @@ CFLAGS = -I$(DIRCOM) -DFR_UNIX -DFR_XDOUB -DFR_XLONG -DFR_LINUX -O2 \
 OBJECTSC = z88com.o cb88c.o ale88c.o lan88c.o wlog88c.o rcol88c.o
 
 z88com: $(OBJECTSC)
-	$(CC) $(CFLAGS) -o $@ $(OBJECTSC)
-	cp z88com $(DIROUT)
+	$(CC) $(OBJECTSC) $(CFLAGS) -o $@
+	mv -f z88com $(DIROUT)
 
 z88com.o: $(DIRUNI)/z88com.c
 	$(CC) $(CFLAGS) -c $(DIRUNI)/z88com.c

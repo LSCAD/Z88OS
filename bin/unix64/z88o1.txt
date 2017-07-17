@@ -1,0 +1,21 @@
+Ausgabedatei Z88O1.TXT  Randbedingungen, erzeugt mit Z88R V15OS
+                        ***************
+
+Anzahl gegebene Randbedingungen: 16
+
+Knoten#    11   FG 2   Steuerflag 1   Last          -7.1430000E+03
+Knoten#   143   FG 2   Steuerflag 1   Last          +7.1430000E+03
+Knoten#   216   FG 1   Steuerflag 2   Verschiebung  +0.0000000E+00
+Knoten#   216   FG 2   Steuerflag 2   Verschiebung  +0.0000000E+00
+Knoten#   220   FG 1   Steuerflag 2   Verschiebung  +0.0000000E+00
+Knoten#   220   FG 2   Steuerflag 2   Verschiebung  +0.0000000E+00
+Knoten#   227   FG 1   Steuerflag 2   Verschiebung  +0.0000000E+00
+Knoten#   227   FG 2   Steuerflag 2   Verschiebung  +0.0000000E+00
+Knoten#   231   FG 1   Steuerflag 2   Verschiebung  +0.0000000E+00
+Knoten#   231   FG 2   Steuerflag 2   Verschiebung  +0.0000000E+00
+Knoten#   238   FG 1   Steuerflag 2   Verschiebung  +0.0000000E+00
+Knoten#   238   FG 2   Steuerflag 2   Verschiebung  +0.0000000E+00
+Knoten#   242   FG 1   Steuerflag 2   Verschiebung  +0.0000000E+00
+Knoten#   242   FG 2   Steuerflag 2   Verschiebung  +0.0000000E+00
+Knoten#   249   FG 1   Steuerflag 2   Verschiebung  +0.0000000E+00
+Knoten#   249   FG 2   Steuerflag 2   Verschiebung  +0.0000000E+00

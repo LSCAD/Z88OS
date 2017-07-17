@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 ****************************************************************************************/ 
 /****************************************************************************************
 * CB88C fuer X11 und gtk+
-* 3.8.2011 Rieg
+* 7.3.2017 Rieg
 ****************************************************************************************/
 
 /****************************************************************************************
@@ -73,10 +73,10 @@ extern int     *pp;
 char cmess[512],cbytes[128];
 
 if(LANG == 1) strcpy(cmess,
-"Der Z88-Commander Version 14OS\nProf.Dr.-Ing. Frank Rieg\nUniversitaet Bayreuth 2011\n\
+"Der Z88-Commander Version 15OS\nProf.Dr.-Ing. Frank Rieg\nUniversitaet Bayreuth 2017\n\
 frank.rieg@uni-bayreuth.de\nwww.z88.de\n");
 if(LANG == 2) strcpy(cmess,
-"The Z88-Commander Version 14OS\nProf. Frank Rieg\nUniversity of Bayreuth,Germany,2011\n\
+"The Z88-Commander Version 15OS\nProf. Frank Rieg\nUniversity of Bayreuth,Germany,2017\n\
 frank.rieg@uni-bayreuth.de\nwww.z88.de\n");
 
 #ifdef FR_XQUAD
@@ -304,7 +304,9 @@ iret= system(command);
 if(iret != 0) ale88c(AL_NOEDMAT);
 }
 
-/*---------------------------------------------------------------------------------------* CB_MATM*--------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------
+* CB_MATM
+*--------------------------------------------------------------------------------------*/
 void CB_MATM(GtkWidget *button,gpointer data)
 {
 extern int       iret;

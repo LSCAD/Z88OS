@@ -5,7 +5,7 @@ Please see hints at end of file
 In dieser Datei koennen Sie Fonts, Farben und Abmessungen fuer Z88 V14OS waehlen.
 Bitte Hinweise am Dateiende beachten
 
-24.4.2012 Rieg
+9.3.2017 Rieg
 
 ********************************************************************************
 Z88COM START
@@ -24,7 +24,7 @@ Z88COM START
 
     Your HTML-or Internet Browser's prefix
     Prefix fuer Ihren HTML- oder Internet Browser     
-    CPREFIX      $HOME/z88v14os/docu/
+    CPREFIX      $HOME/z88v15os/docu/
 
   WINDOW END
 
@@ -39,8 +39,8 @@ Z88O START
 -----------------------------------------------------------------------------------
     IW_DRAWAR     800
     IH_DRAWAR     500
-    PANGO_FONT    courier
-    PANGO_SIZE    14
+    SCALE_FONT    0.55
+    THICK_FONT    1
     DEPTH_SIZE	  1
   WINDOW END
 

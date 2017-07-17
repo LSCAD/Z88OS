@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 15, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 ***********************************************************************/ 
 /***********************************************************************
 * COSM88
-* 21.7.2011 Rieg
+* 18.11.2015 Rieg
 * wandelt COSMOS-Files aus Pro/MESH (PTC,Pro/ENGINEER) 
 ***********************************************************************/
 
@@ -118,7 +118,7 @@ extern FILE        *fwlo,*fpro,*fi1,*fi2,*fi5;
 
 extern FR_INT4     ICFLAG,LANG;
 
-extern char        ccos[];
+extern char        ccco[];
 extern char        ci1[];
 extern char        ci2[];
 
@@ -148,7 +148,7 @@ char               *cteils;
 /*----------------------------------------------------------------------
 * COSMOS- File oeffnen
 *---------------------------------------------------------------------*/	
-if((fpro= fopen(ccos,"r"))== NULL)
+if((fpro= fopen(ccco,"r"))== NULL)
   {
   wlog88g(0,LOG_NOCOS);
   fclose(fwlo);
@@ -260,18 +260,18 @@ if(ICFLAG == 2 || ICFLAG == 4)
   }
 
 if(LANG == 1)
-  fprintf(fi1,PD5B PD5B PD5B PD5B PD5B "  Z88I1.TXT,via Z88G V14OS COSMOS\n",
+  fprintf(fi1,PD5B PD5B PD5B PD5B PD5B "  Z88I1.TXT,via Z88G V15OS COSMOS\n",
   ndim,nkp,ne,nfg,kflag);
 
 if(LANG == 2)
-  fprintf(fi1,PD5B PD5B PD5B PD5B PD5B "  Z88I1.TXT, by Z88G V14OS COSMOS\n",
+  fprintf(fi1,PD5B PD5B PD5B PD5B PD5B "  Z88I1.TXT, by Z88G V15OS COSMOS\n",
   ndim,nkp,ne,nfg,kflag);
 
 /*----------------------------------------------------------------------
 * 1.Zeile Z88I2.TXT schreiben
 *---------------------------------------------------------------------*/
-if(LANG == 1) fprintf(fi2,PD5B "  Z88I2.TXT,via Z88G V14OS COSMOS\n",nrb);
-if(LANG == 2) fprintf(fi2,PD5B "  Z88I2.TXT, by Z88G V14OS COSMOS\n",nrb);
+if(LANG == 1) fprintf(fi2,PD5B "  Z88I2.TXT,via Z88G V15OS COSMOS\n",nrb);
+if(LANG == 2) fprintf(fi2,PD5B "  Z88I2.TXT, by Z88G V15OS COSMOS\n",nrb);
 
 /*----------------------------------------------------------------------
 * 2.Durchlauf:
@@ -571,9 +571,9 @@ if(ICFLAG == 4)
 * Z88I5.TXT: erste Zeile
 *=====================================================================*/
 if(LANG == 1)
-  fprintf(fi5,PD5B "  Z88I5.TXT,via Z88G V14OS NASTRAN\n",nfl);
+  fprintf(fi5,PD5B "  Z88I5.TXT,via Z88G V15OS NASTRAN\n",nfl);
 if(LANG == 2)
-  fprintf(fi5,PD5B "  Z88I5.TXT, by Z88G V14OS NASTRAN\n",nfl);
+  fprintf(fi5,PD5B "  Z88I5.TXT, by Z88G V15OS NASTRAN\n",nfl);
 
 /*----------------------------------------------------------------------
 * ggf. 3.Durchlauf fuer Platten, wenn Flaechenlasten vorhanden

@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 ***********************************************************************/ 
 /***********************************************************************
 * sub88x.c : hilfswerte ausfiltern
-* 29.7.2011 Rieg
+* 14.12.2015 Rieg
 ***********************************************************************/
 
 /***********************************************************************
@@ -76,7 +76,7 @@ if     (ityp[i] == 1  || ityp[i] == 7  ||
 
 else if(ityp[i] == 2  || ityp[i] == 4 ||
         ityp[i] == 5  || ityp[i] == 9 ||
-        ityp[i] ==13)                      ianz= 2;
+        ityp[i] ==13  || ityp[i] == 25)    ianz= 2;
 
 else if(ityp[i] == 3  || ityp[i] == 14 ||
         ityp[i] == 15 || ityp[i] == 18 ||
@@ -106,7 +106,8 @@ if     (ityp[i] == 1  || ityp[i] == 4  ||
         ityp[i] == 22)                      ifrej= 3;
 
 else if(ityp[i] == 2  || ityp[i] == 5  ||
-        ityp[i] == 23 || ityp[i] == 24)     ifrej= 6; 
+        ityp[i] == 23 || ityp[i] == 24 ||
+        ityp[i] == 25)                      ifrej= 6; 
 
 else                                        ifrej= 2;
 

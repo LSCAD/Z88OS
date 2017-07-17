@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0 November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@
 * elp88r - liest Z88ELP.TXT
 * mat88r - liest Z88MAT.TXT + CSV-Dateien
 *
-* 1.8.2011 Rieg 
+* 2.12.2015 Rieg 
 ***********************************************************************/
 
 /***********************************************************************
@@ -278,9 +278,14 @@ extern FR_DOUBLEAY rizz;
 extern FR_DOUBLEAY ezz;
 extern FR_DOUBLEAY rit;
 extern FR_DOUBLEAY wt;
+extern FR_DOUBLEAY xcp;
+extern FR_DOUBLEAY ycp;
+extern FR_DOUBLEAY zcp;
+extern FR_DOUBLEAY rkap;
 
 extern FR_INT4AY  ivon_elp;
 extern FR_INT4AY  ibis_elp;
+extern FR_INT4AY  ifbeti;
 
 extern FR_INT4    melp;
 
@@ -313,9 +318,11 @@ wrim88r(melp,TX_REAELP);
 for(i = 1; i <= melp; i++)
   {
   fgets(cline,256,felp);
-  sscanf(cline,PDB PDB PGB PGB PGB PGB PGB PGB PGE,
-    &ivon_elp[i],&ibis_elp[i],&qpara[i],&riyy[i],
-    &eyy[i],&rizz[i],&ezz[i],&rit[i],&wt[i]);
+  sscanf(cline,PDB PDB PGB PGB PGB PGB PGB PGB PGB PDB PGB PGB PGB PGE,
+    &ivon_elp[i],&ibis_elp[i],
+    &qpara[i],&riyy[i],&eyy[i],&rizz[i],&ezz[i],&rit[i],&wt[i],
+    &ifbeti[i],
+    &xcp[i],&ycp[i],&zcp[i],&rkap[i]);
   }
 
 /*----------------------------------------------------------------------

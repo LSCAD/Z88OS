@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  January 14, 2011
+* V15.0  November 15, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -37,7 +37,8 @@
 * malk88
 * tet588
 * fsrb88
-* 31.7.2011 Rieg
+* mit dem Z88-Vektorfont von F.Rieg
+* 7.3.2017 Rieg
 ***********************************************************************/ 
 /***********************************************************************
 * UNIX
@@ -78,6 +79,12 @@
 #endif
 
 /***********************************************************************
+* Functions
+***********************************************************************/
+void fr_gltext3d(
+  double xt,double yt,double zt,char *ctext,double scale, double dicke);
+
+/***********************************************************************
 * fsca88 zeichnet die Farbskala fuer die Spannungen und Verschiebungen
 ***********************************************************************/
 int fsca88(void)
@@ -89,6 +96,7 @@ extern GLfloat     gruen[];
 extern GLfloat     blau[];
 
 extern FR_DOUBLE   fspa[];
+extern FR_DOUBLE   scale,dicke;
 
 extern FR_INT4     LANG,igpanz,isflag;
 
@@ -101,89 +109,77 @@ char               cstring[80];
 /*----------------------------------------------------------------------
 * fsca88 zeichnet die Farbskala fuer die Spannungen und Verschiebungen
 *---------------------------------------------------------------------*/
-yt= yp-3;
+yt= yp-30;
 
 glColor3f(rot[1],gruen[1],blau[1]);
 glRectd(xm+4,yt,xm+12,yt-8);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-4,0.00);
 sprintf(cstring,PG " ~ " PG,fspa[1],fspa[2]);
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-6,0.0,cstring,scale,dicke);
 
 glColor3f(rot[2],gruen[2],blau[2]);
 glRectd(xm+4,yt-8,xm+12,yt-16);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-12,0.00);
 sprintf(cstring,PG " ~ " PG,fspa[2],fspa[3]);
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-14,0.0,cstring,scale,dicke);
 
 glColor3f(rot[3],gruen[3],blau[3]);
 glRectd(xm+4,yt-16,xm+12,yt-24);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-20,0.00);
 sprintf(cstring,PG " ~ " PG,fspa[3],fspa[4]);
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-22,0.0,cstring,scale,dicke);
 
 glColor3f(rot[4],gruen[4],blau[4]);
 glRectd(xm+4,yt-24,xm+12,yt-32);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-28,0.00);
 sprintf(cstring,PG " ~ " PG,fspa[4],fspa[5]);
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-30,0.0,cstring,scale,dicke);
 
 glColor3f(rot[5],gruen[5],blau[5]);
 glRectd(xm+4,yt-32,xm+12,yt-40);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-36,0.00);
 sprintf(cstring,PG " ~ " PG,fspa[5],fspa[6]);
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-38,0.0,cstring,scale,dicke);
 
 glColor3f(rot[6],gruen[6],blau[6]);
 glRectd(xm+4,yt-40,xm+12,yt-48);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-44,0.00);
 sprintf(cstring,PG " ~ " PG,fspa[6],fspa[7]);
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-46,0.0,cstring,scale,dicke);
 
 glColor3f(rot[7],gruen[7],blau[7]);
 glRectd(xm+4,yt-48,xm+12,yt-56);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-52.0,0.00);
 sprintf(cstring,PG " ~ " PG,fspa[7],fspa[8]);
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-54,0.0,cstring,scale,dicke);
 
 glColor3f(rot[8],gruen[8],blau[8]);
 glRectd(xm+4,yt-56,xm+12,yt-64);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-60,0.00);
 sprintf(cstring,PG " ~ " PG,fspa[8],fspa[9]);
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-62,0.0,cstring,scale,dicke);
 
 glColor3f(rot[9],gruen[9],blau[9]);
 glRectd(xm+4,yt-64,xm+12,yt-72);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-68,0.00);
 sprintf(cstring,PG " ~ " PG,fspa[9],fspa[10]);
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-70,0.0,cstring,scale,dicke);
 
 glColor3f(rot[10],gruen[10],blau[10]);
 glRectd(xm+4,yt-72,xm+12,yt-80);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-76,0.00);
 sprintf(cstring,PG " ~ " PG,fspa[10],fspa[11]);
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-78,0.0,cstring,scale,dicke);
 
 glColor3f(rot[11],gruen[11],blau[11]);
 glRectd(xm+4,yt-80,xm+12,yt-88);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-84,0.00);
 sprintf(cstring,PG " ~ " PG,fspa[11],fspa[12]);
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-86,0.0,cstring,scale,dicke);
 
 if(if3d == IDM_SHOWSPANN || if3d == IDM_SHOWGAUSS || if3d == IDM_SHOWGAUPU)
   {
   glColor3f(1.0f,0.5f,0.0f);
-  glRasterPos3d(xm+4,yt-92,0.00);
   if(LANG == 1 && isflag == 0)strcpy(cstring,"keine V-Spannungen");
   if(LANG == 2 && isflag == 0)strcpy(cstring,"no reduced Stresses");
   if(LANG == 1 && isflag == 1)strcpy(cstring,"V-Spannungen (GEH)");
@@ -192,60 +188,52 @@ if(if3d == IDM_SHOWSPANN || if3d == IDM_SHOWGAUSS || if3d == IDM_SHOWGAUPU)
   if(LANG == 2 && isflag == 2)strcpy(cstring,"principal Stresses");
   if(LANG == 1 && isflag == 3)strcpy(cstring,"V-Spannungen (SH)");
   if(LANG == 2 && isflag == 3)strcpy(cstring,"Tresca Stresses");
-  glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);	
+  fr_gltext3d(xm+4,yt-96,0.0,cstring,scale,dicke);	
   }
 
 if(if3d == IDM_SHOWSPANN && isflag > 0)
   {
-
-  glRasterPos3d(xm+4,yt-98,0.00);
   if(LANG == 1)strcpy(cstring,"in den Eckknoten");
   if(LANG == 2)strcpy(cstring,"in corner nodes");
-  glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+  fr_gltext3d(xm+4,yt-102,0.0,cstring,scale,dicke);
   }
 
 if(if3d == IDM_SHOWGAUSS && isflag > 0)
   {
-  glRasterPos3d(xm+4,yt-98,0.00);
   if(LANG == 1)strcpy(cstring,"pro Element gemittelt");
   if(LANG == 2)strcpy(cstring,"mean value per element");
-  glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);	
+  fr_gltext3d(xm+4,yt-102,0.0,cstring,scale,dicke);	
   }
 
 if(if3d == IDM_SHOWGAUPU && isflag > 0)
   {
-  glRasterPos3d(xm+4,yt-98,0.00);
   if(LANG == 1)sprintf(cstring,"in " PD " Gausspunkten",igpanz);
   if(LANG == 2)sprintf(cstring,"in " PD " Gauss points",igpanz);
-  glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);			
+  fr_gltext3d(xm+4,yt-102,0.0,cstring,scale,dicke);			
   }
-
 
 if(if3d == IDM_SHOWVX)
   {
   glColor3f(1.0f,0.5f,0.0f);
-  glRasterPos3d(xm+4,yt-92,0.00);
   if(LANG == 1)strcpy(cstring,"X-Verschiebungen");
   if(LANG == 2)strcpy(cstring,"X Displacements");
-  glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);	
+  fr_gltext3d(xm+4,yt-96,0.0,cstring,scale,dicke);	
   }
 
 if(if3d == IDM_SHOWVY)
   {
   glColor3f(1.0f,0.5f,0.0f);
-  glRasterPos3d(xm+4,yt-92,0.00);
   if(LANG == 1)strcpy(cstring,"Y-Verschiebungen");
   if(LANG == 2)strcpy(cstring,"Y Displacements");
-  glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+  fr_gltext3d(xm+4,yt-96,0.0,cstring,scale,dicke);	
   }
 
 if(if3d == IDM_SHOWVZ)
   {
   glColor3f(1.0f,0.5f,0.0f);
-  glRasterPos3d(xm+4,yt-92,0.00);
   if(LANG == 1)strcpy(cstring,"Z-Verschiebungen");
   if(LANG == 2)strcpy(cstring,"Z Displacements");
-  glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);	
+  fr_gltext3d(xm+4,yt-96,0.0,cstring,scale,dicke);		
   }
 
 return 0;
@@ -259,6 +247,8 @@ int malk88(void)
 extern FR_DOUBLEAY xv;
 extern FR_DOUBLEAY yv;
 extern FR_DOUBLEAY zv;
+
+extern FR_DOUBLE   scale,dicke;
 
 extern FR_INT4     jkvon,jkbis,nkp,LANG;
 
@@ -287,9 +277,8 @@ if(jkbis < jkvon)
 
 for(i= jkvon; i <= jkbis;i++)
   { 
-  glRasterPos3d(xv[i],yv[i],zv[i]);
   sprintf(cstring,PD,i);
-  glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+  fr_gltext3d(xv[i],yv[i],zv[i],cstring,scale,dicke);
   }	
 
 return 0;
@@ -303,6 +292,8 @@ int tet588(void)
 extern FR_DOUBLEAY xv;
 extern FR_DOUBLEAY yv;
 extern FR_DOUBLEAY zv;
+
+extern FR_DOUBLE   scale,dicke;
 
 extern FR_INT4AY   ityp;
 extern FR_INT4AY   koi;
@@ -346,11 +337,11 @@ for (i= 1; i <= ne; i++)
     if(i >= jevon && i <= jebis) iflag= 1;
 
 /*----------------------------------------------------------------------
-* Stab 4 u. 9, Balken 2 und 13, Welle 5
+* Stab 4 u. 9, Balken 2 und 13, Welle 5, Balken 25
 *---------------------------------------------------------------------*/
   if(ityp[i] == 4 || ityp[i] == 9  || 
      ityp[i] == 2 || ityp[i] == 13 ||
-     ityp[i] == 5)
+     ityp[i] == 5 || ityp[i] == 25)
     {       
     if(iflag)
       {
@@ -358,9 +349,8 @@ for (i= 1; i <= ne; i++)
       xla= (xv[koi[koffs[i]]]+xv[koi[koffs[i]+1]])*0.5;
       yla= (yv[koi[koffs[i]]]+yv[koi[koffs[i]+1]])*0.5;
       zla= (zv[koi[koffs[i]]]+zv[koi[koffs[i]+1]])*0.5;
-      glRasterPos3d(xla,yla,zla);
       sprintf(cstring,PD,i);
-      glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+      fr_gltext3d(xla,yla,zla,cstring,scale,dicke);
       }
 
     glBegin(GL_LINES);
@@ -368,7 +358,7 @@ for (i= 1; i <= ne; i++)
       glVertex3d(xv[koi[koffs[i]+1]],yv[koi[koffs[i]+1]],zv[koi[koffs[i]+1]]);
     glEnd();
 
-    }  /* Stab 4 u. 9, Balken 2 und 13, Welle 5 */
+    }  /* Stab 4 u. 9, Balken 2 und 13, Welle 5, Balken 25 */
 
 
 /*----------------------------------------------------------------------
@@ -382,9 +372,8 @@ for (i= 1; i <= ne; i++)
       xla= (xv[koi[koffs[i]]]+xv[koi[koffs[i]+2]])*0.5;
       yla= (yv[koi[koffs[i]]]+yv[koi[koffs[i]+2]])*0.5;
       zla= (zv[koi[koffs[i]]]+zv[koi[koffs[i]+2]])*0.5;
-      glRasterPos3d(xla,yla,zla);
       sprintf(cstring,PD,i);
-      glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+      fr_gltext3d(xla,yla,zla,cstring,scale,dicke);
       }
 
     glBegin(GL_LINE_STRIP);
@@ -412,9 +401,8 @@ for (i= 1; i <= ne; i++)
       xla= (xv[koi[koffs[i]]]+xv[koi[koffs[i]+2]])*0.5;
       yla= (yv[koi[koffs[i]]]+yv[koi[koffs[i]+2]])*0.5;
       zla= (zv[koi[koffs[i]]]+zv[koi[koffs[i]+2]])*0.5;
-      glRasterPos3d(xla,yla,zla);
       sprintf(cstring,PD,i);
-      glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+      fr_gltext3d(xla,yla,zla,cstring,scale,dicke);
       }
 
     glBegin(GL_LINE_STRIP);
@@ -446,9 +434,8 @@ for (i= 1; i <= ne; i++)
       xla= (xv[koi[koffs[i]]]+xv[koi[koffs[i]+10]])*0.5;
       yla= (yv[koi[koffs[i]]]+yv[koi[koffs[i]+10]])*0.5;
       zla= (zv[koi[koffs[i]]]+zv[koi[koffs[i]+10]])*0.5;
-      glRasterPos3d(xla,yla,zla);
       sprintf(cstring,PD,i);
-      glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+      fr_gltext3d(xla,yla,zla,cstring,scale,dicke);
       }
 
     glBegin(GL_LINE_STRIP);
@@ -500,9 +487,8 @@ for (i= 1; i <= ne; i++)
       xla= (xv[koi[koffs[i]]]+xv[koi[koffs[i]+15]])*0.5;
       yla= (yv[koi[koffs[i]]]+yv[koi[koffs[i]+15]])*0.5;
       zla= (zv[koi[koffs[i]]]+zv[koi[koffs[i]+15]])*0.5;
-      glRasterPos3d(xla,yla,zla);
       sprintf(cstring,PD,i);
-      glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+      fr_gltext3d(xla,yla,zla,cstring,scale,dicke);
       }
 
     glBegin(GL_LINE_STRIP);
@@ -535,9 +521,8 @@ for (i= 1; i <= ne; i++)
       xla= (xv[koi[koffs[i]]]+xv[koi[koffs[i]+1]]+xv[koi[koffs[i]+2]])*0.333;
       yla= (yv[koi[koffs[i]]]+yv[koi[koffs[i]+1]]+yv[koi[koffs[i]+2]])*0.333;
       zla= (zv[koi[koffs[i]]]+zv[koi[koffs[i]+1]]+zv[koi[koffs[i]+2]])*0.333;
-      glRasterPos3d(xla,yla,zla);
       sprintf(cstring,PD,i);
-      glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+      fr_gltext3d(xla,yla,zla,cstring,scale,dicke);
       }
 
     glBegin(GL_LINE_STRIP);
@@ -569,9 +554,8 @@ for (i= 1; i <= ne; i++)
       xla/= 2.;
       yla/= 2.;
       zla/= 2.;
-      glRasterPos3d(xla,yla,zla);
       sprintf(cstring,PD,i);
-      glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+      fr_gltext3d(xla,yla,zla,cstring,scale,dicke);
       }
 
     glBegin(GL_LINE_STRIP);
@@ -616,9 +600,8 @@ for (i= 1; i <= ne; i++)
       xla= (xv[koi[koffs[i]]]+xv[koi[koffs[i]+1]]+xv[koi[koffs[i]+2]])*0.333;
       yla= (yv[koi[koffs[i]]]+yv[koi[koffs[i]+1]]+yv[koi[koffs[i]+2]])*0.333;
       zla= (zv[koi[koffs[i]]]+zv[koi[koffs[i]+1]]+zv[koi[koffs[i]+2]])*0.333;
-      glRasterPos3d(xla,yla,zla);
       sprintf(cstring,PD,i);
-      glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+      fr_gltext3d(xla,yla,zla,cstring,scale,dicke);
       }
 
     glBegin(GL_LINE_STRIP);
@@ -644,9 +627,8 @@ for (i= 1; i <= ne; i++)
             yv[koi[koffs[i]+2]]+yv[koi[koffs[i]+3]])*0.25;
       zla= (zv[koi[koffs[i]]]+zv[koi[koffs[i]+1]]+
             zv[koi[koffs[i]+2]]+zv[koi[koffs[i]+3]])*0.25;
-      glRasterPos3d(xla,yla,zla);
       sprintf(cstring,PD,i);
-      glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+      fr_gltext3d(xla,yla,zla,cstring,scale,dicke);
       }
 
     glBegin(GL_LINE_STRIP);
@@ -704,9 +686,8 @@ for (i= 1; i <= ne; i++)
             yv[koi[koffs[i]+2]]+yv[koi[koffs[i]+3]])*0.25;
       zla= (zv[koi[koffs[i]]]+zv[koi[koffs[i]+1]]+
             zv[koi[koffs[i]+2]]+zv[koi[koffs[i]+3]])*0.25;
-      glRasterPos3d(xla,yla,zla);
       sprintf(cstring,PD,i);
-      glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+      fr_gltext3d(xla,yla,zla,cstring,scale,dicke);
       }
 
     glBegin(GL_LINE_STRIP);
@@ -749,9 +730,8 @@ for (i= 1; i <= ne; i++)
       xla= (xv[koi[koffs[i]]]+xv[koi[koffs[i]+7]])*0.5;
       yla= (yv[koi[koffs[i]]]+yv[koi[koffs[i]+7]])*0.5;
       zla= (zv[koi[koffs[i]]]+zv[koi[koffs[i]+7]])*0.5;
-      glRasterPos3d(xla,yla,zla);
       sprintf(cstring,PD,i);
-      glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+      fr_gltext3d(xla,yla,zla,cstring,scale,dicke);
       }
 
     glBegin(GL_LINE_STRIP);
@@ -814,9 +794,8 @@ for (i= 1; i <= ne; i++)
       xla= (xv[koi[koffs[i]]]+xv[koi[koffs[i]+6]])*0.5;
       yla= (yv[koi[koffs[i]]]+yv[koi[koffs[i]+6]])*0.5;
       zla= (zv[koi[koffs[i]]]+zv[koi[koffs[i]+6]])*0.5;
-      glRasterPos3d(xla,yla,zla);
       sprintf(cstring,PD,i);
-      glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+      fr_gltext3d(xla,yla,zla,cstring,scale,dicke);
       }
 
     glBegin(GL_LINE_STRIP);
@@ -865,6 +844,7 @@ return 0;
 int fsrb88(void)
 {
 extern FR_DOUBLE   xm,yp;
+extern FR_DOUBLE   scale,dicke;
 
 extern GLfloat     rot[];
 extern GLfloat     gruen[];
@@ -886,90 +866,79 @@ yt= yp-3;
 glColor3f(rot[1],gruen[1],blau[1]);
 glRectd(xm+4,yt,xm+12,yt-8);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-4,0.00);
 if(LANG == 1) sprintf(cstring,"U1=UX=0 (Platten:UZ=0)");
 if(LANG == 2) sprintf(cstring,"U1=UX=0 (Plates: UZ=0)");
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-4,0.0,cstring,scale,dicke);
 
 glColor3f(rot[2],gruen[2],blau[2]);
 glRectd(xm+4,yt-8,xm+12,yt-16);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-12,0.00);
 if(LANG == 1) sprintf(cstring,"U2=UY=0 (Platten:RotX=0)");
 if(LANG == 2) sprintf(cstring,"U2=UY=0 (Plates: RotX=0)");
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-12,0.0,cstring,scale,dicke);
 
 glColor3f(rot[3],gruen[3],blau[3]);
 glRectd(xm+4,yt-16,xm+12,yt-24);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-20,0.00);
 if(LANG == 1) sprintf(cstring,"U3=UZ=0 (Platten:RotY=0)");
 if(LANG == 2) sprintf(cstring,"U3=UZ=0 (Plates: RotY=0)");
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-20,0.0,cstring,scale,dicke);
 
 glColor3f(rot[4],gruen[4],blau[4]);
 glRectd(xm+4,yt-24,xm+12,yt-32);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-28,0.00);
 if(LANG == 1) sprintf(cstring,"U4=RotX=0");
 if(LANG == 2) sprintf(cstring,"U4=RotX=0");
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-28,0.0,cstring,scale,dicke);
 
 glColor3f(rot[5],gruen[5],blau[5]);
 glRectd(xm+4,yt-32,xm+12,yt-40);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-36,0.00);
 if(LANG == 1) sprintf(cstring,"U5=RotY=0");
 if(LANG == 2) sprintf(cstring,"U5=RotY=0");
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-36,0.0,cstring,scale,dicke);
 
 glColor3f(rot[6],gruen[6],blau[6]);
 glRectd(xm+4,yt-40,xm+12,yt-48);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-44,0.00);
 if(LANG == 1) sprintf(cstring,"U6=RotZ=0");
 if(LANG == 2) sprintf(cstring,"U6=RotZ=0");
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-44,0.0,cstring,scale,dicke);
 
 glColor3f(rot[7],gruen[7],blau[7]);
 glRectd(xm+4,yt-48,xm+12,yt-56);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-52.0,0.00);
 if(LANG == 1) sprintf(cstring,"Verschiebungen gegeben");
 if(LANG == 2) sprintf(cstring,"Displacements given");
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-52,0.0,cstring,scale,dicke);
 
 glColor3f(rot[8],gruen[8],blau[8]);
 glRectd(xm+4,yt-56,xm+12,yt-64);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-60,0.00);
 if(LANG == 1) sprintf(cstring,"Druck/Oberflaechenlasten");
 if(LANG == 2) sprintf(cstring,"Surface/Pressure Loads");
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-60,0.0,cstring,scale,dicke);
 
 glColor3f(rot[9],gruen[9],blau[9]);
 glRectd(xm+4,yt-64,xm+12,yt-72);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-68,0.00);
 if(LANG == 1) sprintf(cstring,"Kraefte X");
 if(LANG == 2) sprintf(cstring,"Forces X");
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-68,0.0,cstring,scale,dicke);
 
 glColor3f(rot[10],gruen[10],blau[10]);
 glRectd(xm+4,yt-72,xm+12,yt-80);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-76,0.00);
 if(LANG == 1) sprintf(cstring,"Kraefte Y");
 if(LANG == 2) sprintf(cstring,"Forces Y");
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-76,0.0,cstring,scale,dicke);
 
 glColor3f(rot[11],gruen[11],blau[11]);
 glRectd(xm+4,yt-80,xm+12,yt-88);
 glColor3f(1.0f,0.5f,0.0f);
-glRasterPos3d(xm+16,yt-84,0.00);
 if(LANG == 1) sprintf(cstring,"Kraefte Z");
 if(LANG == 2) sprintf(cstring,"Forces Z");
-glCallLists(strlen(cstring),GL_UNSIGNED_BYTE,cstring);
+fr_gltext3d(xm+16,yt-84,0.0,cstring,scale,dicke);
 
 return 0;
 }

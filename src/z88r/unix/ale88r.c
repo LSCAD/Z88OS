@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0 February 14, 2011
+* V15.0 November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -61,8 +61,8 @@ switch(ialert)
     printf("### Richtiger Aufruf:  z88r -c -2.Flag (lineare Berechnung)    ###\n");
     printf("###                    z88r -t -2.Flag (Testmode)              ###\n");
     printf("###                    z88r 1.Flag -choly (Cholesky-Solver)    ###\n");
-    printf("###                    z88r 1.Flag -srsic (SICCG-Solver)       ###\n");
-    printf("###                    z88r 1.Flag -srsor (SORCG-Solver)       ###\n");
+    printf("###                    z88r 1.Flag -siccg (SICCG-Solver)       ###\n");
+    printf("###                    z88r 1.Flag -sorcg (SORCG-Solver)       ###\n");
     }
     if(LANG == 2)
     {
@@ -70,8 +70,8 @@ switch(ialert)
     printf("### correct use: z88r -c 2nd flag (linear calculation)  ###\n");
     printf("###              z88r -t 2nd flag (test mode)           ###\n");
     printf("###              z88r 1st flag -choly (Cholesky solver) ###\n");
-    printf("###              z88r 1st flag -srsic (SICCG solver)    ###\n");
-    printf("###              z88r 1st flag -srsor (SORCG solver)    ###\n");
+    printf("###              z88r 1st flag -siccg (SICCG solver)    ###\n");
+    printf("###              z88r 1st flag -sorcg (SORCG solver)    ###\n");
     }
   break;
 
@@ -82,8 +82,8 @@ switch(ialert)
     printf("### Richtiger Aufruf:  z88r -c -2.Flag (lineare Berechnung)    ###\n");
     printf("###                    z88r -t -2.Flag (Testmode)              ###\n");
     printf("###                    z88r 1.Flag -choly (Cholesky-Solver)    ###\n");
-    printf("###                    z88r 1.Flag -srsic (SICCG-Solver)       ###\n");
-    printf("###                    z88r 1.Flag -srsor (SORCG-Solver)       ###\n");
+    printf("###                    z88r 1.Flag -siccg (SICCG-Solver)       ###\n");
+    printf("###                    z88r 1.Flag -sorcg (SORCG-Solver)       ###\n");
     }
     if(LANG == 2)
     {
@@ -91,8 +91,8 @@ switch(ialert)
     printf("### correct use: z88r -c 2nd flag (linear calculation)  ###\n");
     printf("###              z88r -t 2nd flag (test mode)           ###\n");
     printf("###              z88r 1st flag -choly (Cholesky solver) ###\n");
-    printf("###              z88r 1st flag -srsic (SICCG solver)    ###\n");
-    printf("###              z88r 1st flag -srsor (SORCG solver)    ###\n");
+    printf("###              z88r 1st flag -siccg (SICCG solver)    ###\n");
+    printf("###              z88r 1st flag -sorcg (SORCG solver)    ###\n");
     }
   break;
 

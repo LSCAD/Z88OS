@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 ***********************************************************************/ 
 /*****************************************************************************
 * Callbacks fuer z88o
-* 31.7.2011 Rieg
+* 7.3.2017 Rieg
 *****************************************************************************/
 
 /*****************************************************************************
@@ -50,7 +50,7 @@
 #include <string.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
-#include <gtk/gtkgl.h>
+#include <gtkglarea.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #endif
@@ -122,29 +122,8 @@ gdk_window_invalidate_rect(GDK_WINDOW(DRAWA->window),NULL,TRUE);
 void WMU_CREATE(GtkWidget *widget,gpointer data)
 {
 extern GtkWidget     *DRAWA;
-extern PangoFont     *font;
-extern char          CF_GRAFICS[];
-extern GLuint        font_list_base;
 
-GdkGLContext         *glcontext;
-GdkGLDrawable        *gldrawable;
-PangoFontDescription *font_desc;
-
-glcontext = gtk_widget_get_gl_context(DRAWA);
-gldrawable= gtk_widget_get_gl_drawable(DRAWA);
-
-gdk_gl_drawable_gl_begin(gldrawable,glcontext);
-
-font_list_base = glGenLists (128);
-font_desc = pango_font_description_from_string(CF_GRAFICS);
-
-font = gdk_gl_font_use_pango_font(font_desc,0,128,font_list_base);
-if(font == NULL)
-  {
-  ale88o(AL_NO_CF_GRAFICS);
-  }
-glListBase(font_list_base);
-gdk_gl_drawable_gl_end(gldrawable);
+gtk_gl_area_make_current(GTK_GL_AREA(DRAWA));
 
 return;
 }
@@ -158,13 +137,8 @@ extern GtkWidget *DRAWA;
 extern FR_DOUBLE xm,xp,ym,yp,zm,zp,ymsv,ypsv,SV;
 extern int       IB,IH;
 int              ixClient,iyClient;
-GdkGLContext     *glcontext;
-GdkGLDrawable    *gldrawable;
 
-glcontext = gtk_widget_get_gl_context(DRAWA);
-gldrawable= gtk_widget_get_gl_drawable(DRAWA);
-
-gdk_gl_drawable_gl_begin(gldrawable,glcontext);
+gtk_gl_area_make_current(GTK_GL_AREA(DRAWA));
 
 ixClient= DRAWA->allocation.width;
 iyClient= DRAWA->allocation.height;
@@ -183,7 +157,6 @@ glLoadIdentity();
 glOrtho(xm,xp,ymsv,ypsv,zm,zp);
 
 glMatrixMode(GL_MODELVIEW);
-gdk_gl_drawable_gl_end(gldrawable);
 
 return;
 }
@@ -366,11 +339,11 @@ extern char    cmess[],cbytes[];
 GtkWidget      *MB_WER;
 
   
-if(LANG == 1) strcpy(cmess,"Z88O V14OS fuer UNIX/LINUX\n\
-von Univ.Prof.Dr.-Ing. Frank Rieg, Universitaet Bayreuth 2011\n\
+if(LANG == 1) strcpy(cmess,"Z88O V15OS fuer UNIX/LINUX\n\
+von Univ.Prof.Dr.-Ing. Frank Rieg, Universitaet Bayreuth 2017\n\
 frank.rieg@uni-bayreuth.de\nwww.z88.de\n");
-if(LANG == 2) strcpy(cmess,"Z88O V14OS for UNIX/LINUX\n\
-by Prof.Dr. Frank Rieg, University of Bayreuth, Germany 2011\n\
+if(LANG == 2) strcpy(cmess,"Z88O V15OS for UNIX/LINUX\n\
+by Prof.Dr. Frank Rieg, University of Bayreuth, Germany 2017\n\
 frank.rieg@uni-bayreuth.de\nwww.z88.de or www.z88.org\n");
 
 #ifdef FR_XQUAD
@@ -1324,8 +1297,6 @@ extern int       IB,IH;
 extern double  zm;
 extern FR_INT4 LANG;
 
-GdkGLContext     *glcontext;
-GdkGLDrawable    *gldrawable;
 GtkWidget *DIA_ZM,*TABLE,*ZM;
 GtkWidget *L_ZM;
 int idigit= 20,iret;
@@ -1367,18 +1338,13 @@ if(iret == GTK_RESPONSE_OK)
   ccm= gtk_entry_get_text(GTK_ENTRY(ZM));
   zm= atof(ccm);
 
-  glcontext = gtk_widget_get_gl_context(DRAWA);
-  gldrawable= gtk_widget_get_gl_drawable(DRAWA);
-
-  gdk_gl_drawable_gl_begin(gldrawable,glcontext);
+  gtk_gl_area_make_current(GTK_GL_AREA(DRAWA));
   glViewport(0,0,IB,IH);
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   glOrtho(xm,xp,ym,yp,zm,zp);
-
   glMatrixMode(GL_MODELVIEW);
-  gdk_gl_drawable_gl_end(gldrawable);
 
   InvalidateRect88();
   }
@@ -1597,9 +1563,6 @@ void WMU_PAINT(GtkWidget *widget,GdkEventExpose *event,gpointer data)
 {
 extern GtkWidget *DRAWA;
 
-GdkGLContext     *glcontext;
-GdkGLDrawable    *gldrawable;
-
 extern FILE      *fi1,*fi2,*fi5,*fo2,*fo5,*fo8;
 
 extern int       iflade,iflaver,iflspa,iflao5,iflarbd,iflai5,IB,ifkom,ialert;
@@ -1627,10 +1590,8 @@ extern FR_DOUBLE xx,yy,rx,ry,rz,s,tx,ty;
 extern FR_DOUBLE rotx,roty,rotz,xw,yp;
 extern FR_INT4   ndim,iqflag;
 
-glcontext = gtk_widget_get_gl_context (DRAWA);
-gldrawable= gtk_widget_get_gl_drawable(DRAWA);
+  gtk_gl_area_make_current(GTK_GL_AREA(widget));
 
-  gdk_gl_drawable_gl_begin(gldrawable,glcontext);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glCallList (1);
 
@@ -2056,11 +2017,7 @@ gldrawable= gtk_widget_get_gl_drawable(DRAWA);
 * fertig OpenGL
 *=======================================================*/
 Lflush:
-if(gdk_gl_drawable_is_double_buffered(gldrawable))
-  gdk_gl_drawable_swap_buffers(gldrawable);
-else
-  glFlush();
-gdk_gl_drawable_gl_end (gldrawable);
+gtk_gl_area_swapbuffers(GTK_GL_AREA(DRAWA));
 }
 
 

@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@
 /***********************************************************************
 * wria88x.c beschreibt Z88I1.TXT,Z88NI.TXT,Z88I2.TXT und Z88I3.TXT
 * und oeffnet und schliesst diese Files
-* 10.1.2012 Rieg 
+* 14.12.2015 Rieg 
 ***********************************************************************/
 
 /***********************************************************************
@@ -181,12 +181,12 @@ if(ICFLAG == 4 || ICFLAG == 5)
 * Beschreiben Z88I1.TXT, erste Zeile
 *---------------------------------------------------------------------*/
   if(LANG == 1)
-  fprintf(fz88,PDB PDB PDB PDB PD "  Z88I1.TXT,erzeugt von Z88X V14OS\n",
+  fprintf(fz88,PDB PDB PDB PDB PD "  Z88I1.TXT,erzeugt von Z88X V15OS\n",
   ndim,nkp,ne,nfg,kflag);
 
 
   if(LANG == 2)
-  fprintf(fz88,PDB PDB PDB PDB PD "  Z88I1.TXT,produced by Z88X V14OS\n",
+  fprintf(fz88,PDB PDB PDB PDB PD "  Z88I1.TXT,produced by Z88X V15OS\n",
   ndim,nkp,ne,nfg,kflag);
   }
 
@@ -214,11 +214,11 @@ if(ICFLAG == 6)
 * Beschreiben Z88NI.TXT, erste Zeile
 *---------------------------------------------------------------------*/
   if(LANG == 1)
-  fprintf(fz88,PDB PDB PDB PDB PDB PDB PD "  Z88NI.TXT,erzeugt von Z88X V14OS\n",
+  fprintf(fz88,PDB PDB PDB PDB PDB PDB PD "  Z88NI.TXT,erzeugt von Z88X V15OS\n",
   ndim,nkp,ne,nfg,kflagss,niflag,kflag);
 
   if(LANG == 2)
-  fprintf(fz88,PDB PDB PDB PDB PDB PDB PD "  Z88NI.TXT,produced by Z88X V14OS\n",
+  fprintf(fz88,PDB PDB PDB PDB PDB PDB PD "  Z88NI.TXT,produced by Z88X V15OS\n",
   ndim,nkp,ne,nfg,kflagss,niflag,kflag);
   }
 
@@ -349,10 +349,10 @@ for(i= 1; i <= ne; i++)
     }
 
 /*=====================================================================*
-* Ele 2,4,5,9,13
+* Ele 2,4,5,9,13,25
 *=====================================================================*/
-  if(ityp[i] == 2 || ityp[i] == 4 || ityp[i] == 5 ||
-     ityp[i] == 9 || ityp[i] == 13)
+  if(ityp[i] == 2 || ityp[i] == 4  || ityp[i] == 5 ||
+     ityp[i] == 9 || ityp[i] == 13 || ityp[i] == 25)
     {
     fprintf(fz88,PD5B PD5 NL,koi[koffs[i]], koi[koffs[i] +1]);
     }
@@ -462,8 +462,8 @@ if(ICFLAG == 5)
 /*---------------------------------------------------------------------*
 * Beschreiben Z88I2.TXT, komplett
 *---------------------------------------------------------------------*/
-  if(LANG == 1) fprintf(fi2,PD5 "    Z88I2.TXT,erzeugt von Z88X V14OS\n",nrb);
-  if(LANG == 2) fprintf(fi2,PD5 "    Z88I2.TXT,produced by Z88X V14OS\n",nrb);
+  if(LANG == 1) fprintf(fi2,PD5 "    Z88I2.TXT,erzeugt von Z88X V15OS\n",nrb);
+  if(LANG == 2) fprintf(fi2,PD5 "    Z88I2.TXT,produced by Z88X V15OS\n",nrb);
 
   for(j= 1; j <= nrb; j++)
     fprintf(fi2,PD5B PD5B PD5B PE13 NL,nkn[j],ifg[j],irflag[j],wert[j]);
@@ -494,8 +494,8 @@ if(ICFLAG == 5)
 /*---------------------------------------------------------------------*
 * Beschreiben Z88I5.TXT
 *---------------------------------------------------------------------*/
-  if(LANG == 1) fprintf(fi5,PD "    Z88I5.TXT,erzeugt von Z88X V14OS\n",npr);
-  if(LANG == 2) fprintf(fi5,PD "    Z88I5.TXT,produced by Z88X V14OS\n",npr);
+  if(LANG == 1) fprintf(fi5,PD "    Z88I5.TXT,erzeugt von Z88X V15OS\n",npr);
+  if(LANG == 2) fprintf(fi5,PD "    Z88I5.TXT,produced by Z88X V15OS\n",npr);
 
 /*---------------------------------------------------------------------*
 * nur wenn npr > 0 ist, dann Schleife

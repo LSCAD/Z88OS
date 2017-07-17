@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0 January 14, 2009
+* V15.0 November 18, 2015
 *
 * Z88 should compile and run under any Windows OS and UNIX OS and 
 * GTK+.
@@ -53,9 +53,7 @@
 * hexsh:  sh fuer Hexaeder 1,10,Tetraeder 16,17, Schalen 21,22,24
 * platsh: sh fuer Platte 18,19 und 20
 *
-* 2.1.2010   Rieg
-* 22.12.2012 Rieg: Function sheinh, platnh, sheish und platsh um den
-*            Faktor 4 in Wurzel korrigiert,Zeilen 174,257,314,404
+* 2.1.2010 Rieg
 ***********************************************************************/
 
 /***********************************************************************
@@ -171,7 +169,7 @@ FR_DOUBLE fret;
 /*----------------------------------------------------------------------
 * Hauptspannungen
 *---------------------------------------------------------------------*/
-wur= FR_SQRT(FR_POW((sig[1]-sig[2]),2)/4. + sig[3]*sig[3]);
+wur= FR_SQRT(FR_POW((sig[1]-sig[2]),2)/2. + sig[3]*sig[3]);
 
 sig1= FR_FABS((sig[1]+sig[2])/2. + wur);
 sig2= FR_FABS((sig[1]+sig[2])/2. - wur);
@@ -254,7 +252,7 @@ FR_DOUBLE fret;
 /*----------------------------------------------------------------------
 * Hauptspannungen
 *---------------------------------------------------------------------*/
-wur= FR_SQRT(FR_POW((rsig[1]-rsig[2]),2)/4. + rsig[3]*rsig[3]);
+wur= FR_SQRT(FR_POW((rsig[1]-rsig[2]),2)/2. + rsig[3]*rsig[3]);
 
 sig1= FR_FABS((rsig[1]+rsig[2])/2. + wur);
 sig2= FR_FABS((rsig[1]+rsig[2])/2. - wur);
@@ -311,7 +309,7 @@ FR_DOUBLE fret;
 /*----------------------------------------------------------------------
 * Hauptspannungen
 *---------------------------------------------------------------------*/
-wur= FR_SQRT(FR_POW((sig[1]-sig[2]),2)/4. + sig[3]*sig[3]);
+wur= FR_SQRT(FR_POW((sig[1]-sig[2]),2)/2. + sig[3]*sig[3]);
 
 sig1= (sig[1]+sig[2])/2. + wur;
 sig2= (sig[1]+sig[2])/2. - wur;
@@ -401,7 +399,7 @@ FR_DOUBLE fret;
 /*----------------------------------------------------------------------
 * Hauptspannungen
 *---------------------------------------------------------------------*/
-wur= FR_SQRT(FR_POW((rsig[1]-rsig[2]),2)/4. + rsig[3]*rsig[3]);
+wur= FR_SQRT(FR_POW((rsig[1]-rsig[2]),2)/2. + rsig[3]*rsig[3]);
 
 sig1= (rsig[1]+rsig[2])/2. + wur;
 sig2= (rsig[1]+rsig[2])/2. - wur;

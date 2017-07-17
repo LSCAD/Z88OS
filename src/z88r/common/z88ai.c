@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0 January 14, 2011
+* V15.0 November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,8 @@
 ***********************************************************************/
 /***********************************************************************
 * z88ai.c
-* 17.7.2011 Zimmermann-Rieg
+* 7.3.2017 Zimmermann-Rieg
+* fuer MS VC 2015 <stdio.h> und <stdlib.h> ergaenzt.
 ***********************************************************************/
 
 /***********************************************************************
@@ -52,6 +53,8 @@
 ***********************************************************************/
 #ifdef FR_WIN
 #include <z88r.h>
+#include <stdio.h>
+#include <stdlib.h>
 #endif
 
 /***********************************************************************
@@ -59,6 +62,8 @@
 ***********************************************************************/
 #ifdef FR_GTKWIN
 #include <z88r.h>
+#include <stdio.h>
+#include <stdlib.h>
 #endif
 
 /***********************************************************************
@@ -96,8 +101,8 @@ struct str_node_struct
 
 /*Anzahl Elementtypen und Anzahl Knoten je Element*/
 const FR_INT4 nod_num_p_ele[]=
-      {8,2,6,2,2,3,8,8,2,20,12,12,2,6,6,10,4,6,16,8,16,12,8,6};
-const FR_INT4 elem_types= 24;
+      {8,2,6,2,2,3,8,8,2,20,12,12,2,6,6,10,4,6,16,8,16,12,8,6,2};
+const FR_INT4 elem_types= 25;
 
 const FR_INT4 numb_flags= 2;
 
@@ -246,6 +251,7 @@ for (i=0;i<nkp;i++)
         if (spalte<zeile) continue;
         else if (spalte==zeile) ip[zeile]= k-1;
 	else
+
           {
           ip[zeile]=--k;
           if(ifnili != 9) if (k >= MAXIEZ) return exiter(0x01);

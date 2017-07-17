@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 ***********************************************************************/ 
 /***********************************************************************
 * wlog88o gibt Log-Datei-Meldungen aus (1 FR_INT4, 1 int)
-* 3.8.2011 Rieg
+* 25.11.2015 Rieg
 ***********************************************************************/ 
 
 /***********************************************************************
@@ -71,8 +71,8 @@ extern FR_INT4 LANG;
 switch(iatx)
   {
   case LOG_BZ88OWIN:
-    if(LANG == 1) fprintf(fwlo,"Start Z88O Version 14OS");
-    if(LANG == 2) fprintf(fwlo,"start Z88O version 14OS");
+    if(LANG == 1) fprintf(fwlo,"Start Z88O Version 15OS");
+    if(LANG == 2) fprintf(fwlo,"start Z88O version 15OS");
     fflush(fwlo);
   break;
 

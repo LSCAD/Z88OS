@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@
 * - Platten   Nr.20 ( 8 Knoten) und Nr.18 (6 Knoten)
 * - Torus     Nr. 8 ( 8 Knoten) und Nr.15 (6 Knoten)
 * - Schalen   Nr.23 ( 8 Knoten) und Nr.24 (6 Knoten)
-*  29.7.2011 Rieg
+*  7.3.2017 Rieg
 ***********************************************************************/
 /***********************************************************************
 * Windows
@@ -110,7 +110,7 @@ FILE *fdyn,*fwlo,*fpro,*fin,*fi1,*fi2,*fi5,*fcfg;
 
 char cdyn[8] = "z88.dyn";
 char clgd[9] = "z88g.log";
-char ccos[9] = "z88g.cos";
+char ccco[9] = "z88g.cos";
 char cnas[9] = "z88g.nas";
 char cin[8]  = "z88g.in";
 char ci1[10] = "z88i1.txt";
@@ -451,16 +451,16 @@ switch (Message)
       case IDM_WER:
         if(LANG == 1) strcpy(cmess,
 "3D-Konverter Z88G fuer Windows\n\
-Version 14OS\n\
+Version 15OS\n\
 Copyright Univ.-Prof.Dr.-Ing. Frank Rieg,\n\
-Universitaet Bayreuth, 2011\n\
+Universitaet Bayreuth, 2017\n\
 Alle Rechte vorbehalten\n");
 
           if(LANG == 2) strcpy(cmess,
 "3D Converter Z88G for Windows\n\
-Version 14OS\n\
+Version 15OS\n\
 Copyright Prof.Dr. Frank Rieg,\n\
-University of Bayreuth, Germany 2011\n\
+University of Bayreuth, Germany 2017\n\
 All rights reserved\n");
 
 #ifdef FR_XQUAD
@@ -506,6 +506,7 @@ All rights reserved\n");
           {
           if(LANG == 1) strcpy(cmess,
           "Datei Z88COM.CFG nicht vorhanden oder zerschossen !");
+
           if(LANG == 2) strcpy(cmess,
           "File Z88COM.CFG not available or destroyed !");
           MessageBox(NULL,cmess,"Z88G", MB_OK | MB_ICONHAND);

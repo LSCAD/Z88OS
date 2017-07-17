@@ -15,7 +15,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 /***********************************************************************
 * ale88o gibt Alert-Boxen aus (1 int)
 * Fuer UNIX
-* 22.7.2011 Rieg
+* 18.11.2015 Rieg
 ***********************************************************************/ 
 /***********************************************************************
 * UNIX
@@ -227,18 +227,6 @@ Recover: increase MAXE in Z88.DYN .");
 Abhilfe: Im Strukturfile 2 oder 3 fuer Dimension waehlen.");
     if(LANG == 2) strcpy(cmess,"Wrong dimension in structur file ! STOP !\n\
 Recover: enter 2 or 3 for dimension in structure file.");
-    idiag= 1;
-  break;
-
-  case AL_NO_GLX:
-    if(LANG == 1) strcpy(cmess,"Kann GLX-Grafikkontext nicht oeffnen ! STOP !");
-    if(LANG == 2) strcpy(cmess,"Cannot open GLX Grafics Context ! STOP !");
-    idiag= 1;
-  break;
-
-  case AL_NO_CF_GRAFICS:
-    if(LANG == 1) strcpy(cmess,"Kann Pango-Font nicht oeffnen ! STOP !");
-    if(LANG == 2) strcpy(cmess,"Cannot open Pango Font! STOP !");
     idiag= 1;
   break;
   }

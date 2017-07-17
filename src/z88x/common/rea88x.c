@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -302,10 +302,10 @@ for(i= 1; i <= ne; i++)
     }
           
 /*======================================================================
-* elementtypen 2, 4, 5 , 9 & 13
+* elementtypen 2, 4, 5 , 9 , 13 & 25
 *=====================================================================*/
-  if(ityp[i]== 2 || ityp[i]== 4 || ityp[i]== 5 ||
-     ityp[i]== 9 || ityp[i]== 13)
+  if(ityp[i]== 2 || ityp[i]== 4  || ityp[i]== 5 ||
+     ityp[i]== 9 || ityp[i]== 13 || ityp[i]== 25)
     {
     if(i== 1)  koffs[1]= 1;
     else       koffs[i]= koffs[i-1] + kofold;

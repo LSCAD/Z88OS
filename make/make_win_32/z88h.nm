@@ -1,9 +1,9 @@
-# 27.7.2011 Rieg
+# 14.12.2015 Rieg
 # Z88H 32-Bit Windows Makefile: 
 # goto Microsoft Visual Studio > Visual Studio Tools > Visual Studio Command Prompt
 # and enter:     nmake -f z88h.nm
 
-AUROVER=c:/z88v14os
+AUROVER=c:/z88v15os
 
 INTDIR=.
 

@@ -16,7 +16,7 @@
 * frank.rieg@uni-bayreuth.de
 * dr.frank.rieg@t-online.de
 * 
-* V14.0  February 14, 2011
+* V15.0  November 18, 2015
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 ***********************************************************************/ 
 /***********************************************************************
 * wrim88h gibt Texte aus (1 FR_INT4)
-* 1.8.2011 Rieg
+* 25.11.2015 Rieg
 ***********************************************************************/ 
 
 /***********************************************************************
@@ -127,7 +127,7 @@ switch(iatx)
       }
     if(i == 2)
       {
-      if(LANG == 1) printf("\Abspeichern Permutationsvektor, normaler CM\n");
+      if(LANG == 1) printf("\nAbspeichern Permutationsvektor, normaler CM\n");
       if(LANG == 2) printf("\nstoring permutation vector, normal CM\n");
       }
   break;
