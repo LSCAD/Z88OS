@@ -1,5 +1,5 @@
 Z88 is a compact finite element program for Linux, Windows and Mac OS X.  
-Open Source Version 14
+Open Source Version 15
 
 #### About
 
@@ -7,9 +7,9 @@ Z88 is a compact, cross-platform finite element program including several submod
 For further information please see the included readme PDF-file or our website [www.z88.de](http://www.z88.de) where you also find our other free finite element software products.  
 
 Z88 currently supports the following platforms:
-- Windows (tested on Windows XP - Windows 7)
-- Mac OS X (tested on Snow Leopard)
-- Linux (tested on openSUSE 12.1 and Ubuntu 9.04)
+- Windows (tested on Windows XP - Windows 10)
+- MacOS (tested on Sierra 10.12.3)
+- Linux (tested on openSUSE 13.1 and Ubuntu 16.04)
 
 #### What's included
 
