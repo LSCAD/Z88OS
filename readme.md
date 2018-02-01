@@ -9,7 +9,7 @@ For further information please see the included readme PDF-file or our website [
 Z88 currently supports the following platforms:
 - Windows (tested on Windows XP - Windows 10)
 - MacOS (tested on Sierra 10.12.3)
-- Linux (tested on openSUSE 13.1 and Ubuntu 16.04)
+- Linux (tested on OpenSUSE 13.1 and Ubuntu 16.04)
 
 #### What's included
 
@@ -30,13 +30,13 @@ Z88OS/             - root directory
 │   └── z88x/      - DXF converter
 ├── LICENSE        - license
 ├── liesmich.pdf   - readme in German
-├── readme.pdf     - readme in Englisch
+├── readme.pdf     - readme in English
 └── readme.md      - brief markdown readme
 ```
 
 #### Support
 
-If you have problems building or using z88 you get help by developers and other user at the [z88-board](http://forum.z88.de/).
+If you have problems building or using z88 you get help by developers and other users at the [z88-board](http://forum.z88.de/).
 
 ---
 Author:  
