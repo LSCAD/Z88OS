@@ -306,7 +306,7 @@ switch(iatx)
 
   case LOG_BERKOIN:
     if(LANG == 1) fprintf(fwlo,"\nKoinzidenzvektor berechnen");
-    if(LANG == 2) fprintf(fwlo,"\ncomputing element informations");
+    if(LANG == 2) fprintf(fwlo,"\ncomputing element information");
     fflush(fwlo);
   break;
 

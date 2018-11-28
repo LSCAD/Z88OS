@@ -339,13 +339,13 @@ switch(iatx)
 
   case LOG_KOIN:
     if(LANG == 1) fprintf(fwlo,"\nEinlesen der Koinzidenz");
-    if(LANG == 2) fprintf(fwlo,"\nreading element informations");
+    if(LANG == 2) fprintf(fwlo,"\nreading element information");
     fflush(fwlo);
   break;
 
   case LOG_SINFO:
     if(LANG == 1) fprintf(fwlo,"\nEinlesen der Superelement-Infos");
-    if(LANG == 2) fprintf(fwlo,"\nreading superelement informations");
+    if(LANG == 2) fprintf(fwlo,"\nreading superelement information");
     fflush(fwlo);
   break;
 
@@ -561,7 +561,7 @@ switch(iatx)
     if(LANG == 2)
     {
     fprintf(fwlo,"\n### Z88X.DXF wrong for Z88I1.TXT/Z88NI.TXT:       ###");
-    fprintf(fwlo,"\n### material informations missing or wrong ..stop ###");
+    fprintf(fwlo,"\n### material information missing or wrong ..stop ###");
     }
     fflush(fwlo);
   break;

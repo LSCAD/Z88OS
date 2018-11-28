@@ -87,7 +87,7 @@ switch(iatx)
     break;
   case TX_BERKOIN:
     if(LANG == 1) printf("\nKoinzidenz berechnen:\n");
-    if(LANG == 2) printf("\ncomputing element informations:\n");
+    if(LANG == 2) printf("\ncomputing element information:\n");
     break;
   case TX_WRII1:
     if(LANG == 1) printf("\nZ88I1.TXT beschreiben, Ende Z88N\n");
