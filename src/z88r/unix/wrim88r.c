@@ -197,12 +197,12 @@ switch(iatx)
 
   case TX_KOIN:
     if(LANG == 1) printf("Koinzidenz einlesen\n");
-    if(LANG == 2) printf("reading element informations\n");
+    if(LANG == 2) printf("reading element information\n");
   break;
 
   case TX_EGES:
     if(LANG == 1) printf("Elastizitaetsgesetze einlesen\n");
-    if(LANG == 2) printf("reading material informations\n");
+    if(LANG == 2) printf("reading material information\n");
   break;
 
   case TX_Z88A:

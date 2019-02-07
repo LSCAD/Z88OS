@@ -116,12 +116,12 @@ switch(iatx)
 
   case TX_KOIN:
     if(LANG==1) printf("Koinzidenz einlesen\n");
-    if(LANG==2) printf("reading element informations\n");
+    if(LANG==2) printf("reading element information\n");
   break;
 
   case TX_SINFO:
     if(LANG==1) printf("Superelement-Informationen einlesen\n");
-    if(LANG==2) printf("reading superelement informations\n");
+    if(LANG==2) printf("reading superelement information\n");
   break;
 
   case TX_Z88FX:

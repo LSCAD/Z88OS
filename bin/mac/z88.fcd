@@ -128,7 +128,7 @@ has no meaning. Start editing with the second column = the first color.
 The light positions have four entries: X,Y and Z. The 4th entry is the W
 value for the so-called homogeneous coordinates. If W is 0 then the point
 lies in infinity and the beam meets the point X, Y, Z. Consult the OpenGL
-Reference Manual for further informations.
+Reference Manual for further information.
 
 The value for SHINING (= GL_SHININESS) may vary from 0. to 128.
 
