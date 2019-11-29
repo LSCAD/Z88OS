@@ -169,7 +169,7 @@ FR_DOUBLE fret;
 /*----------------------------------------------------------------------
 * Hauptspannungen
 *---------------------------------------------------------------------*/
-wur= FR_SQRT(FR_POW((sig[1]-sig[2]),2)/2. + sig[3]*sig[3]);
+wur= FR_SQRT(FR_POW((sig[1]-sig[2]),2)/4. + sig[3]*sig[3]);
 
 sig1= FR_FABS((sig[1]+sig[2])/2. + wur);
 sig2= FR_FABS((sig[1]+sig[2])/2. - wur);
@@ -252,7 +252,7 @@ FR_DOUBLE fret;
 /*----------------------------------------------------------------------
 * Hauptspannungen
 *---------------------------------------------------------------------*/
-wur= FR_SQRT(FR_POW((rsig[1]-rsig[2]),2)/2. + rsig[3]*rsig[3]);
+wur= FR_SQRT(FR_POW((rsig[1]-rsig[2]),2)/4. + rsig[3]*rsig[3]);
 
 sig1= FR_FABS((rsig[1]+rsig[2])/2. + wur);
 sig2= FR_FABS((rsig[1]+rsig[2])/2. - wur);
@@ -309,7 +309,7 @@ FR_DOUBLE fret;
 /*----------------------------------------------------------------------
 * Hauptspannungen
 *---------------------------------------------------------------------*/
-wur= FR_SQRT(FR_POW((sig[1]-sig[2]),2)/2. + sig[3]*sig[3]);
+wur= FR_SQRT(FR_POW((sig[1]-sig[2]),2)/4. + sig[3]*sig[3]);
 
 sig1= (sig[1]+sig[2])/2. + wur;
 sig2= (sig[1]+sig[2])/2. - wur;
@@ -399,7 +399,7 @@ FR_DOUBLE fret;
 /*----------------------------------------------------------------------
 * Hauptspannungen
 *---------------------------------------------------------------------*/
-wur= FR_SQRT(FR_POW((rsig[1]-rsig[2]),2)/2. + rsig[3]*rsig[3]);
+wur= FR_SQRT(FR_POW((rsig[1]-rsig[2]),2)/4. + rsig[3]*rsig[3]);
 
 sig1= (rsig[1]+rsig[2])/2. + wur;
 sig2= (rsig[1]+rsig[2])/2. - wur;
